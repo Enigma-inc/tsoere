@@ -1,0 +1,14 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/fonts.googleapis.com\/css?family=Raleway:300,400,600 - Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+        "source": "network",
+        "timestamp": 1492198684510
+    },
+    {
+        "level": "SEVERE",
+        "message": "https:\/\/fonts.googleapis.com\/css?family=Raleway:300,400,600 - Failed to load resource: net::ERR_NAME_NOT_RESOLVED",
+        "source": "network",
+        "timestamp": 1492198690748
+    }
+]
