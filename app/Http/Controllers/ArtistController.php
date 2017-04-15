@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\Profile;
 
-class HomeController extends Controller
+class ArtistController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $profile = Profile::find(Auth::user()->id);
+      //  dd(Auth::user()->profile);
+        return view('artist.home')->with('profile',$profile);
     }
 }
