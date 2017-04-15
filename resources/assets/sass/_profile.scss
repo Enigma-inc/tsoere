@@ -1,0 +1,21 @@
+.profile {
+    .header {
+        text-transform: capitalize;
+        font-weight: 600;
+    }
+    .panel-heading {
+        text-align: center;
+    }
+    .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    }
+    .avatar-container {
+        text-align: center;
+    }
+    .about {
+        text-align: justify;
+        margin-top: 1em;
+    }
+}
