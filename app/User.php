@@ -28,6 +28,11 @@ class User extends Authenticatable
     ];
 
      public function profile(){
-       return  $this->hasOne(Profile::class);
+       return  $this->hasOne(Artist::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
     }
 }

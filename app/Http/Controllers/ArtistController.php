@@ -2,31 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
 use Illuminate\Http\Request;
-use Auth;
-use App\Profile;
 
 class ArtistController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return
      */
-    public function index()
+    public function index($slug)
     {
-        $profile = Profile::find(Auth::user()->id);
-      //  dd(Auth::user()->profile);
+        $profile = Artist::where('slug',$slug)->first();
         return view('artist.home')->with('profile',$profile);
     }
 }

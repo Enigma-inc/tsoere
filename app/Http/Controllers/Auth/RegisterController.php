@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Artist;
 use App\User;
-use App\Profile;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/profile';
 
     /**
      * Create a new controller instance.
@@ -49,7 +50,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255|unique:users',
+            'name' => 'required|string|max:255|unique:artists',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -64,7 +65,6 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -72,10 +72,11 @@ class RegisterController extends Controller
 //Create a defualt profile for this user
         if($user)
         {
-            Profile::create([
+            Artist::create([
                 'user_id'=>$user->id,
+                'name' => $data['name'],
                 'avatar'=>'/avatars/artist.png',
-                'slug'=>str_slug($user->name)
+                'slug'=>str_slug($data['name'])
             ]);
 
         }

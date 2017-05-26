@@ -4,12 +4,12 @@
             <div class="col-md-4 profile">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class=" header">{{Auth::user()->name}}</div>
+                        <div class=" header">{{Auth::user()->profile->name}}</div>
                     </div>
 
                     <div class="panel-body">
                         <div class="avatar-container">
-                            <img class="avatar" src="{{Storage::url($profile->avatar)}}" alt="Image">
+                            <img class="avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}" alt="Image">
                         </div>
                         <div class="about">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem ut nostrum ullam laudantium laborum hic temporibus, numquam quisquam? Est maiores, aliquam sunt quasi neque modi quisquam error ad fugiat corrupti?
@@ -24,7 +24,7 @@
             <div class="col-md-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div class=" header">Mixtapes</div>
+                        <div class=" header">Tracks</div>
                     </div>
 
                     <div class="panel-body">
