@@ -1,15 +1,15 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 ">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Best in Hip hop</div>
-                    <div class="panel-body">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <section>
+					<div class="section-header">
+						<ol class="breadcrumb">
+							<li class="active">Trending Tracks</li>
+						</ol>
+					</div>
+					<div class="section-body">
+						<div class="container">
+
+						</div>
+					</div>
+				</section>
 @endsection
