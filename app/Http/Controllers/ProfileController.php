@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Profile;
 use Illuminate\Http\Request;
 
-class ProfilesController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        //
+        return view('profile.home');
     }
 
     /**
