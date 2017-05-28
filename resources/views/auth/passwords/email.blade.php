@@ -1,12 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.master-no-menu')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
+        <div class="col-md-8 col-md-offset-2 margin-top-90">
+            <div class="card card-default">           
+                <div class="card-head">
+                    <header class="text-lg text-bold text-primary">Reset Password</header>
+                </div>
+                <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -32,7 +34,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary col-xs-12">
                                     Send Password Reset Link
                                 </button>
                             </div>

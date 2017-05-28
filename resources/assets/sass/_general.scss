@@ -1,12 +1,8 @@
-html, body {
-    background-color: #fff !important;;
-    color: #636b6f !important;;
-    font-family: 'Raleway', sans-serif !important;
-    font-weight: 100 !important;;
-    height: 100vh !important;;
-    margin: 0 !important;;
+section.section-account .img-backdrop,
+section.section-account .spacer {
+    height: 200px;
 }
 
-.panel {
-    border-radius: 0;
+label {
+    color: $color-primary-dark !important;
 }
