@@ -55,7 +55,7 @@
                         <h3 class="text-light">
                             No account yet?
                         </h3>
-                        <a class="btn btn-block btn-raised btn-primary" href="#">Sign up here</a>
+                        <a class="btn btn-block btn-raised btn-primary" href="{{route('register')}}">Sign up here</a>
                         <br><br>
                         <h3 class="text-light">
                             or

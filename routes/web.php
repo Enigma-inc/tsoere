@@ -3,7 +3,7 @@
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.welcome');
 });
 
 Auth::routes();
@@ -13,9 +13,10 @@ Route::get('/artist/{slug}', [
     'as'=>'artist.home'
 ]);
 
+
+
+
 Route::group(['middleware'=>'auth'],function(){
-
-
     Route::get('/profile', [
         'uses'=>'ProfileController@index',
         'as'=>'profile'

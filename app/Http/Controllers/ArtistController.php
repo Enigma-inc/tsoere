@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 class ArtistController extends Controller
 {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return
-     */
     public function index($slug)
     {
         $profile = Artist::where('slug',$slug)->first();
