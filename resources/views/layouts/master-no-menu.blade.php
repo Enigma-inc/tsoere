@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Material Admin - Login</title>
+    <title>Musicbox</title>
 
     <!-- BEGIN META -->
     <meta charset="utf-8">
