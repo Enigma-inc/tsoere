@@ -13,9 +13,6 @@ Route::get('/artist/{slug}', [
     'as'=>'artist.home'
 ]);
 
-
-
-
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile', [
         'uses'=>'ProfileController@index',

@@ -10,7 +10,15 @@ class ArtistController extends Controller
 
     public function index($slug)
     {
+
         $profile = Artist::where('slug',$slug)->first();
         return view('artist.home')->with('profile',$profile);
+    }
+
+
+    //artist profile creation form 
+    public function edit()
+    {
+        return view('artist.edit-profile');
     }
 }
