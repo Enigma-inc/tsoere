@@ -24,4 +24,10 @@ Route::group(['middleware'=>'auth'],function(){
         'as'=>'profile.edit'
     ]);
     
+    Route::get('/update-avatar',[
+        'uses' => 'ArtistController@update',
+        'as' => 'avatar.update'
+    ]);
+
+    Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 });

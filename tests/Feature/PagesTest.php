@@ -79,12 +79,19 @@ class PagesTest extends TestCase
 
         //Check if this  user can login
         $this->post('/login',['email'=>'joe@example.com','password'=>'password'])
-             ->assertStatus(200);       
+             ->seePageIs('/profile');        
     }
 
     /** @test */
     public function an_authenticated_user_can_update_avartar()
     {
+        $user = factory('App\User') -> create();
 
+        factory('App\Artist') ->create(['user_id' => $user->id]);
+
+        $this -> be($user);
+
+            $this ->get('/update-avatar')
+                  ->assertStatus(200);
     }
 }
