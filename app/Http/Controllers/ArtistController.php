@@ -35,11 +35,15 @@ class ArtistController extends Controller
 
     public function upload_avatar(Request $request, Artist $profile)
     {
+        $this->validate($request, [
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $avatar = $request -> file('avatar');
         $filename = time().'.'.$avatar->getClientOriginalExtension();
         $path = $avatar->storeAs('public/avatars',$filename);
         $profile->avatar = $path;
         $profile ->save();
-        return redirect('/profile');
+        return redirect('/profile') -> with('success','Image upload successful');
+
     }
 }

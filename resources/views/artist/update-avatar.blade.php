@@ -17,7 +17,7 @@
 						<button type="button" class="btn btn-default file-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
 						<!-- file-preview-input -->
 						<div class="btn btn-default file-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="file-preview-input-title">Browse</span>
-							<input type="file" accept="image/png, image/jpeg, image/gif" name="avatar"/>
+							<input type="file" accept="image/png, image/jpeg, image/gif ,image/svg" name="avatar"/>
 							<!-- rename it --> 
 						</div>
 						    <button type="submit"  class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>

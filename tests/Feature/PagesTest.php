@@ -96,5 +96,12 @@ class PagesTest extends TestCase
     }
 
     /** @test */
-    public function an authenticated_artist_ca
+    public function authenticated_artist_updates_an_avatar_and_gets_redirected_to_profile(){
+        $user = factory('App\User') -> create();
+
+        factory('App\Artist') ->create(['user_id' => $user->id]);
+
+        $this -> be($user);
+
+    }
 }

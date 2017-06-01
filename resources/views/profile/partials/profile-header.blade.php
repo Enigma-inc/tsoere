@@ -4,11 +4,15 @@
 						<div class="row">
 							<div class="col-xs-12">
                             <div class="avatar-container">
-								<img  src="{{Storage::url(Auth::user()->profile->avatar)}}"class="img-circle border-white border-xl img-responsive avatar"  alt="Profile Image">
+								<img  href="/update-avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}"class="img-circle border-white border-xl img-responsive avatar"  alt="Profile Image">
 								<h3 class="artist-name">{{Auth::user()->profile->name}}</h3>
-								
-                            </div>
+						 	</div>
 							</div>
+							
 						</div>
-					</div><!--end .section-body -->
+						
+					</div>
+
+				<a href = "/update-avatar" class="btn btn-primary btn-sm active " role="button" aria-pressed="true">update profile picture</a>
+
 </section>
