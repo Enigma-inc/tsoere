@@ -37,7 +37,7 @@ class ArtistController extends Controller
     {
         $avatar = $request -> file('avatar');
         $filename = time().'.'.$avatar->getClientOriginalExtension();
-        $path = $avatar->move('public/avatars',$filename);
+        $path = $avatar->storeAs('public/avatars',$filename);
         $profile->avatar = $path;
         $profile ->save();
         return redirect('/profile');

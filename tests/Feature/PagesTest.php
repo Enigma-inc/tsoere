@@ -94,4 +94,7 @@ class PagesTest extends TestCase
             $this ->get('/update-avatar')
                   ->assertStatus(200);
     }
+
+    /** @test */
+    public function an authenticated_artist_ca
 }
