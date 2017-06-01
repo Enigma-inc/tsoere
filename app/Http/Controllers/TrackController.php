@@ -35,7 +35,13 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Track::create([
+            'title'=>$request['title'],
+        'file_path'=>$request['file_path'],
+        'artwork'=>$request['artwork'],
+        'genre'=>$request['genre'],
+        'artist_id'=>$request['artist_id'],
+        ]);
     }
 
     /**

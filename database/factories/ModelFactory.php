@@ -2,6 +2,7 @@
 
 use App\User;
 use App\Artist;
+use App\Track;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(User::class, function (Faker\Generator $faker) {
@@ -23,6 +24,16 @@ $factory->define(Artist::class,function(Faker\Generator $faker){
         'avatar'=>$faker->word,
         'slug'=>str_slug($artistName),
         'about'=>$faker->sentence
+
+    ];
+});
+$factory->define(Track::class,function(Faker\Generator $faker){
+
+    return [
+        'title'=>$faker->sentence,
+        'file_path'=>str_slug($faker->sentence),
+        'artwork'=>str_slug($faker->sentence),
+        'genre'=>$faker->word
 
     ];
 });

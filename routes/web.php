@@ -26,5 +26,9 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'ArtistController@edit',
         'as'=>'profile.edit'
     ]);
+    Route::post('/tracks', [
+        'uses'=>'TractController@store',
+        'as'=>'track.store'
+    ]);
     
 });
