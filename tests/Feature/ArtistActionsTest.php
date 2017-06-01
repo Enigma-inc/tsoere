@@ -11,11 +11,15 @@ class ArtistActionsTest extends TestCase
 {
     use DatabaseMigrations;
     /** @test */
-    public function a_user_can_access_home_page()
+    public function an_artisrt_can_create_a_track()
     {
-        $response = $this->get('/');
+        //Given we have an artist
+             $user = factory('App\User') -> create();
+             factory('App\Artist')->create(['user_id'=>$user->id]);
 
-        $response->assertStatus(200);
+        //When we make a post to create a track 
+        $track = factory('App\Track')->make();
+        //We expect to see the track title on the list of tracks
     }
 
    

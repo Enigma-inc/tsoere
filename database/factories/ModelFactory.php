@@ -23,19 +23,31 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory ->define(App\Artist::class, function ($faker){
-    $artistName= $faker -> name;
 
-    return [
-        'user_id' => function(){
-            return factory('App\User') -> create()->id;
-        },
-        'name' => $artistName,
-        'avatar'=> $faker -> sentence,
-        'slug' =>  str_slug($artistName),
-        'about'=>$faker -> paragraph 
+    $factory ->define(App\Artist::class, function ($faker){
+        $artistName= $faker -> name;
 
-    ];
+        return [
+            'user_id' => function(){
+                return factory('App\User') -> create()->id;
+            },
+            'name' => $artistName,
+            'avatar'=> $faker -> sentence,
+            'slug' =>  str_slug($artistName),
+            'about'=>$faker -> paragraph 
 
-});
+        ];
+
+    });
+
+    $factory->define(App\Genre::class,function($faker){
+        return [
+            'name'=>$faker->name
+        ];
+    });
+    $factory->define(App\Genre::class,function($faker){
+        return [
+            'name'=>$faker->name
+        ];
+    });
 
