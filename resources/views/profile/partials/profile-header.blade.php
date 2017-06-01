@@ -4,10 +4,11 @@
 						<div class="row">
 							<div class="col-xs-12">
                             <div class="avatar-container">
-								<img class="img-circle border-white border-xl img-responsive avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}" alt="Profile Image">
-								<h3 class="artist-name">{{Auth::user()->profile->name}}</h3>                                
+								<img  src="{{ Auth::user()->profile->avatar}}"class="img-circle border-white border-xl img-responsive avatar"  alt="Profile Image">
+								<h3 class="artist-name">{{Auth::user()->profile->name}}</h3>
                             </div>
 							</div>
 						</div>
 					</div><!--end .section-body -->
+
 </section>

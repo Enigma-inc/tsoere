@@ -1,4 +1,4 @@
-@extends('layouts.master-no-menu')
+@extends('layouts.master')
 
 @section('content')
 <form action="/update-avatar/{{$profile->id}}" enctype="multipart/form-data" role="form" method="POST">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Artist;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArtistController extends Controller
 {
@@ -36,8 +37,8 @@ class ArtistController extends Controller
     {
         $avatar = $request -> file('avatar');
         $filename = time().'.'.$avatar->getClientOriginalExtension();
-        $path = $avatar->storeAs('public/avatars',$filename);
-        $profile->avatar = $filename;
+        $path = $avatar->move('public/avatars',$filename);
+        $profile->avatar = $path;
         $profile ->save();
         return redirect('/profile');
     }
