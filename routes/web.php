@@ -30,4 +30,5 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
 
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
-});
+
+    });
