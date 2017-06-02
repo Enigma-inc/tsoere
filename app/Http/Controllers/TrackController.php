@@ -24,7 +24,7 @@ class TrackController extends Controller
      */
     public function create()
     {
-        //
+        return view('track.upload');
     }
 
     /**
@@ -35,6 +35,7 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->toArray());
         Track::create([
             'title'=>$request['title'],
         'file_path'=>$request['file_path'],

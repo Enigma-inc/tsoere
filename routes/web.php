@@ -26,8 +26,12 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'ArtistController@edit',
         'as'=>'profile.edit'
     ]);
+    Route::get('/tracks/upload', [
+        'uses'=>'TrackController@create',
+        'as'=>'track.create'
+    ]);
     Route::post('/tracks', [
-        'uses'=>'TractController@store',
+        'uses'=>'TrackController@store',
         'as'=>'track.store'
     ]);
     

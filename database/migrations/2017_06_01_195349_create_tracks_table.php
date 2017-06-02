@@ -16,7 +16,8 @@ class CreateTracksTable extends Migration
         Schema::create('tracks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('file_path');
+            $table->string('mp3_path');
+            $table->string('json_path');
             $table->string('artwork');
             $table->string('genre');
             $table->unsignedInteger('artist_id');
