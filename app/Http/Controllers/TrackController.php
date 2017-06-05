@@ -35,9 +35,13 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->toArray());
+        $file=$request->file('mp3');
+
+        $file->storeAs("audio",'test'.$file->getClientOriginalExtension());
+        dd('done');
+
         Track::create([
-            'title'=>$request['title'],
+        'title'=>$request['title'],
         'file_path'=>$request['file_path'],
         'artwork'=>$request['artwork'],
         'genre'=>$request['genre'],

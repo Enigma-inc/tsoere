@@ -10,7 +10,7 @@
                     <header class="text-lg text-bold text-primary">Upload Your Track</header>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('track.store') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('track.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
