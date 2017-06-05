@@ -13,6 +13,11 @@ class Artist extends Model
     public function account(){
       return  $this->belongsTo(User::class);
     }
+    
+    public function Tracks(){
+      return $this->hasMany(Track::class);
+
+    }
 
 
 }

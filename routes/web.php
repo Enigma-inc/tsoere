@@ -30,7 +30,7 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'TrackController@create',
         'as'=>'track.create'
     ]);
-    Route::post('/tracks', [
+    Route::post('/tracks/{artistId}', [
         'uses'=>'TrackController@store',
         'as'=>'track.store'
     ]);

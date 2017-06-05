@@ -10,7 +10,7 @@ class ArtistController extends Controller
 
     public function index($slug)
     {
-        $profile = Artist::where('slug',$slug)->first();
+        $profile = Artist::with('tracks')->where('slug',$slug)->first();
         return view('artist.home')->with('profile',$profile);
     }
 }

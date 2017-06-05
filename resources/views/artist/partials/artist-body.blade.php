@@ -1,11 +1,18 @@
 <section>
     <div class="section-header margin-top-50">
-        <h1 class="page-header text-primary">Tracks</h1>
     </div>
     <div class="section-body no-margin">
         <div class="row">
             <div class="col-md-8">
-                <h2>Tracks Go Here</h2>
+                  @foreach($profile->tracks as $track)
+                  <div class="card">
+                      <div class="card-head">{{$track->title}}</div>
+                      <div class="card-body">
+                        <img src="{{url($track->artwork_path)}}" alt="">
+                      </div>
+                  </div>
+                    
+                @endforeach
             </div>
 
         </div>

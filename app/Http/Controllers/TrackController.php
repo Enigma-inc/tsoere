@@ -34,7 +34,7 @@ class TrackController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$artistId)
     {
   
         $artistDir=Auth::user()->profile->slug;
@@ -43,16 +43,16 @@ class TrackController extends Controller
         $trackTitle=$request['title'];
         $currentTime=time();
 
-        $mp3File->move($artistDir."/tracks",$trackTitle.'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension());
-        $artwork->move($artistDir."/artworks",$trackTitle.'-'.$currentTime.'.'.$artwork->getClientOriginalExtension());
-        dd('done');
+        $mp3Path= $mp3File->move($artistDir."/tracks/",str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension());
+        $artworkPath=$artwork->move($artistDir."/artworks/",str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension());
 
         Track::create([
         'title'=>$request['title'],
-        'file_path'=>$request['file_path'],
-        'artwork'=>$request['artwork'],
-        'genre'=>$request['genre'],
-        'artist_id'=>$request['artist_id'],
+        'audio_path'=>$mp3Path,
+        'artwork_path'=>$artworkPath,
+        'json_path'=>$artworkPath,
+        'genre'=>'Hip Hop',
+        'artist_id'=>$artistId,
         ]);
     }
 
