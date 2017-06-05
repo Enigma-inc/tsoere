@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use Illuminate\Http\Request;
+use Auth;
 
 class TrackController extends Controller
 {
@@ -35,9 +36,15 @@ class TrackController extends Controller
      */
     public function store(Request $request)
     {
-        $file=$request->file('mp3');
+  
+        $artistDir=Auth::user()->profile->slug;
+        $mp3File=$request->file('mp3');
+        $artwork=$request->file('artwork');
+        $trackTitle=$request['title'];
+        $currentTime=time();
 
-        $file->storeAs("audio",'test'.$file->getClientOriginalExtension());
+        $mp3File->move($artistDir."/tracks",$trackTitle.'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension());
+        $artwork->move($artistDir."/artworks",$trackTitle.'-'.$currentTime.'.'.$artwork->getClientOriginalExtension());
         dd('done');
 
         Track::create([
