@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 39);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -970,7 +970,7 @@ __webpack_require__(30);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', __webpack_require__(34));
+Vue.component('example', __webpack_require__(32));
 
 var app = new Vue({
   el: '#app'
@@ -1856,7 +1856,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(33);
+window._ = __webpack_require__(31);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -1874,7 +1874,7 @@ window._ = __webpack_require__(33);
  * and simple, leaving you to focus on building your next great project.
  */
 
-window.Vue = __webpack_require__(37);
+window.Vue = __webpack_require__(35);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -1903,9 +1903,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 
 /***/ }),
-/* 31 */,
-/* 32 */,
-/* 33 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -18994,17 +18992,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(38)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(36)(module)))
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(35)(
+var Component = __webpack_require__(33)(
   /* script */
   __webpack_require__(29),
   /* template */
-  __webpack_require__(36),
+  __webpack_require__(34),
   /* scopeId */
   null,
   /* cssModules */
@@ -19031,7 +19029,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // this module is a runtime utility for cleaner component module output and will
@@ -19088,7 +19086,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -19117,7 +19115,7 @@ if (false) {
 }
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28445,7 +28443,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(8)))
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -28473,7 +28471,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);

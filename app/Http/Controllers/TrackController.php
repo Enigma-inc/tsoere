@@ -46,7 +46,7 @@ class TrackController extends Controller
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-        $disk=Storage::disk('local');
+        $disk=Storage::disk(env('FILE_SYSTEM','s3'));
 
         //Push Files To Storage 
          $disk->put($mp3Path, file_get_contents($mp3File),'public');
