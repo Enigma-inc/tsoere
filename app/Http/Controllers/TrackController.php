@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Auth;
 
 class TrackController extends Controller
@@ -37,15 +38,21 @@ class TrackController extends Controller
     public function store(Request $request,$artistId)
     {
   
+        //Variables
         $artistDir=Auth::user()->profile->slug;
         $mp3File=$request->file('mp3');
         $artwork=$request->file('artwork');
         $trackTitle=$request['title'];
         $currentTime=time();
+        $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
+        $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
+        $disk=Storage::disk('local');
 
-        $mp3Path= $mp3File->move($artistDir."/tracks/",str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension());
-        $artworkPath=$artwork->move($artistDir."/artworks/",str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension());
+        //Push Files To Storage 
+         $disk->put($mp3Path, file_get_contents($mp3File),'public');
+         $disk->put($artworkPath,file_get_contents($artwork),'public');
 
+         //Update Database
         Track::create([
         'title'=>$request['title'],
         'audio_path'=>$mp3Path,
