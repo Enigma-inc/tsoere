@@ -13,7 +13,7 @@ Route::get('/artist/{slug}', [
     'as'=>'artist.home'
 ]);
 
- Route::get('tracks/download/{track}', [
+ Route::get('download/{track}', [
         'uses'=>'TrackController@download',
         'as'=>'track.download'
     ]);

@@ -5,7 +5,7 @@
         <div class="row">
                   @foreach($profile->tracks as $track)
                 <div class="col-xs-12 col-sm-6 col-md-4">                  
-                   <div class="card card-bordered style-default-light track-card">
+                   <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body">
                             <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
                                 <div class="play-button" >
@@ -19,15 +19,24 @@
                                 </div>
     
                                   <div class="footer">
-                                  <download-track input-track="{{$track}}" inline-template>
-                                       <div @click="download()" class="cursor-hand"> 
-                                       <i class="fa fa-download text-accent"></i> 
-                                       <small>(123)</small>
-                                       </div>
-                                 </download-track>
-                                  <div>
-                                  
-                                  </div>
+                                        <download-track input-track="{{$track}}" inline-template>
+                                            <div @click="download()" class="action-btn"> 
+                                            <i class="fa fa-thumbs-o-up text-primary"></i> 
+                                            <small>(123)</small>
+                                            </div>
+                                        </download-track>
+                                        <download-track input-track="{{$track}}" inline-template>
+                                            <div @click="download()" class="action-btn"> 
+                                            <i class="fa fa-play text-primary"></i> 
+                                            <small>(123)</small>
+                                            </div>
+                                        </download-track>
+                                        <download-track input-track="{{$track}}" inline-template>
+                                            <div @click="download()" class="action-btn"> 
+                                            <i class="fa fa-download text-primary"></i> 
+                                            <small>(123)</small>
+                                            </div>
+                                        </download-track>
                                   </div>
                                 </div>
                             </div>

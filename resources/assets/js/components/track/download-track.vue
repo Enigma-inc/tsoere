@@ -11,9 +11,10 @@
         },
         methods:{
             download(){
-              axios.get(`../tracks/download/${this.track.id}`).then(response=>{
+                window.location.href = `../download/${this.track.id}`;
+              //axios.post(`../download/${this.track.id}`).then(response=>{
 
-              });
+            //  });
             }
         }
     }

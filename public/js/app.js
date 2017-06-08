@@ -1842,7 +1842,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         download: function download() {
-            axios.get('../tracks/download/' + this.track.id).then(function (response) {});
+            window.location.href = '../download/' + this.track.id;
+            //axios.post(`../download/${this.track.id}`).then(response=>{
+
+            //  });
         }
     }
 });
