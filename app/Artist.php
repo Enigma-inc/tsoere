@@ -19,5 +19,7 @@ class Artist extends Model
 
     }
 
+    
+
 
 }

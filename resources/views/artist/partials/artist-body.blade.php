@@ -3,26 +3,38 @@
     </div>
     <div class="section-body no-margin">
         <div class="row">
-            <div class="col-md-3">
                   @foreach($profile->tracks as $track)
-                    <div class="card card-bordered style-default track-card">
+                <div class="col-xs-12 col-sm-6 col-md-4">                  
+                   <div class="card card-bordered style-default-light track-card">
                         <div class="card-body">
-                            <img src="{{url($track->artwork)}}" width="100%" alt="">
+                            <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
+                                <div class="play-button" >
+                                        <a href="#"><i class="fa fa-play-circle-o"></i></a>
+                                    </div>
+                            </div>
                             <div class="details">
-                                <h2 class="title">{{$track->title}}</h2>
-                                <div class="controls">
-                                <div class="left-controls" >Test</div>
-                                    <div class="play" >
-                                                <i class="fa fa-play-circle fa-3x text-primary"></i>
-                                     </div>
-                                      <div class="right-controls" >test</div>
+                                <div class="header">
+                                    <div class="artist-name text-primary text-bold">{{$profile->name}}</div>                            
+                                    <div class="track-title">{{$track->title}}</div>
+                                </div>
+    
+                                  <div class="footer">
+                                  <download-track input-track="{{$track}}" inline-template>
+                                       <div @click="download()" class="cursor-hand"> 
+                                       <i class="fa fa-download text-accent"></i> 
+                                       <small>(123)</small>
+                                       </div>
+                                 </download-track>
+                                  <div>
+                                  
+                                  </div>
+                                  </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
                     
                 @endforeach
-            </div>
 
         </div>
     </div>

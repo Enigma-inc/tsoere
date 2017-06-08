@@ -9,3 +9,4 @@
 	<script src="{{url('theme/js/core/source/AppCard.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppNavSearch.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppVendor.js')}}"></script>
+	<script src="{{mix('js/app.js')}}"></script>

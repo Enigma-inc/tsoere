@@ -13,7 +13,10 @@ Route::get('/artist/{slug}', [
     'as'=>'artist.home'
 ]);
 
-
+ Route::get('tracks/download/{track}', [
+        'uses'=>'TrackController@download',
+        'as'=>'track.download'
+    ]);
 
 
 Route::group(['middleware'=>'auth'],function(){
@@ -34,5 +37,6 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'TrackController@store',
         'as'=>'track.store'
     ]);
+
     
 });

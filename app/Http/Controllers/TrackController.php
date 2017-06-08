@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Track;
+use App\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Http\Response;
+
 use Auth;
 
 class TrackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+      protected $disk;
+  
+    function __construct(){
+        $this->disk= Storage::disk(env('FILE_SYSTEM','s3'));
+    }
+
     public function index()
     {
         //
@@ -46,11 +52,14 @@ class TrackController extends Controller
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-        $disk=Storage::disk(env('FILE_SYSTEM','s3'));
+
+       $this->resizeArtwork($artwork);
 
         //Push Files To Storage 
-         $disk->put($mp3Path, file_get_contents($mp3File),'public');
-         $disk->put($artworkPath,file_get_contents($artwork),'public');
+         $this->disk->put($mp3Path, file_get_contents($mp3File),'public');
+         $this->disk->put($artworkPath,file_get_contents($this->resizeArtwork($artwork)),'public');
+
+         
 
          //Update Database
         Track::create([
@@ -63,48 +72,33 @@ class TrackController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Track $track)
+  public function download(Track $track)
     {
-        //
+        $fileName = $track->audio_path;
+
+        $file=$this->disk->get($fileName);
+        $fileMimeType=$this->disk->mimeType($fileName);
+
+        return response()->download($filePath);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Track $track)
-    {
-        //
-    }
+    private function resizeArtwork(UploadedFile $artwork){
+        $currentTime=time();
+        $ext=$artwork->getClientOriginalExtension();
+        $artworkPath='temp/'.$currentTime.'.'.$ext;
+        $tempDisk=Storage::disk('public');
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Track $track)
-    {
-        //
-    }
+        //Save File Temporarily
+        $path=  $tempDisk->put($artworkPath, file_get_contents($artwork),'public');
+     
+       //Resize Image
+        Image::make(public_path().'/storage/'.$artworkPath)
+                ->fit(300,300)
+                ->save(public_path().'/storage/'.$artworkPath);
+       return public_path().'/storage/'.$artworkPath;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Track $track)
-    {
-        //
+                
     }
+    
 }

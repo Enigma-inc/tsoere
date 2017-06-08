@@ -1,26 +1,55 @@
 .track-card {
+    font-family: 'El Messiri', sans-serif;
     .card-body {
         padding: 0;
         display: flex;
-        flex-direction: column;
-        img {}
-        .details {
-            .title {
-                margin: 0;
-                font-size: 1.2em;
-                text-align: center;
-            }
-            .controls {
+        height: 100px;
+        .artwork {
+            height: 100px;
+            width: 125px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            .play-button {
+                height: 100%;
+                width: 125px;
                 display: flex;
-                align-content: space-between;
                 align-items: center;
+                justify-content: center;
+                a {
+                    transition: all .5s ease-in;
+                    font-size: 3em;
+                    transition: all .3s ease-in;
+                    color: rgba(7, 120, 113, 0.9) !important;
+                    &:hover {
+                        color: rgba(7, 120, 113, 0.9) !important;
+                        font-size: 5em;
+                    }
+                    &:active {
+                        color: rgba(7, 120, 113, 1) !important;
+                    }
+                }
             }
-            .left-controls {
-                flex: 1;
+        }
+        .details {
+            margin-left: 5px;
+            .header {
+                display: flex;
+                flex-direction: column;
+                .artist-name {
+                    font-weight: 600;
+                    font-size: 1.2em;
+                }
+                .track-title {
+                    font-weight: 600;
+                    font-size: 0.9em;
+                    line-height: 15px;
+                }
             }
-            .right-controls {
-                flex: 1;
-                text-align: right;
+            .footer {
+                .cursor-hand {
+                    cursor: pointer;
+                }
             }
         }
     }

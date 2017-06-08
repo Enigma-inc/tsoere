@@ -11,7 +11,7 @@ class Track extends Model
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
     protected $appends=array('artwork','audio','json');
 
-    public function Artist()
+    public function owner()
     {
         return $this->belongsTo(Artist::class);
     }
