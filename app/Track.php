@@ -25,4 +25,5 @@ class Track extends Model
     public function getJsonAttribute(){
         return Storage::Url($this->json_path);
     }
+    
 }

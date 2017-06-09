@@ -1828,24 +1828,43 @@ module.exports = function spread(callback) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['inputTrack'],
+    props: ['track'],
     data: function data() {
         return {
-            track: {}
+            downloads: 0,
+            likes: 0,
+            played: 0
         };
     },
     mounted: function mounted() {
-        this.track = JSON.parse(this.inputTrack);
+        this.downloads = this.track.downloads;
+        this.likes = this.track.likes;
+        this.played = this.track.played;
     },
 
     methods: {
         download: function download() {
+            this.downloads++;
             window.location.href = '../download/' + this.track.id;
-            //axios.post(`../download/${this.track.id}`).then(response=>{
-
-            //  });
         }
     }
 });
@@ -19000,7 +19019,7 @@ var Component = __webpack_require__(33)(
   /* script */
   __webpack_require__(29),
   /* template */
-  null,
+  __webpack_require__(40),
   /* scopeId */
   null,
   /* cssModules */
@@ -19008,6 +19027,7 @@ var Component = __webpack_require__(33)(
 )
 Component.options.__file = "C:\\Users\\mokoe\\Documents\\Enigma\\projects\\musicbox\\resources\\assets\\js\\components\\track\\download-track.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] download-track.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -28445,6 +28465,53 @@ module.exports = function(module) {
 __webpack_require__(9);
 module.exports = __webpack_require__(10);
 
+
+/***/ }),
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "footer"
+  }, [_c('div', {
+    staticClass: "action-btn",
+    on: {
+      "click": function($event) {
+        _vm.download()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-thumbs-o-up text-primary"
+  }), _vm._v(" "), _c('small', [_vm._v("(" + _vm._s(this.likes) + ")")])]), _vm._v(" "), _c('div', {
+    staticClass: "action-btn",
+    on: {
+      "click": function($event) {
+        _vm.download()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-play text-primary"
+  }), _vm._v(" "), _c('small', [_vm._v("(" + _vm._s(this.played) + ")")])]), _vm._v(" "), _c('div', {
+    staticClass: "action-btn",
+    on: {
+      "click": function($event) {
+        _vm.download()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-download text-primary"
+  }), _vm._v(" "), _c('small', [_vm._v("(" + _vm._s(this.downloads) + ")")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-8c879478", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

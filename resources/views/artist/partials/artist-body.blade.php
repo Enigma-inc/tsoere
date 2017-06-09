@@ -17,31 +17,11 @@
                                     <div class="artist-name text-primary text-bold">{{$profile->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
-    
-                                  <div class="footer">
-                                        <download-track input-track="{{$track}}" inline-template>
-                                            <div @click="download()" class="action-btn"> 
-                                            <i class="fa fa-thumbs-o-up text-primary"></i> 
-                                            <small>(123)</small>
-                                            </div>
-                                        </download-track>
-                                        <download-track input-track="{{$track}}" inline-template>
-                                            <div @click="download()" class="action-btn"> 
-                                            <i class="fa fa-play text-primary"></i> 
-                                            <small>(123)</small>
-                                            </div>
-                                        </download-track>
-                                        <download-track input-track="{{$track}}" inline-template>
-                                            <div @click="download()" class="action-btn"> 
-                                            <i class="fa fa-download text-primary"></i> 
-                                            <small>(123)</small>
-                                            </div>
-                                        </download-track>
+                                 <download-track :track="{{$track}}"></download-track>
                                   </div>
                                 </div>
                             </div>
                         </div>
-                </div>
                     
                 @endforeach
 

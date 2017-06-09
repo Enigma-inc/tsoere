@@ -72,31 +72,13 @@ class TrackController extends Controller
         ]);
     }
 
-  public function download(Artist $artist,Track $track)
+  public function download(Track $track)
     {
         $fileName = $track->audio_path;
-        $filePath = storage_path().'/app/public/' . $fileName;
-
-        $file=$this->disk->get($fileName);
-        $fileMimeType=$this->disk->mimeType($fileName);
-
-        return response()->download($filePath);
-        return (new Response($file, 200))
-              ->header('Content-Type', $fileMimeType);
-
-        dd($this->disk->mimeType($fileName));
-
-
-        if( file_exists('storage/'.$fileName)){
-            $headers = array(
-                'Content-Type: '.Storage::mimeType('/'.$fileName),
-            );
-            return response()->download($filePath, $fileName,$headers);
-            
-        }
-        else{
-            return back();
-        }
+        $path=$this->disk->getDriver()->getAdapter()->applyPathPrefix($fileName);
+        //Increment Downloads
+        $track->increment('downloads');
+       return response()->download($path); 
 
     }
 
