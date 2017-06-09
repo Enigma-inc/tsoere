@@ -12,7 +12,7 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('download-track', require('./components/track/download-track.vue'));
+Vue.component('track-actions', require('./components/track/track-actions.vue'));
 
 const app = new Vue({
     el: '#base'
