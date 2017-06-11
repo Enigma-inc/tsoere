@@ -64,6 +64,7 @@ class TrackController extends Controller
          //Update Database
         Track::create([
         'title'=>$request['title'],
+        'slug'=>str_slug($request['title'].'-'.time()),
         'audio_path'=>$mp3Path,
         'artwork_path'=>$artworkPath,
         'json_path'=>$artworkPath,

@@ -3,7 +3,7 @@
     </div>
     <div class="section-body no-margin">
         <div class="row">
-            <!--      @foreach($profile->tracks as $track)
+              @foreach($profile->tracks as $track)
                 <div class="col-xs-12 col-sm-6 col-md-4">                  
                    <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body">
@@ -23,12 +23,7 @@
                             </div>
                         </div>
                     
-                @endforeach-->
-<div class="your-class">
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-</div>
+                @endforeach
         </div>
     </div>
 </section>

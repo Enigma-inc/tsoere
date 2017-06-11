@@ -14,7 +14,7 @@ class Artist extends Model
       return  $this->belongsTo(User::class);
     }
     
-    public function Tracks(){
+    public function tracks(){
       return $this->hasMany(Track::class);
 
     }

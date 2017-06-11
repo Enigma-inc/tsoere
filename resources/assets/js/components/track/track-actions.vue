@@ -16,13 +16,19 @@
 </template>
 
 <script>
+import Slick from 'vue-slick';
     export default{
         props:['track'],
+        components:{Slick},
         data(){
             return{
               downloads:0,
               likes:0,
-              played:0
+              played:0,
+              slickOptions: {
+                slidesToShow: 3,
+                // Any other options that can be got from plugin documentation
+            },
             }
         },
         mounted(){
@@ -34,7 +40,7 @@
         methods:{
             download(){
                 this.downloads++;              
-                window.location.href = `../download/${this.track.id}`;
+                window.location.href = `../../../download/${this.track.id}`;
             }
         }
     }
