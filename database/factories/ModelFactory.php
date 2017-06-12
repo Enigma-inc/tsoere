@@ -16,33 +16,6 @@ $factory->define(User::class, function (Faker\Generator $faker) {
     ];
 });
 
-<<<<<<< HEAD
-$factory->define(Artist::class,function(Faker\Generator $faker){
-
-    $artistName=$faker->name;
-    return [
-        'user_id'=>function(){return factory(User::class)->create()->id;},
-        'name'=>$artistName,
-        'avatar'=>$faker->word,
-        'slug'=>str_slug($artistName),
-        'about'=>$faker->sentence
-
-    ];
-});
-$factory->define(Track::class,function(Faker\Generator $faker){
-
-    return [
-        'title'=>$faker->sentence,
-        'file_path'=>str_slug($faker->sentence),
-        'artwork'=>str_slug($faker->sentence),
-        'genre'=>$faker->word
-
-    ];
-});
-
-
-         
-=======
 
     $factory ->define(App\Artist::class, function ($faker){
         $artistName= $faker -> name;
@@ -71,4 +44,3 @@ $factory->define(Track::class,function(Faker\Generator $faker){
         ];
     });
 
->>>>>>> d56d08636fcaaaa92c9e62c0d55be5ff544c59b1

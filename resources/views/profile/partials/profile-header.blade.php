@@ -4,15 +4,9 @@
 						<div class="row">
 							<div class="col-xs-12">
                             <div class="avatar-container">
-<<<<<<< HEAD
 								<img class="img-circle border-white border-xl img-responsive avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}" alt="Profile Image">
 								<h3 class="artist-name">{{$profile->name}}</h3>                                
                             </div>
-=======
-								<img  href="/update-avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}"class="img-circle border-white border-xl img-responsive avatar"  alt="Profile Image">
-								<h3 class="artist-name">{{Auth::user()->profile->name}}</h3>
-						 	</div>
->>>>>>> d56d08636fcaaaa92c9e62c0d55be5ff544c59b1
 							</div>
 							
 						</div>
