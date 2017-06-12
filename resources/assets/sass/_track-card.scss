@@ -1,3 +1,77 @@
+.single-track-card {
+    .card-body {
+        padding: 0;
+        display: flex;
+        height: 300px;
+        .artwork {
+            height: 300px;
+            width: 325px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            .play-button {
+                height: 100%;
+                width: 325px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                a {
+                    transition: all .5s ease-in;
+                    font-size: 5em;
+                    transition: all .3s ease-in;
+                    color: rgba(229, 230, 230, 0.9) !important;
+                    &:hover {
+                        color: rgba(229, 230, 230, 0.9) !important;
+                        font-size: 7em;
+                    }
+                    &:active {
+                        color: rgba(229, 230, 230, 1) !important;
+                    }
+                }
+            }
+        }
+        .details {
+            display: flex;
+            flex-direction: column;
+            margin-left: 5px;
+            width: 100%;
+            .header {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                font-family: 'El Messiri', sans-serif;
+                width: 100%;
+                .artist-name {
+                    font-weight: 600;
+                    font-size: 2em;
+                }
+                .track-title {
+                    font-weight: 600;
+                    font-size: 1.2em;
+                    line-height: 15px;
+                }
+            }
+            .footer {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 3px;
+                border-top: 1px solid rgba(7, 120, 113, .2);
+                .action-btn {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    small {
+                        font-size: 1em;
+                        margin-left: 3px;
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+    }
+}
+
 .track-card {
     .card-body {
         padding: 0;

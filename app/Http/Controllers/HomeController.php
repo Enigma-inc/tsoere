@@ -9,11 +9,6 @@ class HomeController extends Controller
 {
     public function index(){
          $tracks = Track::all();
-         foreach ($tracks as $track) {
-            $track->slug=str_slug($track->title.'-'.time());
-            $track->save();
-         }
-         dd($tracks->toArray());
        return view('home.welcome')->with(['tracks'=>$tracks]);
     }
    public function trackHome($slug)

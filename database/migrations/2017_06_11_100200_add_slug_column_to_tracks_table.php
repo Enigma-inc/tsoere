@@ -14,7 +14,9 @@ class AddSlugColumnToTracksTable extends Migration
     public function up()
     {
         Schema::table('tracks', function (Blueprint $table) {
-            $table->string('slug')->unique();
+            $table->string('slug')
+                  ->after('title')
+                  ->unique();
         });
     }
 
