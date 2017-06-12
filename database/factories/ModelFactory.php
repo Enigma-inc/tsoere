@@ -11,10 +11,12 @@ $factory->define(User::class, function (Faker\Generator $faker) {
     return [
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
+        'is_admin' => $faker -> boolean,  
         'remember_token' => str_random(10),
     ];
 });
 
+<<<<<<< HEAD
 $factory->define(Artist::class,function(Faker\Generator $faker){
 
     $artistName=$faker->name;
@@ -40,3 +42,33 @@ $factory->define(Track::class,function(Faker\Generator $faker){
 
 
          
+=======
+
+    $factory ->define(App\Artist::class, function ($faker){
+        $artistName= $faker -> name;
+
+        return [
+            'user_id' => function(){
+                return factory('App\User') -> create()->id;
+            },
+            'name' => $artistName,
+            'avatar'=> $faker -> sentence,
+            'slug' =>  str_slug($artistName),
+            'about'=>$faker -> paragraph 
+
+        ];
+
+    });
+
+    $factory->define(App\Genre::class,function($faker){
+        return [
+            'name'=>$faker->name
+        ];
+    });
+    $factory->define(App\Genre::class,function($faker){
+        return [
+            'name'=>$faker->name
+        ];
+    });
+
+>>>>>>> d56d08636fcaaaa92c9e62c0d55be5ff544c59b1

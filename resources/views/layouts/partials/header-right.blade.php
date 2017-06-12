@@ -19,7 +19,7 @@
                     <ul class="header-nav header-nav-profile">
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
-								<i class="fa fa-user-circle-o fa-3x text-primary"></i>
+								<img src="{{Storage::url(Auth::user()->profile->avatar)}}" >
 								<span class="profile-info">
 									 {{ Auth::user()->profile->name }} 
 								</span>
