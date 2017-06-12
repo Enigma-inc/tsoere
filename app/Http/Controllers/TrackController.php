@@ -42,7 +42,7 @@ class TrackController extends Controller
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-
+       
        $resizedArtwork=$this->resizeArtwork($artwork);
 
         //Push Files To Storage 

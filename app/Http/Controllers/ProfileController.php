@@ -12,9 +12,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Profile $profile)
     {
-        return view('profile.home');
+        return view('profile.home', compact('profile'));
     }
 
     /**
