@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
 
 use Auth;
 
@@ -71,26 +72,29 @@ class ArtistController extends Controller
         $resizedAvatar = $this->resizeAvatar($avatar);
          //push resized file to the storage
         $this->disk->put($avatarPath,file_get_contents($resizedAvatar),'public');
-        //$profile->avatar = $path;
+        $profile->avatar = $avatarPath;
+        $profile -> save();
+
         return redirect('/profile') -> with('success','Image upload successful');
-        
+
 
     }
-
 
         private function resizeAvatar(UploadedFile $avatar){
         $currentTime=time();
         $ext=$avatar->getClientOriginalExtension();
         $avatarPath='temp/'.$currentTime.'.'.$ext;
+        //dd($avatarPath);
         $tempDisk=Storage::disk('public');
-
         //Save File Temporarily
-        $path=  $tempDisk->put($avatarPath, file_get_contents($avatar),'public');
-     
+        $path=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
        //Resize Image
         Image::make(public_path().'/storage/'.$avatarPath)
                 ->fit(300,300)
                 ->save(public_path().'/storage/'.$avatarPath);
+        //$avatarPath -> delete();
+         File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
+       
        return public_path().'/storage/'.$avatarPath;
     }
 }

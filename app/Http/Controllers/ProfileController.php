@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
+use App\Artist;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -12,7 +12,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Profile $profile)
+    public function index(Artist $profile)
     {
         return view('profile.home', compact('profile'));
     }
