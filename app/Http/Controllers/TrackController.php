@@ -14,10 +14,11 @@ use Auth;
 
 class TrackController extends Controller
 {
-      protected $disk;
+    protected $disk;
   
-    function __construct(){
-        $this->disk= Storage::disk(env('FILE_SYSTEM','s3'));
+    function __construct()
+    {
+        $this->disk= Storage::disk(env('FILE_SYSTEM', 's3'));
     }
 
     public function index()
@@ -31,7 +32,7 @@ class TrackController extends Controller
         return view('track.upload');
     }
 
-    public function store(Request $request,$artistId)
+    public function store(Request $request, $artistId)
     {
   
         //Variables
@@ -43,13 +44,14 @@ class TrackController extends Controller
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
 
-       $resizedArtwork=$this->resizeArtwork($artwork);
+        $resizedArtwork=$this->resizeArtwork($artwork);
 
-        //Push Files To Storage 
-         $this->disk->put($mp3Path, file_get_contents($mp3File),'public');
-         $this->disk->put($artworkPath,file_get_contents($resizedArtwork),'public');
+        //Push Files To Storage
+         $this->disk->put($mp3Path, file_get_contents($mp3File), 'public');
+         $this->disk->put($artworkPath, file_get_contents($resizedArtwork), 'public');
 
-         
+        //Delete Temp Image
+         \File::delete($resizedArtwork);
 
          //Update Database
         Track::create([
@@ -63,32 +65,40 @@ class TrackController extends Controller
         ]);
     }
 
-  public function download(Track $track)
+    public function download(Track $track)
     {
         $fileName = $track->audio_path;
         $path=$this->disk->getDriver()->getAdapter()->applyPathPrefix($fileName);
+        $url = $this->disk->url($fileName);
         //Increment Downloads
         $track->increment('downloads');
-       return response()->download($path); 
 
+        if (env('FILE_SYSTEM', 's3') == 'local') {
+            return response()->download($path);
+        } else { 
+            //We are now connected to s3
+            if (\Request::wantsJson()) {
+                return $url;
+            } else {
+                  return redirect($url);
+            }
+        }
     }
 
-    private function resizeArtwork(UploadedFile $artwork){
+    private function resizeArtwork(UploadedFile $artwork)
+    {
         $currentTime=time();
         $ext=$artwork->getClientOriginalExtension();
         $artworkPath='temp/'.$currentTime.'.'.$ext;
         $tempDisk=Storage::disk('public');
 
         //Save File Temporarily
-        $path=  $tempDisk->put($artworkPath, file_get_contents($artwork),'public');
+        $path=  $tempDisk->put($artworkPath, file_get_contents($artwork), 'public');
      
        //Resize Image
         Image::make(public_path().'/storage/'.$artworkPath)
-                ->fit(300,300)
+                ->fit(300, 300)
                 ->save(public_path().'/storage/'.$artworkPath);
-       return public_path().'/storage/'.$artworkPath;
-
-                
+        return public_path().'/storage/'.$artworkPath;
     }
-    
 }
