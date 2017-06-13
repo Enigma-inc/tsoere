@@ -20,7 +20,7 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
     'uses'=>'ArtistController@singleTrack',
     'as'=>'track.single'
 ]);
-
+ 
 //Downlaod Track Route 
  Route::get('download/{track}', [
         'uses'=>'TrackController@download',
@@ -55,3 +55,4 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
     });
+
