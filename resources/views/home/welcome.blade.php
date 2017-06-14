@@ -14,7 +14,7 @@
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
-                                <div  class="play-button" data-gearPath="player/json/audiotheque.json" >
+                                <div  class="play-button" data-gearPath="{{$track->json}}" >
                                         <a href="#top"><i class="fa fa-play-circle-o"></i></a>
                                     </div>
                             </div>

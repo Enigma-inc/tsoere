@@ -29,27 +29,35 @@
 			]) !!};
 		</script>
 	</head>
-	<body class="menubar-hoverable header-fixed stage">
+	
+<body class="menubar-hoverable header-fixed">
+<div class="stage" >
 
 		@include('layouts.partials.header')
 
-		<div id="base" class="">
+	<div id="base" >
 		
 
 			<div class="offcanvas">
 			</div>
-			<div id="content">
+			<div id="content" >
 				@yield('content')
-		</div>
+			</div>
+		
 
 
 	@include('layouts.partials.menubar')
 
 
 	</div>
-
+	
 
 	@include('layouts.partials.common-scripts')
-	<div class="gearWrap"> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
+	</div>
+	<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
 </body>
+
+
+
+
 </html>
