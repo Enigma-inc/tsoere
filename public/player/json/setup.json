@@ -53,7 +53,7 @@
   "smPreferFlash":true, 
   "smUsePolicyFile":true,
   "smUrl":"player/swf/",
-  "dockToRight": false,
+  "dockToRight": true,
   "stayAwake":true,
   "entries": [
       {"title":"Cloudless Days", "author":"ADG3studios", "media":"player/mp3/adg3com_cloudlessdays.mp3", "link":"http://audiojungle.net/user/ADG3studios", "color":"#56B0E8" },

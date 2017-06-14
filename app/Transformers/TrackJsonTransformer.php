@@ -40,7 +40,7 @@ class TrackJsonTransformer extends TransformerAbstract
             'autoPlay' => true,
             'shuffle' => false,  
 			'entries' =>   array(
-                             (object)array("title"=>$trackDetails['title'],"author"=>"","media" =>$trackDetails['mp3FilePath'], "link"=>"","color" =>"" )),
+                             (object)array("title"=>$trackDetails['title'],"author"=>"","media" =>$trackDetails['mp3FilePath'], "link"=>"","color" =>"0AA89E" )),
             ];
     }
 }

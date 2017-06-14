@@ -1272,6 +1272,7 @@
             document.getElementById(gSet.id).parentNode.parentNode.appendChild(miniDiv);
 
             if (gSet.dockToRight) {
+                
                 miniDiv.className += ' right';
                 $('.gearMini').css({
                     'right': '-80px',
@@ -1279,7 +1280,7 @@
                 });
             } else {
                 $('.gearMini').css({
-                    'left': '-80px',
+                    'left': '80px',
                     'right': 'auto'
                 });
             }

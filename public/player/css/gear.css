@@ -560,14 +560,14 @@ body {
 .gearMini .gearCircle {
   display: block;
   cursor: pointer;
-  float: left;
+  float: right;
 }
 .gearMini .gearCircle svg {
   display: block;
   cursor: pointer;
 }
 .gearMini .gearLabel {
-  float: left;
+  float: right;
   font-family: 'Maven Pro', sans-serif;
   width: 0;
   display: block;
@@ -576,7 +576,7 @@ body {
 }
 .gearMini .gearLabel span {
   clear: both;
-  float: left;
+  float: right;
   margin: 0;
   line-height: inherit;
   font-size: inherit;
