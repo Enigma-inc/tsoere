@@ -36,11 +36,7 @@ class TrackController extends Controller
         return view('track.upload');
     }
 
-<<<<<<< HEAD
     public function store(Request $request, $artistId)
-=======
-    public function store(Request $request,$artistId, Track $track)
->>>>>>> 79e85930b884fa2c17bfe8dab110e3b33c9ad6af
     {
   
         //Variables
@@ -51,24 +47,17 @@ class TrackController extends Controller
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-<<<<<<< HEAD
-
-        $resizedArtwork=$this->resizeArtwork($artwork);
-=======
         $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
         $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
     
        $resizedArtwork=$this->resizeArtwork($artwork);
->>>>>>> 79e85930b884fa2c17bfe8dab110e3b33c9ad6af
 
         //Push Files To Storage
          $this->disk->put($mp3Path, file_get_contents($mp3File), 'public');
          $this->disk->put($artworkPath, file_get_contents($resizedArtwork), 'public');
 
-<<<<<<< HEAD
         //Delete Temp Image
          \File::delete($resizedArtwork);
-=======
          //generate json file for the player
         $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
@@ -76,16 +65,10 @@ class TrackController extends Controller
          $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId);
 
          return redirect('/profile');
->>>>>>> 79e85930b884fa2c17bfe8dab110e3b33c9ad6af
 
     }
 
-<<<<<<< HEAD
     public function download(Track $track)
-=======
-
-  public function download(Track $track)
->>>>>>> 79e85930b884fa2c17bfe8dab110e3b33c9ad6af
     {
         $fileName = $track->audio_path;
         $path=$this->disk->getDriver()->getAdapter()->applyPathPrefix($fileName);
@@ -105,10 +88,6 @@ class TrackController extends Controller
         }
     }
 
-<<<<<<< HEAD
-    private function resizeArtwork(UploadedFile $artwork)
-    {
-=======
     private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId)
     {
         Track::create([
@@ -134,7 +113,6 @@ class TrackController extends Controller
     }
 
     private function resizeArtwork(UploadedFile $artwork){
->>>>>>> 79e85930b884fa2c17bfe8dab110e3b33c9ad6af
         $currentTime=time();
         $ext=$artwork->getClientOriginalExtension();
         $artworkPath='temp/'.$currentTime.'.'.$ext;
