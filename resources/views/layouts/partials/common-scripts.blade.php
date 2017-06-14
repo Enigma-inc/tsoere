@@ -9,12 +9,18 @@
 	<script src="{{url('theme/js/core/source/AppCard.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppNavSearch.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppVendor.js')}}"></script>
-
-  
+	
   <script src="{{url('player/js/jquery.gearplayer.libs.min.js')}}"></script>
   <script src="{{url('player/js/jquery.gearplayer.js')}}"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/plugins/ScrollToPlugin.min.js"></script>
   <script src="./player/js/app.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  
+<script src="http://connect.soundcloud.com/sdk.js"></script>
+
+<script src="js/jquery.gearplayer.libs.min.js"></script>
+<script src="js/jquery.gearplayer.min.js"></script>
 
 
 	<script src="{{mix('js/app.js')}}"></script>

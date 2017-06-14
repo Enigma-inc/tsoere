@@ -29,7 +29,8 @@
 			]) !!};
 		</script>
 	</head>
-	<body class="menubar-hoverable header-fixed stage">
+<div class="stage" >	
+<body class="menubar-hoverable header-fixed">
 
 		@include('layouts.partials.header')
 
@@ -50,6 +51,9 @@
 
 
 	@include('layouts.partials.common-scripts')
-	<div class="gearWrap"> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
+	
 </body>
+</div>
+<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
+
 </html>
