@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Track;
 use App\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\File;
+
+use Auth;
 
 class ArtistController extends Controller
 {
+
+    protected $disk;
+    function __construct()
+    {
+        $this -> disk= Storage::disk(env('FILE_SYSTEM', 'S3'));
+    }
 
     public function index($slug)
     {
@@ -49,15 +62,39 @@ class ArtistController extends Controller
 
     public function upload_avatar(Request $request, Artist $profile)
     {
+        $profileDir = Auth::user()->profile->slug; 
         $this->validate($request, [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $avatar = $request -> file('avatar');
-        $filename = time().'.'.$avatar->getClientOriginalExtension();
-        $path = $avatar->storeAs('public/avatars',$filename);
-        $profile->avatar = $path;
-        $profile ->save();
+        $currentTime = time();
+        $avatarPath=$profileDir."/avatars/".str_slug($profileDir).'-'.$currentTime.'.'.$avatar->getClientOriginalExtension();
+        $resizedAvatar = $this->resizeAvatar($avatar);
+         //push resized file to the storage
+        $this->disk->put($avatarPath,file_get_contents($resizedAvatar),'public');
+        $profile->avatar = $avatarPath;
+        $profile -> save();
+
         return redirect('/profile') -> with('success','Image upload successful');
 
+
+    }
+
+        private function resizeAvatar(UploadedFile $avatar){
+        $currentTime=time();
+        $ext=$avatar->getClientOriginalExtension();
+        $avatarPath='temp/'.$currentTime.'.'.$ext;
+        //dd($avatarPath);
+        $tempDisk=Storage::disk('public');
+        //Save File Temporarily
+        $path=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
+       //Resize Image
+        Image::make(public_path().'/storage/'.$avatarPath)
+                ->fit(300,300)
+                ->save(public_path().'/storage/'.$avatarPath);
+        //$avatarPath -> delete();
+         File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
+       
+       return public_path().'/storage/'.$avatarPath;
     }
 }

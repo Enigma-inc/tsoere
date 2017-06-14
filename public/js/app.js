@@ -11250,7 +11250,11 @@ module.exports = function normalizeComponent (
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
+<<<<<<< HEAD
  * Vue.js v2.3.4
+=======
+ * Vue.js v2.3.3
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -15679,7 +15683,11 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
+<<<<<<< HEAD
 Vue$3.version = '2.3.4';
+=======
+Vue$3.version = '2.3.3';
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
 
 /*  */
 
@@ -42090,13 +42098,17 @@ var Component = __webpack_require__(9)(
   /* script */
   __webpack_require__(32),
   /* template */
-  __webpack_require__(39),
+  __webpack_require__(40),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
+<<<<<<< HEAD
 Component.options.__file = "C:\\Users\\Developer\\Documents\\Enigma\\Tools\\Projects\\tsoere\\node_modules\\vue-slick\\slickCarousel.vue"
+=======
+Component.options.__file = "C:\\Users\\Saleem\\Documents\\ENIGMA\\Projects\\Musicbox\\node_modules\\vue-slick\\slickCarousel.vue"
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] slickCarousel.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42107,9 +42119,15 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
+<<<<<<< HEAD
     hotAPI.createRecord("data-v-1a937d5e", Component.options)
   } else {
     hotAPI.reload("data-v-1a937d5e", Component.options)
+=======
+    hotAPI.createRecord("data-v-49fa3c80", Component.options)
+  } else {
+    hotAPI.reload("data-v-49fa3c80", Component.options)
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
   }
 })()}
 
@@ -42124,13 +42142,17 @@ var Component = __webpack_require__(9)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(40),
+  __webpack_require__(39),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
+<<<<<<< HEAD
 Component.options.__file = "C:\\Users\\Developer\\Documents\\Enigma\\Tools\\Projects\\tsoere\\resources\\assets\\js\\components\\track\\track-actions.vue"
+=======
+Component.options.__file = "C:\\Users\\Saleem\\Documents\\ENIGMA\\Projects\\Musicbox\\resources\\assets\\js\\components\\track\\track-actions.vue"
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] track-actions.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -42141,9 +42163,15 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
+<<<<<<< HEAD
     hotAPI.createRecord("data-v-58ef88ab", Component.options)
   } else {
     hotAPI.reload("data-v-58ef88ab", Component.options)
+=======
+    hotAPI.createRecord("data-v-4140244d", Component.options)
+  } else {
+    hotAPI.reload("data-v-4140244d", Component.options)
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
   }
 })()}
 
@@ -42155,6 +42183,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+<<<<<<< HEAD
   return _c('div', [_vm._t("default")], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -42170,6 +42199,8 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+=======
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
   return _c('div', {
     staticClass: "footer"
   }, [_c('div', {
@@ -42205,7 +42236,26 @@ module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
+<<<<<<< HEAD
      require("vue-hot-reload-api").rerender("data-v-58ef88ab", module.exports)
+=======
+     require("vue-hot-reload-api").rerender("data-v-4140244d", module.exports)
+  }
+}
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_vm._t("default")], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-49fa3c80", module.exports)
+>>>>>>> 5a88eab92648961952a9389eb2cef61536541c88
   }
 }
 

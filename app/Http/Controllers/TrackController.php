@@ -6,9 +6,13 @@ use App\Track;
 use App\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Cyvelnet\Laravel5Fractal\Facades\Fractal;
+use App\Transformers\TrackJsonTransformer;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Response;
+
+
 
 use Auth;
 
@@ -31,7 +35,7 @@ class TrackController extends Controller
         return view('track.upload');
     }
 
-    public function store(Request $request,$artistId)
+    public function store(Request $request,$artistId, Track $track)
     {
   
         //Variables
@@ -42,26 +46,25 @@ class TrackController extends Controller
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-
+        $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
+        $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
+    
        $resizedArtwork=$this->resizeArtwork($artwork);
 
         //Push Files To Storage 
          $this->disk->put($mp3Path, file_get_contents($mp3File),'public');
          $this->disk->put($artworkPath,file_get_contents($resizedArtwork),'public');
 
+         //generate json file for the player
+        $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
+         //create track in database 
+         $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId);
 
-         //Update Database
-        Track::create([
-        'title'=>$request['title'],
-        'slug'=>str_slug($request['title'].'-'.time()),
-        'audio_path'=>$mp3Path,
-        'artwork_path'=>$artworkPath,
-        'json_path'=>$artworkPath,
-        'genre'=>'Hip Hop',
-        'artist_id'=>$artistId,
-        ]);
+         return redirect('/profile');
+
     }
+
 
   public function download(Track $track)
     {
@@ -71,6 +74,30 @@ class TrackController extends Controller
         $track->increment('downloads');
        return response()->download($path); 
 
+    }
+
+    private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId)
+    {
+        Track::create([
+        'title'=>$trackTitle,
+        'slug'=>str_slug($trackTitle.'-'.$currentTime),
+        'audio_path'=>$mp3Path,
+        'artwork_path'=>$artworkPath,
+        'json_path'=>$jsonPath,
+        'genre'=>'Hip Hop',
+        'artist_id'=>$artistId,
+        ]);
+    }
+
+    private function generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath)
+    {
+        $jsonContents = Fractal::item([
+             'title'=>$trackTitle,
+             'artwork'=>$this->disk->url($artworkPath),
+             'mp3FilePath'=> $this->disk->url($mp3Path)], 
+             new TrackJsonTransformer());
+         
+         Storage::put($jsonPath, $jsonContents -> toJson() );
     }
 
     private function resizeArtwork(UploadedFile $artwork){

@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+
         /*
          * Application Service Providers...
          */
@@ -179,6 +180,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
 
     ],
 
@@ -229,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
 
     ],
 
