@@ -29,11 +29,12 @@
 			]) !!};
 		</script>
 	</head>
-	<body class="menubar-hoverable header-fixed ">
+	<body class="menubar-hoverable header-fixed stage">
 
 		@include('layouts.partials.header')
 
-		<div id="base">
+		<div id="base" class="">
+		
 
 			<div class="offcanvas">
 			</div>
@@ -49,6 +50,6 @@
 
 
 	@include('layouts.partials.common-scripts')
-
+	<div class="gearWrap"> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
 </body>
 </html>
