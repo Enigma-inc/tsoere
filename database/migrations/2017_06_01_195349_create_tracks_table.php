@@ -19,7 +19,7 @@ class CreateTracksTable extends Migration
             $table->string('audio_path');
             $table->string('json_path');
             $table->string('artwork_path');
-            $table->string('genre');
+            $table->string('genre_id');
             $table->unsignedInteger('artist_id');
             $table->timestamps();
         });
