@@ -22033,6 +22033,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         download: function download() {
             this.downloads++;
             window.location.href = '../../../download/' + this.track.id;
+        },
+        played: function played() {
+            this.played++;
         }
     }
 });
@@ -42156,6 +42159,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     staticClass: "footer"
   }, [_c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.ok),
+      expression: "ok"
+    }],
     staticClass: "action-btn",
     on: {
       "click": function($event) {
@@ -42168,7 +42177,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "action-btn",
     on: {
       "click": function($event) {
-        _vm.download()
+        _vm.played()
       }
     }
   }, [_c('i', {
