@@ -37,7 +37,6 @@ class TrackController extends Controller
 
     public function store(Request $request,$artistId, Track $track)
     {
-  
         //Variables
         $artistDir=Auth::user()->profile->slug;
         $mp3File=$request->file('mp3');
