@@ -14,7 +14,7 @@
                         {{ csrf_field() }}
 
 
-                    <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                    <div class="margin-bottom-40 form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
                             <label for="avatar" class="col-md-4 control-label">Profile Picture</label>
 
                             <div class="col-md-6">
@@ -28,7 +28,6 @@
                                 @endif
                             </div>
                         </div>
-                        <br><br><br>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
