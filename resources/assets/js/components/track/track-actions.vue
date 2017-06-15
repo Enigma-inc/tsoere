@@ -4,11 +4,8 @@
             <i class="fa fa-thumbs-o-up text-primary"></i>
             <small>({{this.likes}})</small>
         </div>
-<<<<<<< HEAD
-        <div @click="played()" class="action-btn">
-=======
+
         <div @click="played()" class="action-btn" >
->>>>>>> player-integration
             <i class="fa fa-play text-primary"></i>
             <small>({{this.played}})</small>
         </div>
@@ -46,15 +43,9 @@ import Slick from 'vue-slick';
                 this.downloads++;              
                 window.location.href = `../../../download/${this.track.id}`;
             },
-<<<<<<< HEAD
-
-            played(){
-                this.played++;
-=======
             played(){
                 this.played++;
                 window.location.href = `../../../played/${this.track.id}`;
->>>>>>> player-integration
             }
             
             
