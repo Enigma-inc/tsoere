@@ -63,7 +63,7 @@ class TrackController extends Controller
          //create track in database 
          $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId);
 
-         return redirect('/profile');
+         return redirect('/');
 
     }
 
