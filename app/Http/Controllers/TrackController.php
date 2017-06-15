@@ -38,8 +38,9 @@ class TrackController extends Controller
     public function store(Request $request,$artistId, Track $track)
     {
         $this->validate($request, [
-            'artwork' => 'required|max:500',
+            'artwork' => 'required|max:2000',
             'mp3' => 'required |max:12288',
+            'title' =>'required|max: 50',
         ]);
         //Variables
         $artistDir=Auth::user()->profile->slug;
