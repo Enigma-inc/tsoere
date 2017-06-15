@@ -21,6 +21,11 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
     'as'=>'track.single'
 ]);
  
+//Record Track Play
+ Route::get('played/{track}', [
+        'uses'=>'TrackController@recordTrackPlay',
+        'as'=>'track.play'
+    ]);
 //Downlaod Track Route 
  Route::get('download/{track}', [
         'uses'=>'TrackController@download',

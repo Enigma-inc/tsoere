@@ -36,11 +36,11 @@ class TrackJsonTransformer extends TransformerAbstract
 
             'albumCover' => $trackDetails['artwork'],
             'albumTitle' => $trackDetails['title'],
-			'albumAuthor' =>"",
+			'albumAuthor' =>"by: ".\Auth::user()->profile->slug,
             'autoPlay' => true,
             'shuffle' => false,  
 			'entries' =>   array(
-                             (object)array("title"=>$trackDetails['title'],"author"=>"","media" =>$trackDetails['mp3FilePath'], "link"=>"","color" =>"0AA89E" )),
+                             (object)array("title"=>$trackDetails['title'],"author"=>\Auth::user()->profile->slug,"media" =>$trackDetails['mp3FilePath'], "link"=>"","color" =>"0AA89E" )),
             ];
     }
 }

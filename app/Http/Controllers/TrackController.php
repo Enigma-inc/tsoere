@@ -12,6 +12,7 @@ use App\Transformers\TrackJsonTransformer;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Response;
+use App\Http\Requests\TrackUploadRequest;
 
 
 
@@ -38,9 +39,8 @@ class TrackController extends Controller
         return view('track.upload')->with(['genres'=>$genres]);
     }
 
-    public function store(Request $request, $artistId)
+    public function store(TrackUploadRequest $request, $artistId)
     {
-  
         //Variables
         $artistDir=Auth::user()->profile->slug;
         $mp3File=$request->file('mp3');
@@ -67,10 +67,14 @@ class TrackController extends Controller
          //create track in database 
          $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId);
 
-         return redirect('/profile');
+         return redirect('/');
 
     }
-
+    
+    public function recordTrackPlay(Track $track){
+            $track->increment('played');
+      return $track;
+    }
     public function download(Track $track)
     {
         $fileName = $track->audio_path;
