@@ -13,7 +13,7 @@
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('track.store',['artistId'=>Auth::user()->profile->id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                        <div class="margin-bottom-40 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                             <label for="title" class="col-md-4 control-label">Track Name</label>
 
                             <div class="col-md-6">
@@ -26,8 +26,8 @@
                                 @endif
                             </div>
                         </div>
-                        <br><br><br>
-                    <div class="form-group{{ $errors->has('mp3') ? ' has-error' : '' }}">
+                        
+                    <div class="margin-bottom-40 form-group{{ $errors->has('mp3') ? ' has-error' : '' }}">
                             <label for="mp3" class="col-md-4 control-label">Audio</label>
 
                             <div class="col-md-6">
@@ -41,8 +41,7 @@
                                 @endif
                             </div>
                         </div>
-                        <br><br><br>
-                    <div class="form-group{{ $errors->has('artwork') ? ' has-error' : '' }}">
+                    <div class="margin-bottom-40 form-group{{ $errors->has('artwork') ? ' has-error' : '' }}">
                             <label for="artwork" class="col-md-4 control-label">Artwork</label>
 
                             <div class="col-md-6">
@@ -56,7 +55,6 @@
                                 @endif
                             </div>
                         </div>
-                        <br><br><br>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
