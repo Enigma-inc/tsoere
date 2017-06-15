@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use App\Artist;
+use App\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
@@ -33,7 +34,8 @@ class TrackController extends Controller
    
     public function create()
     {
-        return view('track.upload');
+        $genres=Genre::all();
+        return view('track.upload')->with(['genres'=>$genres]);
     }
 
     public function store(Request $request, $artistId)
@@ -44,6 +46,7 @@ class TrackController extends Controller
         $mp3File=$request->file('mp3');
         $artwork=$request->file('artwork');
         $trackTitle=$request['title'];
+        $genre=$request['genre'];
         $currentTime=time();
         $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
@@ -62,7 +65,7 @@ class TrackController extends Controller
         $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
          //create track in database 
-         $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId);
+         $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId);
 
          return redirect('/profile');
 
@@ -88,7 +91,7 @@ class TrackController extends Controller
         }
     }
 
-    private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre='Hip Hop',$artistId)
+    private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId)
     {
         Track::create([
         'title'=>$trackTitle,
@@ -96,7 +99,7 @@ class TrackController extends Controller
         'audio_path'=>$mp3Path,
         'artwork_path'=>$artworkPath,
         'json_path'=>$jsonPath,
-        'genre'=>'Hip Hop',
+        'genre_id'=>$genre,
         'artist_id'=>$artistId,
         ]);
     }

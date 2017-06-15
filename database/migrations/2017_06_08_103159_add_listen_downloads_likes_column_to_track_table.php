@@ -16,13 +16,13 @@ class AddListenDownloadsLikesColumnToTrackTable extends Migration
         Schema::table('tracks', function (Blueprint $table) {
             $table->integer('downloads')
                    ->default(0)
-                   ->after('genre');
+                   ->after('genre_id');
             $table->integer('played')
                    ->default(0)
-                   ->after('genre');
+                   ->after('genre_id');
             $table->integer('likes')
                    ->default(0)
-                   ->after('genre');
+                   ->after('genre_id');
         });
     }
 
