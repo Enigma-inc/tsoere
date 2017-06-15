@@ -22036,6 +22036,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         played: function played() {
             this.played++;
+            window.location.href = '../../../played/' + this.track.id;
         }
     }
 });
