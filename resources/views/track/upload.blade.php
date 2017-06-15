@@ -26,6 +26,7 @@
                                 @endif
                             </div>
                         </div>
+                        <br><br><br>
                     <div class="form-group{{ $errors->has('mp3') ? ' has-error' : '' }}">
                             <label for="mp3" class="col-md-4 control-label">Audio</label>
 
@@ -40,6 +41,7 @@
                                 @endif
                             </div>
                         </div>
+                        <br><br><br>
                     <div class="form-group{{ $errors->has('artwork') ? ' has-error' : '' }}">
                             <label for="artwork" class="col-md-4 control-label">Artwork</label>
 
@@ -54,6 +56,7 @@
                                 @endif
                             </div>
                         </div>
+                        <br><br><br>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

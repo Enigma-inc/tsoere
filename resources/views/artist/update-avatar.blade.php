@@ -1,87 +1,47 @@
-@extends('layouts.master')
+@extends('layouts.master') 
 
 @section('content')
-<form action="/update-avatar/{{$profile->id}}" enctype="multipart/form-data" role="form" method="POST">
-    {{ csrf_field()}}
-<div class="container"> <br />
+<div class="container">
     <div class="row">
-    	<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"><span class="text-lg text-bold text-primary">Update Profile Picture </span><small> </small></div>
-				<div class="panel-body">
-					<div class="input-group file-preview">
-						<input placeholder="" type="text" class="form-control file-preview-filename" disabled="disabled">
-						<!-- don't give a name === doesn't send on POST/GET --> 
-						<span class="input-group-btn"> 
-						<!-- file-preview-clear button -->
-						<button type="button" class="btn btn-default file-preview-clear" style="display:none;"> <span class="glyphicon glyphicon-remove"></span> Clear </button>
-						<!-- file-preview-input -->
-						<div class="btn btn-default file-preview-input"> <span class="glyphicon glyphicon-folder-open"></span> <span class="file-preview-input-title">Browse</span>
-							<input type="file" accept="image/png, image/jpeg, image/gif ,image/svg" name="avatar"/>
-							<!-- rename it --> 
-						</div>
-						    <button type="submit"  class="btn btn-labeled btn-primary"> <span class="btn-label"><i class="glyphicon glyphicon-upload"></i> </span>Upload</button>
-						</span> </div>
-					<!-- /input-group image-preview [TO HERE]--> 
-					<br />		
-					<!-- Drop Zone -->
+        <div class="col-md-8 col-md-offset-2 margin-top-60">
+            <div class="card card-default">
+                
+                <div class="card-head">
+                    <header class="text-lg text-bold text-primary">Upload Your Profile picture</header>
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" role="form" method="POST" action="/update-avatar/{{$profile->id}}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
 
-					<br />
-				</div>
-			</div>
-		</div>    
-        
-	</div>
+
+                    <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                            <label for="avatar" class="col-md-4 control-label">Profile Picture</label>
+
+                            <div class="col-md-6">
+                                <input id="avatar" type="file" class="form-control" name="avatar"
+                                 accept=".jpg,.png,.jpeg">
+
+                                @if ($errors->has('avatar'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <br><br><br>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button id="register" type="submit" class="btn btn-primary col-xs-12">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-</form>
-
-<!-- /container --> 
-
-<style>
-/* layout.css Style */
-.upload-drop-zone {
-  height: 200px;
-  border-width: 2px;
-  margin-bottom: 20px;
-}
-
-/* skin.css Style*/
-.upload-drop-zone {
-  color: #ccc;
-  border-style: dashed;
-  border-color: #ccc;
-  line-height: 200px;
-  text-align: center
-}
-.upload-drop-zone.drop {
-  color: #222;
-  border-color: #222;
-}
-
-
-
-.file-preview-input {
-    position: relative;
-    overflow: hidden;
-    margin: 0px;    
-    color: #333;
-    background-color: #fff;
-    border-color: #ccc;    
-}
-.file-preview-input input[type=file] {
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	font-size: 20px;
-	cursor: pointer;
-	opacity: 0;
-	filter: alpha(opacity=0);
-}
-.file-preview-input-title {
-    margin-left:2px;
-}
-</style>
 @endsection

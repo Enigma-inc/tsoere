@@ -37,6 +37,10 @@ class TrackController extends Controller
 
     public function store(Request $request,$artistId, Track $track)
     {
+        $this->validate($request, [
+            'artwork' => 'required|max:500',
+            'mp3' => 'required |max:12288',
+        ]);
         //Variables
         $artistDir=Auth::user()->profile->slug;
         $mp3File=$request->file('mp3');
@@ -49,7 +53,6 @@ class TrackController extends Controller
         $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
     
        $resizedArtwork=$this->resizeArtwork($artwork);
-
         //Push Files To Storage 
          $this->disk->put($mp3Path, file_get_contents($mp3File),'public');
          $this->disk->put($artworkPath,file_get_contents($resizedArtwork),'public');
