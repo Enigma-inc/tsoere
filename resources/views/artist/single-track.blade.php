@@ -7,4 +7,4 @@
 @section('player-setup')
 	<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="{{url('player/json/setup-single-track.json')}}"></div> </div>
 @endsection
-@include('layouts.partials.single-track-script')
+@include('layouts.partials.player-script')

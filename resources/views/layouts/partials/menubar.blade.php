@@ -33,6 +33,36 @@
 							<span class="title">Recently Added</span>
 						</a>
 					</li>
+					
+					<li>
+						<a href="../../html/dashboards/dashboard.html" >
+							<div class="gui-icon"><i class="fa fa-headphones text-primary"></i></div>
+							<span class="title">Hip Hop</span>
+						</a>
+					</li>
+					
+					<li>
+						<a href="../../html/dashboards/dashboard.html" >
+							<div class="gui-icon"><i class="fa fa-microphone text-primary"></i></div>
+							<span class="title">Poetry</span>
+						</a>
+					</li>
+					
+					<li>
+						<a href="../../html/dashboards/dashboard.html" >
+							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
+							<span class="title">Afro Jazz</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="../../html/dashboards/dashboard.html" >
+							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
+							<span class="title">Reggae</span>
+						</a>
+					</li>
+
+					
 
 
 				</ul>
