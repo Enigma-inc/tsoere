@@ -13,6 +13,7 @@
 						
 					</div>
 
-				<a href = "/update-avatar" class="btn btn-primary btn-sm active " role="button" aria-pressed="true">update profile picture</a>
+				<a href = "{{url('/update-avatar')}}" class="btn btn-primary btn-sm active " role="button" aria-pressed="true">update profile picture</a>
+				<a href = "{{url('/tracks/upload')}}" class="btn btn-primary btn-sm active " role="button" aria-pressed="true">Upload track</a>
 
 </section>

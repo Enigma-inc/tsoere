@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
+use App\Track;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -14,7 +15,8 @@ class ProfileController extends Controller
      */
     public function index(Artist $profile)
     {
-        return view('profile.home', compact('profile'));
+        $tracks=Track::all();
+        return view('profile.home', compact('profile','tracks'));
     }
 
     /**
