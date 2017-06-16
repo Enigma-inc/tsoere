@@ -14,7 +14,7 @@
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
-                                <div id="play-button-{{$track->id}}" class="play-button" data-gearPath="{{$track->json}}" >
+                                <div id="play-button-{{$track->id}}" class="play-button " data-gearPath="{{$track->json}}" >
                                         <a href="#top"><i class="fa fa-play-circle-o"></i></a>
                                     </div>
                             </div>
@@ -34,27 +34,4 @@
     </div>
 </section>
 @endsection
-@section('page-scripts')
-    <script>
-       $(document).ready(function(){
-              $('.play-button').click(function(){
-               incrementPlayCount(this);
-           });
-
-
-            incrementPlayCount=function(_this){
-                var self=_this;
-              var trackId=$(self).attr('id').split('-')[2];
-               $.ajax({
-                   url:'./played/'+trackId,
-                   success:function(response){
-                $('#play-'+trackId).text('('+response.played+')');
-                       
-                   }
-               });
-           }
-       });
-       
-          
-    </script>
-@endsection
+@include('layouts.partials.player-script')
