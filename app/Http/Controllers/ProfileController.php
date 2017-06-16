@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Artist;
 use App\Track;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -13,10 +14,11 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Artist $profile)
+    public function index()
     {
-        $tracks=Track::all();
-        return view('profile.home', compact('profile','tracks'));
+        $artist=Artist::find(Auth::User()->id);
+        $tracks=$artist->tracks()->orderBy('created_at','DESC')->get();
+        return view('profile.home')->with(['tracks'=>$tracks]);
     }
 
     /**

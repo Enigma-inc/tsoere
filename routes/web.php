@@ -52,7 +52,7 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
 
     
-    Route::get('/update-avatar',[
+    Route::get('/update-avatar/artist',[
         'uses' => 'ArtistController@update',
         'as' => 'avatar.update'
     ]);

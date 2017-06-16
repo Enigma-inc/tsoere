@@ -5,7 +5,6 @@
     <div class="section-body no-margin" id="top">
         <div class="row">
               @foreach($tracks as $track)
-              @if($track->artist_id == \Auth::user()->id)
                 <div class="col-xs-12 col-sm-6 col-md-4">                  
                    <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body" >
@@ -27,7 +26,6 @@
                                 </div>
                             </div>
                         </div>
-                    @endif
                 @endforeach
         </div>
     </div>

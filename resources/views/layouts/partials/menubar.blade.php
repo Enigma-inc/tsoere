@@ -16,7 +16,7 @@
 				<ul id="main-menu" class="gui-controls">
 
 					<li>
-						<a href="/" >
+						<a href="{{route('home')}}" >
 							<div class="gui-icon"><i class="md md-home text-primary"></i></div>
 							<span class="title">Home</span>
 						</a>

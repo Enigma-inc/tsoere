@@ -33,8 +33,10 @@ class ArtistController extends Controller
        $artist = Artist::where('slug',$artistSlug)->first();
        //Get Track using artist relationship
        $track=$artist->tracks->where('slug',$trackSlug)->first();
+       
        //Get Related Tracks
        $relatedTracks=$artist->tracks->whereNotIn('slug',[$trackSlug]);
+       
         return view('artist.single-track')
                     ->with(['profile'=>$artist,
                             'track'=>$track,
