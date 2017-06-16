@@ -21,7 +21,7 @@
                             <div class="details">
                             
                                 <div class="header">
-                                    <div class="artist-name text-primary text-bold"><a href="/artist/{{$track->artist->slug}}">{{$track->artist->name}}</a></div>                            
+                                    <div class="artist-name text-primary text-bold"><a href="{{$track->artist->path()}}">{{$track->artist->name}}</a></div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
                                  <track-actions :track="{{$track}}"></track-actions>
@@ -33,5 +33,9 @@
         </div>
     </div>
 </section>
+@endsection
+@section('player-setup')
+	<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="{{url('player/json/setup.json')}}"></div> </div>
+
 @endsection
 @include('layouts.partials.player-script')

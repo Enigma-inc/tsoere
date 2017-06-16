@@ -9,7 +9,10 @@ class Artist extends Model
      protected $fillable = [
          'about','name', 'avatar','slug','user_id'
     ];
-
+   
+   public function path(){
+     return "/artist/".$this->slug;
+   }
     public function account(){
       return  $this->belongsTo(User::class);
     }

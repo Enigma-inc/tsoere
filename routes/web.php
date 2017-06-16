@@ -6,7 +6,7 @@ Auth::routes();
 
 Route::get('/', [
     'uses'=>'HomeController@index',
-    'as'=>'page.home'
+    'as'=>'home'
 ]);
 
 //Artist Public Page

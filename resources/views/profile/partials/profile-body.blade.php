@@ -5,7 +5,7 @@
     <div class="section-body no-margin">
         <div class="row">
             <div class="col-md-8">
-                <h2>Tracks Go Here....</h2>
+                tracks go here
             </div>
 
         </div>

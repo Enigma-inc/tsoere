@@ -1,6 +1,7 @@
 
 @section('page-scripts')
     <script>
+    jQuery(function($) {
        $(document).ready(function(){
               $('.play-button').click(function(){
 
@@ -16,13 +17,14 @@
                 var self=_this;
               var trackId=$(self).attr('id').split('-')[2];
                $.ajax({
-                   url:'./played/'+trackId,
+                   url:'../played/'+trackId,
                    success:function(response){
                 $('#play-'+trackId).text('('+response.played+')');
                        
                    }
                });
            }
+       });
        });
              
     </script>

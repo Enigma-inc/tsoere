@@ -1,5 +1,6 @@
 <section>
     <div class="section-header margin-top-50">
+    
     </div>
     <div class="section-body no-margin" id="top">
         <div class="row">
@@ -9,7 +10,7 @@
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
-                                <div id="play-button-{{$track->id}}" class="play-button " data-gearPath="{{$track->json}}" >
+                                <div id="play-button-{{$track->id}}" class="play-button " data-gearPath="{{url($track->json)}}" >
                                         <a href="#top"><i class="fa fa-play-circle-o"></i></a>
                                     </div>
                             </div>
