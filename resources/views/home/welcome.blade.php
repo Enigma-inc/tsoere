@@ -21,7 +21,7 @@
                             <div class="details">
                             
                                 <div class="header">
-                                    <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
+                                    <div class="artist-name text-primary text-bold"><a href="/artist/{{$track->artist->slug}}">{{$track->artist->name}}</a></div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
                                  <track-actions :track="{{$track}}"></track-actions>

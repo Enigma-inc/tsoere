@@ -64,7 +64,7 @@ class ArtistController extends Controller
     {
         $profileDir = Auth::user()->profile->slug; 
         $this->validate($request, [
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
         ]);
         $avatar = $request -> file('avatar');
         $currentTime = time();
