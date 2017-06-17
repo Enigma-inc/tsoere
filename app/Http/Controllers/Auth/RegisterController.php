@@ -8,6 +8,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\ArtistCategory;
 
 class RegisterController extends Controller
 {
@@ -41,6 +42,12 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+   public function showRegistrationForm()
+    {
+        $categories=ArtistCategory::orderBy('name','ASC')->get();
+
+        return view('auth.register')->with(['categories'=>$categories]);
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -53,6 +60,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255|unique:artists',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'category' => 'required',
         ]);
     }
 
@@ -64,6 +72,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
         $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -76,7 +85,8 @@ class RegisterController extends Controller
                 'user_id'=>$user->id,
                 'name' => $data['name'],
                 'avatar'=>'/avatars/artist.png',
-                'slug'=>str_slug($data['name'])
+                'slug'=>str_slug($data['name']),
+                'artist_category_id'=>(int)$data['category']
             ]);
 
         }

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\DB;
 class DatabaseSeeder extends Seeder
 {
     private $tables = [
-        'genres'
+        'genres',
+        'artist_categories'
 
     ];
     public function run()
@@ -18,6 +19,9 @@ class DatabaseSeeder extends Seeder
 
         //Seed Database
          $this->call(GenreTableSeeder::class);
+         $this->call(ArtistCategoriesTableSeeder::class);
+
+          Model::reguard();
     }
     public function cleanDatabase()
     {

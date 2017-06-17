@@ -26,7 +26,23 @@
                                 @endif
                             </div>
                         </div>
+                         <div class=" margin-bottom-20  form-group{{ $errors->has('category') ? ' has-error' : '' }}">
+                            <label for="category" class="col-md-4 control-label">Category</label>
 
+                            <div class="col-md-6">
+                                       <select id="category" name="category" class="form-control" required>
+                                                <option value=""></option>                                       
+											 @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+												</select>                      
+                                 @if ($errors->has('category'))
+                                     <span class="help-block">
+                                        <strong>{{ $errors->first('category') }}</strong>
+                                    </span>
+                                 @endif
+                            </div>
+                    </div>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Email Address</label>
 
