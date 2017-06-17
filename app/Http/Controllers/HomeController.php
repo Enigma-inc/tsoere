@@ -14,5 +14,16 @@ class HomeController extends Controller
        return view('home.welcome')->with(['tracks'=>$tracks,'artists'=>$artists]);
     }
 
+    protected function updateAvatars($artists){
+        foreach ($artists as $artist) {
+            if($artist->avatar=='/avatars/artist.png'){
+                $artist->avatar="/images/logo.png";
+                $artist->avatar_thumbnail="/images/logo-thumbnail.png";
+                $artist->save();
+            }
+        }
+
+    }
+
 
 }

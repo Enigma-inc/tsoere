@@ -14,7 +14,7 @@ class AddAvatarThumbnailColunmnToArtistProfile extends Migration
     public function up()
     {
         Schema::table('artists', function (Blueprint $table) {
-            $table->string('avatar_thumbnail')
+            $table->string('avatar_thumbnail')->default('/images/logo-thumbnail.png')
                   ->after('avatar');
         });
     }

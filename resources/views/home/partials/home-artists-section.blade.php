@@ -9,6 +9,7 @@
           @foreach($artists as $artist)
               <div>{{$artist->name}}</div>
               <div>{{$artist->category}}</div>
+              <div><img src="{{url($artist->thumbnail)}}" alt=""></div>
           @endforeach
     </div>
   </div>
