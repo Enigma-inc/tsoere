@@ -1,4 +1,4 @@
-<section>
+<div>
     <div class="section-header margin-top-50">
         <h1 class="page-header text-primary">Tracks</h1>
     </div>
@@ -11,4 +11,4 @@
         </div>
 
     </div>
-</section>
+</div>

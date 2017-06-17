@@ -1,4 +1,4 @@
-<section>
+<div>
 	<div class="section-header">
 		<ol class="breadcrumb">
 			<li class="active">Trending Tracks</li>
@@ -30,4 +30,4 @@
                 @endforeach
         </div>
     </div>
-</section>
+</div>

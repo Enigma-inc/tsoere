@@ -30,7 +30,7 @@
 		</script>
 	</head>
 	
-<body class="menubar-hoverable header-fixed">
+<body class="menubar-hoverable header-fixed menubar-first full-content">
 <div class="stage" >
 
 		@include('layouts.partials.header')
@@ -40,8 +40,31 @@
 
 			<div class="offcanvas">
 			</div>
-			<div id="content" >
-				@yield('content')
+			<div id="content"  >
+				<section class="has-actions">
+						<div class="section-body">
+							@yield('content')
+						
+						</div>
+						<div class="section-action style-default">
+						<div class="section-action-row">
+							@yield('footer')
+						</div>
+						<div class="section-floating-action-row">
+						 @if (Auth::guest())
+						 <a class="btn ink-reaction  btn-xs btn-accent upload-btn-footer" href="{{route('register')}}" >
+								<i class="glyphicon glyphicon-user"></i>
+								Create Your Profile
+							</a>
+						 @else
+							<a class="btn ink-reaction  btn-xs btn-accent upload-btn-footer" href="{{route('track.create')}}" >
+								<i class="fa fa-upload"></i>
+								Upload 
+							</a>
+							@endif
+						</div>
+					</div>
+				</section>
 			</div>
 		
 

@@ -1,0 +1,18 @@
+.footer-artists-container {
+    display: flex;
+    .artist-card {
+        display: flex;
+        margin-right: .5em;
+        width: 200px;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        img {
+            height: 40px;
+            height: 40px;
+            border: 1px solid $colr-primary;
+        }
+        .contents {
+            flex: 1;
+        }
+    }
+}
