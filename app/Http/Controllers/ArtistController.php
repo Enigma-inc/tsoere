@@ -68,11 +68,17 @@ class ArtistController extends Controller
         ]);
         $avatar = $request -> file('avatar');
         $currentTime = time();
-        $avatarPath=$profileDir."/avatars/".str_slug($profileDir).'-'.$currentTime.'.'.$avatar->getClientOriginalExtension();
+        $avatarPath=$profileDir."/avatars/".$currentTime.'.'.$avatar->getClientOriginalExtension();
+        $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
         $resizedAvatar = $this->resizeAvatar($avatar);
          //push resized file to the storage
-        $this->disk->put($avatarPath,file_get_contents($resizedAvatar),'public');
+        $this->disk->put($avatarPath,file_get_contents($resizedAvatar['avatar']),'public');
+        $this->disk->put($avatarThumnailPath,file_get_contents($resizedAvatar['avatarThumbnail']),'public');
+
+        //TODO: Delete Temp Avatars After upload
+
         $profile->avatar = $avatarPath;
+        $profile->avatar_thumbnail = $avatarThumnailPath;
         $profile -> save();
 
         return redirect('/profile') -> with('success','Image upload successful');
@@ -84,6 +90,7 @@ class ArtistController extends Controller
         $currentTime=time();
         $ext=$avatar->getClientOriginalExtension();
         $avatarPath='temp/'.$currentTime.'.'.$ext;
+        $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
         //dd($avatarPath);
         $tempDisk=Storage::disk('public');
         //Save File Temporarily
@@ -92,9 +99,18 @@ class ArtistController extends Controller
         Image::make(public_path().'/storage/'.$avatarPath)
                 ->fit(300,300)
                 ->save(public_path().'/storage/'.$avatarPath);
-        //$avatarPath -> delete();
+
+        //Create a thumbnail
+         Image::make(public_path().'/storage/'.$avatarPath)
+                ->fit(80,80)
+                ->save(public_path().'/storage/'.$avatarThumbnailPath);
+
+
          File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
        
-       return public_path().'/storage/'.$avatarPath;
+       return (
+               ['avatar'=>public_path().'/storage/'.$avatarPath,
+               'avatarThumbnail'=>public_path().'/storage/'.$avatarThumbnailPath]
+              );
     }
 }
