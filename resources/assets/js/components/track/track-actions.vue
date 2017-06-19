@@ -44,8 +44,9 @@ import Slick from 'vue-slick';
                 this.downloads++;              
                 window.location.href = `../../../download/${this.track.id}`;
             },
-            recordPlay(){
-                this.played=20;
+            played(){
+                this.played++;
+                window.location.href = `../../../played/${this.track.id}`;
             }
             
             

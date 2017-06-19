@@ -8,4 +8,8 @@ class Genre extends Model
 {
     protected $quarded=['id'];
     protected $table="genres";
+
+    public function tracks(){
+        return $this->hasMany(Track::class);
+    }
 }

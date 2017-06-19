@@ -78,7 +78,7 @@
 	@include('layouts.partials.common-scripts')
 	@yield('page-scripts')
 	</div>
-	<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="./player/json/setup.json"></div> </div>
+	@yield('player-setup')
 </body>
 
 

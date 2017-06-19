@@ -13,6 +13,10 @@ class Artist extends Model
     protected $appends=['category','thumbnail'];
     protected $hidden=['avatar_thumbnail'];
 
+   
+   public function path(){
+     return "/artist/".$this->slug;
+   }
     public function account(){
       return  $this->belongsTo(User::class);
     }

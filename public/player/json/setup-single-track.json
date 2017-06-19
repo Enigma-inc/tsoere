@@ -52,7 +52,7 @@
   "smUsePeakData":true, 
   "smPreferFlash":true, 
   "smUsePolicyFile":true,
-  "smUrl":"./player/swf/",
+  "smUrl":"../../../player/swf/",
   "dockToRight": true,
   "stayAwake":true,
   "entries": [

@@ -20,39 +20,8 @@
           @endforeach
     </div> 
 @endsection
-@section('page-scripts')
-    <script>
-       $(document).ready(function(){
-              $('.play-button').click(function(){
-               incrementPlayCount(this);
-           });
+@section('player-setup')
+	<div class="gearWrap "> <div id="gearContainer" class="gear" data-gear="{{url('player/json/setup.json')}}"></div> </div>
 
-        $(".footer-artists-container").smoothDivScroll({
-                    mousewheelScrolling: "allDirections",
-                    autoScrollingMode: "always",
-                    autoScrollingDirection: "backAndForth",
-                    autoScrollingStep: 2,
-                    autoScrollingInterval: 25,
-                    touchScrolling: true,
-
-                }).bind("mouseover", function () {
-                    $(this).smoothDivScroll("stopAutoScrolling");
-                }).bind("mouseout", function () {
-                    $(this).smoothDivScroll("startAutoScrolling");
-                });
-            incrementPlayCount=function(_this){
-                var self=_this;
-              var trackId=$(self).attr('id').split('-')[2];
-               $.ajax({
-                   url:'./played/'+trackId,
-                   success:function(response){
-                $('#play-'+trackId).text('('+response.played+')');
-                       
-                   }
-               });
-           }
-       });
-       
-          
-    </script>
 @endsection
+@include('layouts.partials.player-script')

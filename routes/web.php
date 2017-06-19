@@ -6,7 +6,7 @@ Auth::routes();
 
 Route::get('/', [
     'uses'=>'HomeController@index',
-    'as'=>'page.home'
+    'as'=>'home'
 ]);
 
 //Artist Public Page
@@ -52,7 +52,7 @@ Route::group(['middleware'=>'auth'],function(){
     ]);
 
     
-    Route::get('/update-avatar',[
+    Route::get('/update-avatar/artist',[
         'uses' => 'ArtistController@update',
         'as' => 'artist.avatar-update'
     ]);
