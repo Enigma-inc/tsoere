@@ -94,21 +94,22 @@ class ArtistController extends Controller
         $avatarPath='temp/'.$currentTime.'.'.$ext;
         $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
         //dd($avatarPath);
-        $tempDisk=Storage::disk('s3');
+       // $tempDisk=Storage::disk('s3');
         //Save File Temporarily
-        $path=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
+        $imagePath=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
+        $imagePath= $this->disk->url($avatarPath);
        //Resize Image
-        Image::make(public_path().'/storage/'.$avatarPath)
+        Image::make($imagePath)
                 ->fit(300,300)
                 ->save(public_path().'/storage/'.$avatarPath);
 
         //Create a thumbnail
-         Image::make(public_path().'/storage/'.$avatarPath)
+         Image::make($imagePath)
                 ->fit(80,80)
                 ->save(public_path().'/storage/'.$avatarThumbnailPath);
 
 
-         File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
+        // File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
        
        return (
                ['avatar'=>public_path().'/storage/'.$avatarPath,
