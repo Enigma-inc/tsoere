@@ -58,14 +58,11 @@ class TrackController extends Controller
         $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
         $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
     
-       $resizedArtwork=$this->resizeArtwork($artwork);
+       $resizedArtwork=$this->resizeArtwork($artwork,$artworkPath);
 
         //Push Files To Storage
          $this->disk->put($mp3Path, file_get_contents($mp3File), 'public');
-         $this->disk->put($artworkPath, file_get_contents($resizedArtwork), 'public');
 
-        //Delete Temp Image
-         \File::delete($resizedArtwork);
          //generate json file for the player
         $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
@@ -121,22 +118,18 @@ class TrackController extends Controller
              'mp3FilePath'=> $this->disk->url($mp3Path)], 
              new TrackJsonTransformer());
          
-         Storage::put($jsonPath, $jsonContents -> toJson() );
+       $this->disk->put($jsonPath,$jsonContents->toJson(),'public');
     }
 
-    private function resizeArtwork(UploadedFile $artwork){
-        $currentTime=time();
-        $ext=$artwork->getClientOriginalExtension();
-        $artworkPath='temp/'.$currentTime.'.'.$ext;
-        $tempDisk=Storage::disk('public');
-
-        //Save File Temporarily
-        $path=  $tempDisk->put($artworkPath, file_get_contents($artwork), 'public');
+    private function resizeArtwork(UploadedFile $artwork,$artworkPath){
      
        //Resize Image
-        Image::make(public_path().'/storage/'.$artworkPath)
+       $avatarStream= Image::make($artwork)
                 ->fit(300, 300)
-                ->save(public_path().'/storage/'.$artworkPath);
-        return public_path().'/storage/'.$artworkPath;
+                ->stream()
+                ->detach();
+
+                //Push Files to Storage
+       $this->disk->put($artworkPath,$avatarStream,'public');
     }
 }
