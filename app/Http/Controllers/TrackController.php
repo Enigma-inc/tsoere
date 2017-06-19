@@ -31,8 +31,10 @@ class TrackController extends Controller
     {
         //
     }
-    public function displayCategory($lug){
-
+    public function displayCategory($slug){
+       $category = Genre::where('slug',$slug)->first();
+       $tracks=Track::where('genre_id',$category->id)->paginate(10);
+       return view('track.category')->with(['tracks'=>$tracks,'category'=>$category]);
     }
 
    

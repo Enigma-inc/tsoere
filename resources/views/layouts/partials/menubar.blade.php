@@ -6,8 +6,8 @@
 					</a>
 				</div>
 				<div class="expanded">
-					<a href="../../html/dashboards/dashboard.html">
-						<span class="text-lg text-bold text-primary ">MATERIAL&nbsp;ADMIN</span>
+					<a href="{{route('home')}}">
+						<span class="text-lg text-bold text-primary ">Music&nbsp;Box</span>
 					</a>
 				</div>
 			</div>
@@ -21,42 +21,42 @@
 							<span class="title">Home</span>
 						</a>
 					</li>
-					<li>
+					<!--li>
 						<a href="../../html/dashboards/dashboard.html" >
 							<div class="gui-icon"><i class="fa fa-line-chart text-primary"></i></div>
 							<span class="title">Trending</span>
 						</a>
 					</li>
-					<li>
-						<a href="../../html/dashboards/dashboard.html" >
+					<li-->
+						<!--a href="../../html/dashboards/dashboard.html" >
 							<div class="gui-icon"><i class="fa fa-plus-square-o text-primary"></i></div>
 							<span class="title">Recently Added</span>
 						</a>
-					</li>
+					</li-->
 					
 					<li>
-						<a href="../../html/dashboards/dashboard.html" >
+						<a href="{{route('track.category', ['slug' => 'hip-hop'])}}" >
 							<div class="gui-icon"><i class="fa fa-headphones text-primary"></i></div>
 							<span class="title">Hip Hop</span>
 						</a>
 					</li>
 					
 					<li>
-						<a href="../../html/dashboards/dashboard.html" >
+						<a href="{{route('track.category', ['slug' => 'poetry'])}}" >
 							<div class="gui-icon"><i class="fa fa-microphone text-primary"></i></div>
 							<span class="title">Poetry</span>
 						</a>
 					</li>
 					
 					<li>
-						<a href="../../html/dashboards/dashboard.html" >
+						<a href="{{route('track.category', ['slug' => 'afro-jazz'])}}" >
 							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
 							<span class="title">Afro Jazz</span>
 						</a>
 					</li>
 
 					<li>
-						<a href="../../html/dashboards/dashboard.html" >
+						<a href="{{route('track.category', ['slug' => 'reggae'])}}" >
 							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
 							<span class="title">Reggae</span>
 						</a>
