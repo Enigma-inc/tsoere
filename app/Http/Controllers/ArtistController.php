@@ -72,10 +72,10 @@ class ArtistController extends Controller
         $currentTime = time();
         $avatarPath=$profileDir."/avatars/".$currentTime.'.'.$avatar->getClientOriginalExtension();
         $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
-        $resizedAvatar = $this->resizeAvatar($avatar);
+        $resizedAvatar = $this->resizeAvatar($avatar,$avatarPath,$avatarThumnailPath);
          //push resized file to the storage
-        $this->disk->put($avatarPath,file_get_contents($resizedAvatar['avatar']),'public');
-        $this->disk->put($avatarThumnailPath,file_get_contents($resizedAvatar['avatarThumbnail']),'public');
+      //  $this->disk->put($avatarPath,file_get_contents($resizedAvatar['avatar']),'public');
+      //  $this->disk->put($avatarThumnailPath,file_get_contents($resizedAvatar['avatarThumbnail']),'public');
 
         //TODO: Delete Temp Avatars After upload
 
@@ -88,32 +88,30 @@ class ArtistController extends Controller
 
     }
 
-        private function resizeAvatar(UploadedFile $avatar){
-        $currentTime=time();
-        $ext=$avatar->getClientOriginalExtension();
-        $avatarPath='temp/'.$currentTime.'.'.$ext;
-        $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
+        private function resizeAvatar(UploadedFile $avatar,$avatarPath,$avatarThumnailPath){
+        //$currentTime=time();
+       // $ext=$avatar->getClientOriginalExtension();
+       // $avatarPath='temp/'.$currentTime.'.'.$ext;
+       // $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
         //dd($avatarPath);
        // $tempDisk=Storage::disk('s3');
         //Save File Temporarily
-        $imagePath=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
-        $imagePath= $this->disk->url($avatarPath);
+     //   $imagePath=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
+     //   $imagePath= $this->disk->url($avatarPath);
        //Resize Image
-        Image::make($imagePath)
+        $avatarStream =Image::make($avatar)
                 ->fit(300,300)
-                ->save(public_path().'/storage/'.$avatarPath);
+                ->stream()
+                ->detach();;
 
         //Create a thumbnail
-         Image::make($imagePath)
+        $avatarThumbnailStream= Image::make($avatar)
                 ->fit(80,80)
-                ->save(public_path().'/storage/'.$avatarThumbnailPath);
+                ->stream()
+                ->detach();
 
 
-        // File::delete($tempDisk->getDriver()->getAdapter()->applyPathPrefix($avatarPath.$avatar));
-       
-       return (
-               ['avatar'=>public_path().'/storage/'.$avatarPath,
-               'avatarThumbnail'=>public_path().'/storage/'.$avatarThumbnailPath]
-              );
+        $this->disk->put($avatarPath,$avatarStream,'public');
+        $this->disk->put($avatarThumnailPath,$avatarThumbnailStream,'public');
     }
 }
