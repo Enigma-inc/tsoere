@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 <div>
     <div class="section-header margin-top-50">
         <h1 class="page-header text-primary">Tracks</h1>
-=======
-<section>
-    <div class="section-header margin-top-50 margin-bottom-40">
-    <h1 class="page-header text-primary">Tracks</h1>
->>>>>>> 99674e93c5ff26624ce6a57316ae40a808c78349
     </div>
     <div class="section-body no-margin" id="top">
         <div class="row">
