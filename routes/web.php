@@ -31,6 +31,11 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
         'uses'=>'TrackController@download',
         'as'=>'track.download'
     ]);
+ //genre pages route
+Route::get('/category/{genre}',[
+    'uses'=>'TrackController@displayCategory',
+    'as' =>'track.category'
+]);
 
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile', [

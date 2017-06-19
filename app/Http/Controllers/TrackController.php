@@ -31,6 +31,9 @@ class TrackController extends Controller
     {
         //
     }
+    public function displayCategory($lug){
+
+    }
 
    
     public function create()
