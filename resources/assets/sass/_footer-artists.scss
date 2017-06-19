@@ -9,10 +9,24 @@
         img {
             height: 40px;
             height: 40px;
-            border: 1px solid $colr-primary;
+            border: 1px solid $color-primary-dark;
         }
         .contents {
             flex: 1;
+            display: flex;
+        }
+        .name {
+            flex: 1;
+            margin-top: .1em;
+            font-weight: 600;
+            margin-left: .3em;
+            font-size: .9em;
+        }
+        .category {
+            background: $color-primary-dark;
+            padding: .25em;
+            align-self: flex-start;
+            font-size: .7em;
         }
     }
 }

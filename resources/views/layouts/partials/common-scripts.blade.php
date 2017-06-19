@@ -9,6 +9,11 @@
 	<script src="{{url('theme/js/core/source/AppCard.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppNavSearch.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppVendor.js')}}"></script>
+
+	<script src='{{url('js/smooth-div-scroll/js/jquery-ui-1.10.3.custom.min.js')}}' type="text/javascript"></script>
+    <script src='{{url('js/smooth-div-scroll/js/jquery.mousewheel.min.js')}}' type="text/javascript"></script>
+    <script src='{{url('js/smooth-div-scroll/js/jquery.kinetic.min.js')}}' type="text/javascript"></script>
+    <script src='{{url('js/smooth-div-scroll/js/jquery.smoothdivscroll-1.3-min.js')}}' type="text/javascript"></script>
 	
 	<script src="{{url('player/js/jquery.gearplayer.libs.min.js')}}"></script>
 	<script src="{{url('player/js/jquery.gearplayer.js')}}"></script>
