@@ -94,7 +94,7 @@ class ArtistController extends Controller
         $avatarPath='temp/'.$currentTime.'.'.$ext;
         $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
         //dd($avatarPath);
-        $tempDisk=Storage::disk('public');
+        $tempDisk=Storage::disk('s3');
         //Save File Temporarily
         $path=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
        //Resize Image
