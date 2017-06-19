@@ -25,7 +25,7 @@ class Track extends Model
     public function getJsonAttribute(){
         return Storage::Url($this->json_path);
     }
-
-
-    
+    public function genre(){
+        return $this->belongsTo(genre::class);
+    }
 }
