@@ -73,12 +73,8 @@ class ArtistController extends Controller
         $avatarPath=$profileDir."/avatars/".$currentTime.'.'.$avatar->getClientOriginalExtension();
         $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
         $resizedAvatar = $this->resizeAvatar($avatar,$avatarPath,$avatarThumnailPath);
-         //push resized file to the storage
-      //  $this->disk->put($avatarPath,file_get_contents($resizedAvatar['avatar']),'public');
-      //  $this->disk->put($avatarThumnailPath,file_get_contents($resizedAvatar['avatarThumbnail']),'public');
 
-        //TODO: Delete Temp Avatars After upload
-
+        //Update Database
         $profile->avatar = $avatarPath;
         $profile->avatar_thumbnail = $avatarThumnailPath;
         $profile -> save();
@@ -89,15 +85,6 @@ class ArtistController extends Controller
     }
 
         private function resizeAvatar(UploadedFile $avatar,$avatarPath,$avatarThumnailPath){
-        //$currentTime=time();
-       // $ext=$avatar->getClientOriginalExtension();
-       // $avatarPath='temp/'.$currentTime.'.'.$ext;
-       // $avatarThumbnailPath='temp/'.$currentTime.'-thumbnail.'.$ext;
-        //dd($avatarPath);
-       // $tempDisk=Storage::disk('s3');
-        //Save File Temporarily
-     //   $imagePath=  $this->disk->put($avatarPath, file_get_contents($avatar),'public');
-     //   $imagePath= $this->disk->url($avatarPath);
        //Resize Image
         $avatarStream =Image::make($avatar)
                 ->fit(300,300)
@@ -110,7 +97,7 @@ class ArtistController extends Controller
                 ->stream()
                 ->detach();
 
-
+        //Push Files to Storage
         $this->disk->put($avatarPath,$avatarStream,'public');
         $this->disk->put($avatarThumnailPath,$avatarThumbnailStream,'public');
     }
