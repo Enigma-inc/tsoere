@@ -19,8 +19,8 @@ export default{
         initialisePlayer(){
             this.player = wavesurfer.create({
                     container: this.playerContainer,
-                    waveColor: '#0aa89e',
-                    progressColor: '#066265',
+                    waveColor: '#066265',
+                    progressColor: '#ffffff',
                     barWidth:2,
                     height:20,
                     hideScrollbar:true
@@ -30,10 +30,13 @@ export default{
         this.player.on('finish',this.stopTimer);
 
         //Set pause button
-        this.playerActionClass=['fa', 'fa-pause-circle-o'];
+        this.playerActionClass=['fa', 'fa fa-spinner', 'fa-spin'];
 
         },
         playerReady(){
+            //Set Pause button
+        this.playerActionClass=['fa', 'fa-pause-circle-o'];
+            
             this.player.playPause();
             this.calculateAudioDuration();
             this.calculateElapsedTime();
