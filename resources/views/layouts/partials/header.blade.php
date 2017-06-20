@@ -6,7 +6,7 @@
 						<li class="header-nav-brand" >
 							<div class="brand-holder">
 								<a href="{{route('home')}}">
-									<span class="text-lg text-bold text-primary">Musicbox</span>
+									<img class="logo" src="{{url('images/logo.png')}}" alt="Musicbox">
 								</a>
 							</div>
 						</li>

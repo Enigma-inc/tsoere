@@ -7,7 +7,7 @@
 				</div>
 				<div class="expanded">
 					<a href="{{route('home')}}">
-						<span class="text-lg text-bold text-primary ">Music&nbsp;Box</span>
+						<img class="logo margin-left-15" src="{{url('images/logo.png')}}" alt="Musicbox">
 					</a>
 				</div>
 			</div>
