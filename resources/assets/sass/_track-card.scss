@@ -41,6 +41,7 @@
                 flex-direction: column;
                 font-family: 'El Messiri', sans-serif;
                 width: 100%;
+                background: red;
                 .artist-name {
                     font-weight: 600;
                     font-size: 2em;
@@ -50,6 +51,11 @@
                     font-size: 1.2em;
                     line-height: 15px;
                 }
+            }
+            .player-container {
+                background: red;
+                flex: 1;
+                width: 100%;
             }
             .footer {
                 display: flex;
@@ -89,7 +95,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                a {
+                cursor: pointer;
+                i {
                     transition: all .5s ease-in;
                     font-size: 3em;
                     transition: all .3s ease-in;
@@ -123,6 +130,14 @@
                     font-weight: 600;
                     font-size: 1em;
                     line-height: 15px;
+                }
+            }
+            .info-container {
+                display: flex;
+                justify-content: space-between;
+                padding: 0 5px;
+                span {
+                    font-size: .7em;
                 }
             }
             .footer {

@@ -7,13 +7,14 @@
 <div class="section-body no-margin" id="top">
         <div class="row">
               @foreach($tracks as $track)
-                <div class="col-xs-12 col-sm-6 col-md-4">                  
+             <div class="col-xs-12 col-sm-6 col-md-4">    
+                <player player-container="{{'#player-'.$track->id}}" audio="{{$track->audio}}"  inline-template>            
                    <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
-                                <div id="play-button-{{$track->id}}" class="play-button" data-gearPath="{{$track->json}}" >
-                                        <a href="#top"><i class="fa fa-play-circle-o"></i></a>
+                                <div  class="play-button" @click="playAudio()"  >
+                                        <i :class="[playerActionClass]"></i>
                                     </div>
                             </div>
                             <div class="details">
@@ -22,11 +23,19 @@
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
-                                 <track-actions :track="{{$track}}"></track-actions>
-                                  </div>
+                                <div class="player-container margin-bottom-10">
+                                       <div id="player-{{$track->id}}"></div>
                                 </div>
+                                <div class="info-container">
+                                   <span>@{{elapsedTime}}</span>
+                                   <span>@{{audioDuration}}</span>
+                                </div>
+                                 <track-actions :track="{{$track}}"></track-actions>
                             </div>
-                        </div>
+                         </div>
+                    </div>
+                </player>  
+            </div>
                 @endforeach
         </div>
     </div>

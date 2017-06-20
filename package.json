@@ -19,6 +19,7 @@
     "vue": "^2.1.10"
   },
   "dependencies": {
-    "vue-slick": "^1.1.5"
+    "vue-slick": "^1.1.5",
+    "wavesurfer.js": "^2.0.0-beta01"
   }
 }

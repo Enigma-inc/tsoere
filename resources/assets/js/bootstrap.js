@@ -1,4 +1,6 @@
 window._ = require('lodash');
+window.wavesurfer = require('wavesurfer.js');
+
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
