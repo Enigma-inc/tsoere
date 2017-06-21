@@ -78,7 +78,6 @@
 	@include('layouts.partials.common-scripts')
 	@yield('page-scripts')
 	</div>
-	@yield('player-setup')
 </body>
 
 

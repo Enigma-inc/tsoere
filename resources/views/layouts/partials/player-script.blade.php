@@ -1,4 +1,0 @@
-
-@section('page-scripts')
-   
-@endsection
