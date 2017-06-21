@@ -84,7 +84,6 @@ class RegisterController extends Controller
             Artist::create([
                 'user_id'=>$user->id,
                 'name' => $data['name'],
-                'avatar'=>'/avatars/artist.png',
                 'slug'=>str_slug($data['name']),
                 'artist_category_id'=>(int)$data['category']
             ]);
