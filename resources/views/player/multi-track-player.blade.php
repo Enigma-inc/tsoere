@@ -10,7 +10,7 @@
                             </div>
                             <div class="details">
                             
-                                <div class="header">
+                                <div class="header margin-bottom-30">
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
