@@ -52,8 +52,9 @@ class TrackController extends Controller
         $artwork=$request->file('artwork');
         $trackTitle=$request['title'];
         $genre=$request['genre'];
+        $mp3FileName=str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $currentTime=time();
-        $mp3Path=$artistDir."/tracks/".str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
+        $mp3Path=$artistDir."/tracks/".$mp3FileName;
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
         $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
         $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
@@ -63,8 +64,10 @@ class TrackController extends Controller
         //Push Files To Storage
          $this->disk->put($mp3Path, file_get_contents($mp3File), [
                'visibility' => 'public',
-               'content-type' => 'octet-stream',
-               'content-disposition' => 'attachment'
+               'Content-Type' => 'application/octet-stream',
+                'Content-Description' => 'File Transfer',
+                'Content-Disposition' => "attachment; filename=".$mp3FileName,
+                'filename'=> $mp3FileName
            ]);
 
          //generate json file for the player
