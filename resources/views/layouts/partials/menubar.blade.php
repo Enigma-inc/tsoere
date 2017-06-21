@@ -50,7 +50,7 @@
 					
 					<li>
 						<a href="{{route('track.category', ['slug' => 'afro-jazz'])}}" >
-							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
+							<div class="gui-icon"><i class="md md-queue-music text-primary"></i></div>
 							<span class="title">Afro Jazz</span>
 						</a>
 					</li>
