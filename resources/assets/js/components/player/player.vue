@@ -7,17 +7,14 @@ export default{
             timer:'',
             audioDuration:'',
             elapsedTime:'',
+            loading:false,
+            loadingPercentage:0,
             playerActionClass:['fa', 'fa-play-circle-o']
         }
     },
-    mounted(){
-       
-        
-    
-    },
     methods:{
         initialisePlayer(){
-            this.player = wavesurfer.create({
+        this.player = wavesurfer.create({
                     container: this.playerContainer,
                     waveColor: '#066265',
                     progressColor: '#ffffff',
@@ -26,6 +23,8 @@ export default{
                     hideScrollbar:true
                 });
         this.player.load(this.audio);
+        this.loading=true;
+        this.player.on('loading',this.getLoadingProgress);
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
 
@@ -34,8 +33,10 @@ export default{
 
         },
         playerReady(){
+            //The audio has been load, hence stop showing percentage
+            this.loading=false;
             //Set Pause button
-        this.playerActionClass=['fa', 'fa-pause-circle-o'];
+            this.playerActionClass=['fa', 'fa-pause-circle-o'];
             
             this.player.playPause();
             this.calculateAudioDuration();
@@ -46,11 +47,10 @@ export default{
             //Determine if player is initalized, otherwise play or pause
             if(this.player)
             {
-                 this.player.playPause();
+                this.player.playPause();
                 if(this.player.isPlaying())
                 {
                     //Restart the Timer
-                    console.log("Seting pause");
                      this.playerActionClass=['fa', 'fa-pause-circle-o'];
                     this.calculateElapsedTime();
                 }
@@ -65,15 +65,25 @@ export default{
             }
 
         },
+        getLoadingProgress(percentage,event){
+            this.loadingPercentage=percentage;
+        },
         calculateAudioDuration(){
-             this.audioDuration=this.formatTime(this.player.getDuration());
+             this.audioDuration=this.player.getDuration();
         },
         calculateElapsedTime(){
            this.timer= setInterval(()=>{          
-            this.elapsedTime=this.formatTime(this.player.getCurrentTime()) ;
+            this.elapsedTime=this.player.getCurrentTime() ;
                         },1000);
         },
-        formatTime(timeInSeconds){
+      
+        stopTimer(){
+            clearInterval(this.timer);
+           this.playerActionClass=['fa', 'fa-play-circle-o'];
+        }
+    },
+    filters:{
+      time(timeInSeconds){
             let hrs= ~~(timeInSeconds/3600);
             let mins= ~~((timeInSeconds%3600)/60);
             let secs= Number(timeInSeconds%60).toFixed(0);
@@ -90,14 +100,8 @@ export default{
 
             return ret;
         },
-        stopTimer(){
-            clearInterval(this.timer);
-           this.playerActionClass=['fa', 'fa-play-circle-o'];
-        }
     }
 }
     
 </script>
-<style lang="scss" scoped>
 
-</style>

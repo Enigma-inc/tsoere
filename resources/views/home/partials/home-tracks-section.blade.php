@@ -23,12 +23,15 @@
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
                                 </div>
-                                <div class="player-container margin-bottom-10">
-                                       <div id="player-{{$track->id}}"></div>
+                                <div class="player-container">
+                                       <div  id="player-{{$track->id}}"></div>
+                                       <div v-if="loading" class="loading">
+                                              <span class="text-primary">@{{loadingPercentage}}%</span>
+                                       </div>
                                 </div>
                                 <div class="info-container">
-                                   <span>@{{elapsedTime}}</span>
-                                   <span>@{{audioDuration}}</span>
+                                   <span v-if="elapsedTime">@{{elapsedTime|time}}</span>
+                                   <span v-if="audioDuration">@{{audioDuration|time}}</span>
                                 </div>
                                  <track-actions :track="{{$track}}"></track-actions>
                             </div>
