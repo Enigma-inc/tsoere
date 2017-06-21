@@ -52,8 +52,8 @@ class TrackController extends Controller
         $artwork=$request->file('artwork');
         $trackTitle=$request['title'];
         $genre=$request['genre'];
-        $mp3FileName=str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();
         $currentTime=time();
+        $mp3FileName=str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();        
         $mp3Path=$artistDir."/tracks/".$mp3FileName;
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
         $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
