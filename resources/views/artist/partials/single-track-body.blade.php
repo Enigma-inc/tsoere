@@ -4,7 +4,7 @@
     <div class="section-body no-margin" id ="top">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-sm-offset-3  col-md-6 col-md-offset-3">
-                      @if($track)            
+                @if($track)            
                 <div class="card card-bordered style-default-dark single-track-card">
                     <div class="card-body">
                         <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
