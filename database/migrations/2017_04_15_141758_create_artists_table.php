@@ -17,7 +17,7 @@ class CreateArtistsTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('name')->unique();
-            $table->string('avatar')->default('/images/logo.png');
+            $table->string('avatar')->default('images/logo.png');
             $table->string('slug');               
             $table->text('about')->nullable();
             $table->timestamps();
