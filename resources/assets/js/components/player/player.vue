@@ -8,6 +8,7 @@ export default{
             audioDuration:'',
             elapsedTime:'',
             loading:false,
+            loadingText:'Loading...',
             loadingPercentage:0,
             playerActionClass:['fa', 'fa-play-circle-o']
         }
@@ -24,7 +25,6 @@ export default{
                 });
         this.player.load(this.audio);
         this.loading=true;
-        this.player.on('loading',this.getLoadingProgress);
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
 
@@ -64,9 +64,6 @@ export default{
                 this.initialisePlayer();
             }
 
-        },
-        getLoadingProgress(percentage,event){
-            this.loadingPercentage=percentage;
         },
         calculateAudioDuration(){
              this.audioDuration=this.player.getDuration();

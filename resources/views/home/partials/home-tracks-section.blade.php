@@ -26,7 +26,7 @@
                                 <div class="player-container">
                                        <div  id="player-{{$track->id}}"></div>
                                        <div v-if="loading" class="loading">
-                                              <span class="text-primary">@{{loadingPercentage}}%</span>
+                                              <span class="text-primary">@{{loadingText}}</span>
                                        </div>
                                 </div>
                                 <div class="info-container">
