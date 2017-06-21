@@ -63,8 +63,8 @@ class TrackController extends Controller
         //Push Files To Storage
          $this->disk->put($mp3Path, file_get_contents($mp3File), [
                'visibility' => 'public',
-               'Content-Type' => 'octet-stream',
-               'Content-Disposition' => 'attachment'
+               'content-type' => 'octet-stream',
+               'content-disposition' => 'attachment'
            ]);
 
          //generate json file for the player
