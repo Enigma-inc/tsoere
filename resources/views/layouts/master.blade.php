@@ -31,7 +31,6 @@
 	</head>
 	
 <body class="menubar-hoverable header-fixed menubar-first full-content">
-<div class="stage" >
 
 		@include('layouts.partials.header')
 
@@ -77,7 +76,6 @@
 
 	@include('layouts.partials.common-scripts')
 	@yield('page-scripts')
-	</div>
 </body>
 
 
