@@ -14,7 +14,7 @@
                                 <a href="#"><i :class="[playerActionClass]"></i></a>
                             </div>
                         </div>
-                        <div class="details">
+                        <div class="details padding-left-20" >
                             <div class="header">
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
@@ -22,8 +22,6 @@
                                         @include('artist.partials.single-track-social-share')                                        
                                     </div>
                             </div>
-                           
-                           
                             <track-actions :track="{{$track}}"></track-actions>
                         </div>
                        </div>
@@ -53,11 +51,11 @@
 </div>
 <div>
     <div class="page-header margin-10 padding-bottom-10">
-    <ol class="breadcrumb"><li class="active">Other Tracks By {{ $profile->name}}</li></ol>
+        <ol class="breadcrumb"><li class="active">Other Tracks By {{ $profile->name}}</li></ol>
     </div>
     <div class="section-body no-margin">
 
-        <div class="row">
+        <div class="row margin-top-20">
               @foreach($relatedTracks as $track)
                 <div class="col-xs-12 col-sm-6 col-md-4">                  
                      @include('player.multi-track-player') 
@@ -69,7 +67,6 @@
 
 
 <script>
-
     var popupSize = {
         width: 780,
         height: 550

@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Musicbox</title>
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# music: http://ogp.me/ns/music#">
+  <title>Musicbox</title>
+
+  		<!--meta property="og:type"   content="music.song" /> 
+  		<meta property="og:url"    content="" /> 
+  		<meta property="og:title"  content="Sample Song" /> 
+  		<meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /--> 
 
 		<!-- BEGIN META -->
 		<meta charset="utf-8">
