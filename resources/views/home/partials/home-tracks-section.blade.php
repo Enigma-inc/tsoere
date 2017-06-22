@@ -1,7 +1,7 @@
 <div>
 	<div class="section-header">
 		<ol class="breadcrumb">
-			<li class="active">Trending Tracks</li>
+			<li class="active">Recently Added</li></li>
 		</ol>
 	</div>
 <div class="section-body no-margin" id="top">
