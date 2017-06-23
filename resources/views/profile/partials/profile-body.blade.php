@@ -1,7 +1,5 @@
 <div>
-    <div class="section-header margin-top-50">
-        <h1 class="page-header text-primary">Tracks</h1>
-    </div>
+   
     <div class="section-body no-margin" id="top">
         <div class="row">
               @foreach($tracks as $track)

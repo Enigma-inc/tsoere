@@ -31,7 +31,7 @@
                             <label for="mp3" class="col-md-3 control-label">Audio</label>
 
                             <div class="col-md-8">
-                                <input id="mp3" type="file" class="form-control" name="mp3" accept=".mp3,.mp4" required>
+                                <input id="mp3" type="file" class="form-control" name="mp3" accept=".mp3" required>
 
                                 @if ($errors->has('mp3'))
                                     <span class="help-block">
