@@ -15,5 +15,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .styles([
         'resources/assets/lib/smooth-div-scroll/css/smoothDivScroll.css'
-    ], 'public/css/vendor.css');
-    //.version();
+    ], 'public/css/vendor.css')
+    .version();
