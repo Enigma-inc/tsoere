@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
             @if($track)
-            <single-track-player player-container="{{'#player-'.$track->id}}" audio="{{$track->audio}}"  inline-template>            
+            <single-track-player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
                 <div class="card card-bordered style-default-bright single-track-card">
                     <div class="card-body">
                        <div class="content">
                         <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
-                            <div class="play-button" @click="playAudio()">
+                            <div  class="play-button" @click="playAudio()">
                                 <a href="#"><i :class="[playerActionClass]"></i></a>
                             </div>
                         </div>
@@ -22,7 +22,17 @@
                                         @include('artist.partials.single-track-social-share')                                        
                                     </div>
                             </div>
-                            <track-actions :track="{{$track}}"></track-actions>
+                             <div class="footer">
+
+                                <div   class="action-btn" >
+                                    <i class="fa fa-play text-primary"></i>
+                                    <small class="play-value" v-cloak>(@{{played}})</small>
+                                </div>
+                                <div @click="download()" class="action-btn">
+                                    <i class="fa fa-download text-primary"></i>
+                                    <small class="play-value" v-cloak>(@{{downloads}})</small>
+                                </div>
+                            </div>
                         </div>
                        </div>
                       <div class="wave-section">
@@ -66,27 +76,3 @@
 </div>
 
 
-<script>
-    var popupSize = {
-        width: 780,
-        height: 550
-    };
-
-    $(document).on('click', '.social-buttons > a', function(e){
-
-        var
-            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
-            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
-
-        var popup = window.open($(this).prop('href'), 'social',
-            'width='+popupSize.width+',height='+popupSize.height+
-            ',left='+verticalPos+',top='+horisontalPos+
-            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
-
-        if (popup) {
-            popup.focus();
-            e.preventDefault();
-        }
-
-    });
-</script>

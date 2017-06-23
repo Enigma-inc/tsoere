@@ -21021,7 +21021,10 @@ __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+<<<<<<< HEAD
 Vue.component('track-actions', __webpack_require__(51));
+=======
+>>>>>>> sharing
 Vue.component('player', __webpack_require__(39));
 Vue.component('single-track-player', __webpack_require__(40));
 
@@ -22025,9 +22028,21 @@ if (process.BROWSER_BUILD || process.BROWSER_BUILD == null) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['playerContainer', 'audio'],
+=======
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['playerContainer', 'track'],
+    components: { Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a },
+>>>>>>> sharing
     data: function data() {
         return {
             player: null,
@@ -22037,9 +22052,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false,
             loadingText: 'Loading...',
             loadingPercentage: 0,
+<<<<<<< HEAD
             playerActionClass: ['fa', 'fa-play-circle-o']
         };
     },
+=======
+            playerActionClass: ['fa', 'fa-play-circle-o'],
+
+            downloads: 0,
+            played: 0,
+            likes: 0,
+            showElement: false,
+            slickOptions: {
+                slidesToShow: 3
+            }
+
+        };
+    },
+    mounted: function mounted() {
+        this.downloads = this.track.downloads;
+        this.played = this.track.played;
+    },
+>>>>>>> sharing
 
     methods: {
         initialisePlayer: function initialisePlayer() {
@@ -22051,7 +22085,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 height: 20,
                 hideScrollbar: true
             });
+<<<<<<< HEAD
             this.player.load(this.audio);
+=======
+            this.player.load(this.track.audio);
+>>>>>>> sharing
             this.loading = true;
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
@@ -22083,6 +22121,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             } else {
                 this.initialisePlayer();
+<<<<<<< HEAD
+=======
+                this.recordTrackPlay();
+>>>>>>> sharing
             }
         },
         calculateAudioDuration: function calculateAudioDuration() {
@@ -22098,6 +22140,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         stopTimer: function stopTimer() {
             clearInterval(this.timer);
             this.playerActionClass = ['fa', 'fa-play-circle-o'];
+<<<<<<< HEAD
+=======
+        },
+        download: function download() {
+            this.downloads++;
+            window.location.href = '../../../download/' + this.track.id;
+            // window.location.href = `../../../download/${this.track.id}`;
+        },
+        recordTrackPlay: function recordTrackPlay() {
+            var _this2 = this;
+
+            axios.get('../../../played/' + this.track.id).then(function (response) {
+                _this2.played = response.data.played;
+            });
+>>>>>>> sharing
         }
     },
     filters: {
@@ -22127,9 +22184,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+<<<<<<< HEAD
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['playerContainer', 'audio'],
+=======
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['playerContainer', 'track'],
+>>>>>>> sharing
     data: function data() {
         return {
             player: null,
@@ -22139,9 +22203,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false,
             loadingText: 'Loading...',
             loadingPercentage: 0,
+<<<<<<< HEAD
             playerActionClass: ['fa', 'fa-play-circle-o']
         };
     },
+=======
+            playerActionClass: ['fa', 'fa-play-circle-o'],
+
+            downloads: 0,
+            played: 0,
+            likes: 0,
+            showElement: false,
+            slickOptions: {
+                slidesToShow: 3
+            }
+        };
+    },
+    mounted: function mounted() {
+        this.downloads = this.track.downloads;
+        this.played = this.track.played;
+    },
+>>>>>>> sharing
 
     methods: {
         initialisePlayer: function initialisePlayer() {
@@ -22153,7 +22235,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 height: 70,
                 hideScrollbar: true
             });
+<<<<<<< HEAD
             this.player.load(this.audio);
+=======
+            this.player.load(this.track.audio);
+>>>>>>> sharing
             this.loading = true;
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
@@ -22185,6 +22271,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             } else {
                 this.initialisePlayer();
+<<<<<<< HEAD
+=======
+                this.recordTrackPlay();
+>>>>>>> sharing
             }
         },
         calculateAudioDuration: function calculateAudioDuration() {
@@ -22200,6 +22290,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         stopTimer: function stopTimer() {
             clearInterval(this.timer);
             this.playerActionClass = ['fa', 'fa-play-circle-o'];
+<<<<<<< HEAD
+=======
+        },
+        download: function download() {
+            this.downloads++;
+            window.location.href = '../../../download/' + this.track.id;
+        },
+        recordTrackPlay: function recordTrackPlay() {
+            var _this2 = this;
+
+            axios.get('../../../played/' + this.track.id).then(function (response) {
+                _this2.played = response.data.played;
+            });
+>>>>>>> sharing
         }
     },
     filters: {
@@ -42398,6 +42502,7 @@ __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
 
+<<<<<<< HEAD
 /***/ }),
 /* 47 */,
 /* 48 */,
@@ -42551,5 +42656,7 @@ if (false) {
   }
 }
 
+=======
+>>>>>>> sharing
 /***/ })
 /******/ ]);

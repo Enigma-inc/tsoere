@@ -1,6 +1,10 @@
+
+
 <script>
+import Slick from 'vue-slick';
 export default{
-    props:['playerContainer','audio'],
+    props:['playerContainer','track'],
+    components:{Slick},
     data(){
         return{
             player:null,
@@ -10,8 +14,24 @@ export default{
             loading:false,
             loadingText:'Loading...',
             loadingPercentage:0,
-            playerActionClass:['fa', 'fa-play-circle-o']
+            playerActionClass:['fa', 'fa-play-circle-o'],
+
+            downloads:0,
+            played:0,
+            likes:0,
+            showElement: false,
+            slickOptions: {
+                slidesToShow: 3,
+                // Any other options that can be got from plugin documentation
+            },
+
+
         }
+    },
+    mounted(){
+        this.downloads=this.track.downloads;
+        this.played=this.track.played;
+
     },
     methods:{
         initialisePlayer(){
@@ -23,7 +43,7 @@ export default{
                     height:20,
                     hideScrollbar:true
                 });
-        this.player.load(this.audio);
+        this.player.load(this.track.audio);
         this.loading=true;
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
@@ -62,6 +82,7 @@ export default{
             }
             else{
                 this.initialisePlayer();
+                this.recordTrackPlay();
             }
 
         },
@@ -77,6 +98,16 @@ export default{
         stopTimer(){
             clearInterval(this.timer);
            this.playerActionClass=['fa', 'fa-play-circle-o'];
+        },
+        download(){
+                this.downloads++;   
+                window.location.href = `../../../download/${this.track.id}`;         
+               // window.location.href = `../../../download/${this.track.id}`;
+        },
+         recordTrackPlay(){
+                axios.get(`../../../played/${this.track.id}`).then((response)=>{
+                    this.played=response.data.played;
+                });
         }
     },
     filters:{

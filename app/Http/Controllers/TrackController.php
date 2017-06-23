@@ -82,14 +82,31 @@ class TrackController extends Controller
     
     public function recordTrackPlay(Track $track){
             $track->increment('played');
-      return $track;
+            return $track;
+            
     }
     public function download(Track $track)
     {
-        $fileName = $track->audio_path;
+     $fileName = $track->audio_path;
         $path=$this->disk->getDriver()->getAdapter()->applyPathPrefix($fileName);
-        $url = $this->disk->url($fileName);
-        //Increment Downloads
+        //$url = $this->disk->get($fileName);
+       $stream= $this->disk->readStream($fileName);
+
+    return \Response::stream(function() use($stream){
+           fpassthru($stream);
+
+       },200,[
+           "Content-Type"=>$this->disk->getMimeType($fileName),
+           "Content-Length"=>$this->disk->getSize($fileName),
+           "Content-disposition"=> "attachment; filename=\"".str_slug($track->title).".mp3\""
+       ]);
+
+
+
+
+
+
+        /*   //Increment Downloads
         $track->increment('downloads');
 
         if (env('FILE_SYSTEM', 's3') == 'local') {
@@ -101,9 +118,8 @@ class TrackController extends Controller
             } else {
                   return redirect($url);
             }
-        }
+        }*/
     }
-
     private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId)
     {
         Track::create([
