@@ -29,16 +29,17 @@
                                 <div class="info-container">
                                    <span v-if="elapsedTime" v-cloak>@{{elapsedTime|time}}</span>
                                    <span v-if="audioDuration" v-cloak>@{{audioDuration|time}}</span>
+                                   
                                 </div>
                                  <div class="footer">
 
                                 <div class="action-btn" >
                                     <i class="fa fa-play text-primary"></i>
-                                    <small class="play-value">(@{{played}})</small>
+                                    <small class="play-value" v-cloak>(@{{played}})</small>
                                 </div>
                                 <div @click="download()" class="action-btn">
                                     <i class="fa fa-download text-primary"></i>
-                                    <small class="play-value">(@{{downloads}})</small>
+                                    <small class="play-value" v-cloak>(@{{downloads}})</small>
                                 </div>
                             </div>
                             </div>
