@@ -1,7 +1,4 @@
-<section>
-    <div class="section-header margin-top-80">
-        <h1 class="page-header text-primary">Tracks</h1>
-    </div>
+<div>
     <div class="section-body no-margin" id="top">
         <div class="row">
               @foreach($profile->tracks as $track)
@@ -11,4 +8,4 @@
             @endforeach
         </div>
     </div>
-</section>
+</div>
