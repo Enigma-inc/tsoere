@@ -79,6 +79,8 @@ class TrackController extends Controller
     
     public function recordTrackPlay(Track $track){
             $track->increment('played');
+            return $track;
+            
     }
     public function download(Track $track)
     {

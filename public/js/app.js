@@ -22028,22 +22028,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['playerContainer', 'audio', 'track'],
+    props: ['playerContainer', 'track'],
     components: { Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a },
     data: function data() {
         return {
@@ -22067,9 +22055,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        // this.downloads=this.track.downloads;
-        //this.played=this.track.played;
-
+        this.downloads = this.track.downloads;
+        this.played = this.track.played;
     },
 
     methods: {
@@ -22082,7 +22069,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 height: 20,
                 hideScrollbar: true
             });
-            this.player.load(this.audio);
+            this.player.load(this.track.audio);
             this.loading = true;
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
@@ -22114,6 +22101,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             } else {
                 this.initialisePlayer();
+                this.recordTrackPlay();
             }
         },
         calculateAudioDuration: function calculateAudioDuration() {
@@ -22132,11 +22120,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         download: function download() {
             this.downloads++;
-            window.location.href = '../../../download/' + this.track.id;
+            axios.get('../../../download/' + this.track.id).then(function (response) {
+                console.log("Here is your response...", response.data);
+            });
+            // window.location.href = `../../../download/${this.track.id}`;
         },
         recordTrackPlay: function recordTrackPlay() {
-            this.playerActionClass = ['fa', 'fa-play-circle-o'];
-            this.played++;
+            var _this2 = this;
+
+            axios.get('../../../played/' + this.track.id).then(function (response) {
+                _this2.played = response.data.played;
+            });
         }
     },
     filters: {
@@ -22166,30 +22160,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['playerContainer', 'audio', 'track'],
-    components: { Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a },
+    props: ['playerContainer', 'track'],
     data: function data() {
         return {
             player: null,
@@ -22211,8 +22185,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.downloads = this.track.downloads;
-        this.played = this.track.played;
+        console.log(this.track);
+        //this.downloads=this.track.downloads;
+        //this.played=this.track.played;
     },
 
     methods: {
@@ -22225,7 +22200,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 height: 70,
                 hideScrollbar: true
             });
-            this.player.load(this.audio);
+            this.player.load(this.track.audio);
             this.loading = true;
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
@@ -42355,7 +42330,7 @@ var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(34),
   /* template */
-  __webpack_require__(41),
+  null,
   /* scopeId */
   null,
   /* cssModules */
@@ -42363,7 +42338,6 @@ var Component = __webpack_require__(2)(
 )
 Component.options.__file = "C:\\Users\\Saleem\\Documents\\ENIGMA\\Projects\\Musicbox\\resources\\assets\\js\\components\\player\\player.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] player.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -42389,7 +42363,7 @@ var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(35),
   /* template */
-  __webpack_require__(42),
+  null,
   /* scopeId */
   null,
   /* cssModules */
@@ -42397,7 +42371,6 @@ var Component = __webpack_require__(2)(
 )
 Component.options.__file = "C:\\Users\\Saleem\\Documents\\ENIGMA\\Projects\\Musicbox\\resources\\assets\\js\\components\\player\\single-track-player.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] single-track-player.vue: functional components are not supported with templates, they should use render functions.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -42416,96 +42389,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "footer"
-  }, [_c('div', {
-    staticClass: "action-btn"
-  }, [_c('i', {
-    staticClass: "fa fa-play text-primary"
-  }), _vm._v(" "), _c('small', {
-    staticClass: "play-value"
-  }, [_vm._v("(" + _vm._s(this.played) + ")")])]), _vm._v(" "), _c('div', {
-    staticClass: "action-btn",
-    on: {
-      "click": function($event) {
-        _vm.download()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-download text-primary"
-  }), _vm._v(" "), _c('small', {
-    staticClass: "play-value"
-  }, [_vm._v("(" + _vm._s(this.downloads) + ")")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-2055a7e5", module.exports)
-  }
-}
-
-/***/ }),
-/* 42 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "footer"
-  }, [_c('div', {
-    directives: [{
-      name: "show",
-      rawName: "v-show",
-      value: (_vm.showElement),
-      expression: "showElement"
-    }],
-    staticClass: "action-btn",
-    on: {
-      "click": function($event) {
-        _vm.recordPlay()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-thumbs-o-up text-primary"
-  }), _vm._v(" "), _c('small', [_vm._v("(" + _vm._s(this.likes) + ")")])]), _vm._v(" "), _c('div', {
-    staticClass: "action-btn",
-    on: {
-      "click": function($event) {
-        _vm.played()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-play text-primary"
-  }), _vm._v(" "), _c('small', {
-    attrs: {
-      "id": 'play-' + _vm.track.id
-    }
-  }, [_vm._v("(" + _vm._s(this.played) + ")")])]), _vm._v(" "), _c('div', {
-    staticClass: "action-btn",
-    on: {
-      "click": function($event) {
-        _vm.download()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-download text-primary"
-  }), _vm._v(" "), _c('small', {
-    staticClass: "play-value"
-  }, [_vm._v("(" + _vm._s(this.downloads) + ")")])])])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-49814a34", module.exports)
-  }
-}
-
-/***/ }),
+/* 41 */,
+/* 42 */,
 /* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 

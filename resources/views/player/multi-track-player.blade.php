@@ -1,5 +1,5 @@
     
-                <player player-container="{{'#player-'.$track->id}}" audio="{{$track->audio}}"  inline-template>            
+                <player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
                    <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body" >
                         
@@ -30,7 +30,17 @@
                                    <span v-if="elapsedTime" v-cloak>@{{elapsedTime|time}}</span>
                                    <span v-if="audioDuration" v-cloak>@{{audioDuration|time}}</span>
                                 </div>
-                                 <player :track="{{$track}}"></player>
+                                         <div class="footer">
+
+                                <div   class="action-btn" >
+                                    <i class="fa fa-play text-primary"></i>
+                                    <small class="play-value">(@{{played}})</small>
+                                </div>
+                                <div @click="download()" class="action-btn">
+                                    <i class="fa fa-download text-primary"></i>
+                                    <small class="play-value">(@{{downloads}})</small>
+                                </div>
+                            </div>
                             </div>
                          </div>
                     </div>

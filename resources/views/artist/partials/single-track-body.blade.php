@@ -22,7 +22,17 @@
                                         @include('artist.partials.single-track-social-share')                                        
                                     </div>
                             </div>
-                            <player :track="{{$track}}"></player>
+                             <div class="footer">
+
+                                <div   class="action-btn" >
+                                    <i class="fa fa-play text-primary"></i>
+                                    <small class="play-value">(@{{played}})</small>
+                                </div>
+                                <div @click="download()" class="action-btn">
+                                    <i class="fa fa-download text-primary"></i>
+                                    <small class="play-value">(@{{downloads}})</small>
+                                </div>
+                            </div>
                         </div>
                        </div>
                       <div class="wave-section">

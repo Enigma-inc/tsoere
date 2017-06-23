@@ -1,25 +1,7 @@
-<template>
-   <div class="footer">
-        <div @click="recordPlay()" class="action-btn" v-show="showElement">
-            <i class="fa fa-thumbs-o-up text-primary"></i>
-            <small>({{this.likes}})</small>
-        </div>
 
-        <div @click="played()" class="action-btn" >
-            <i class="fa fa-play text-primary"></i>
-            <small :id="'play-'+ track.id">({{this.played}})</small>
-        </div>
-        <div @click="download()" class="action-btn">
-            <i class="fa fa-download text-primary"></i>
-            <small class="play-value">({{this.downloads}})</small>
-        </div>
-    </div>
-</template>
 <script>
-import Slick from 'vue-slick';
 export default{
-    props:['playerContainer','audio','track'],
-    components:{Slick},
+    props:['playerContainer','track'],
     data(){
         return{
             player:null,
@@ -42,8 +24,9 @@ export default{
         }
     },
     mounted(){
-            this.downloads=this.track.downloads;
-            this.played=this.track.played;
+        console.log(this.track);
+            //this.downloads=this.track.downloads;
+            //this.played=this.track.played;
 
     },
     methods:{
@@ -56,7 +39,7 @@ export default{
                     height:70,
                     hideScrollbar:true
                 });
-        this.player.load(this.audio);
+        this.player.load(this.track.audio);
         this.loading=true;
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);

@@ -1,21 +1,9 @@
-<template>
-   <div class="footer">
 
-        <div   class="action-btn" >
-            <i class="fa fa-play text-primary"></i>
-            <small class="play-value">({{this.played}})</small>
-        </div>
-        <div @click="download()" class="action-btn">
-            <i class="fa fa-download text-primary"></i>
-            <small class="play-value">({{this.downloads}})</small>
-        </div>
-    </div>
-</template>
 
 <script>
 import Slick from 'vue-slick';
 export default{
-    props:['playerContainer','audio','track'],
+    props:['playerContainer','track'],
     components:{Slick},
     data(){
         return{
@@ -41,8 +29,8 @@ export default{
         }
     },
     mounted(){
-           // this.downloads=this.track.downloads;
-            //this.played=this.track.played;
+        this.downloads=this.track.downloads;
+        this.played=this.track.played;
 
     },
     methods:{
@@ -55,7 +43,7 @@ export default{
                     height:20,
                     hideScrollbar:true
                 });
-        this.player.load(this.audio);
+        this.player.load(this.track.audio);
         this.loading=true;
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
@@ -94,6 +82,7 @@ export default{
             }
             else{
                 this.initialisePlayer();
+                this.recordTrackPlay();
             }
 
         },
@@ -110,13 +99,17 @@ export default{
             clearInterval(this.timer);
            this.playerActionClass=['fa', 'fa-play-circle-o'];
         },
-         download(){
-                this.downloads++;              
-                window.location.href = `../../../download/${this.track.id}`;
+        download(){
+                this.downloads++;   
+                axios.get( `../../../download/${this.track.id}`).then((response)=>{
+                        console.log("Here is your response...",response.data);
+                });           
+               // window.location.href = `../../../download/${this.track.id}`;
         },
          recordTrackPlay(){
-                this.playerActionClass=['fa', 'fa-play-circle-o'];
-                this.played++;
+                axios.get(`../../../played/${this.track.id}`).then((response)=>{
+                    this.played=response.data.played;
+                });
         }
     },
     filters:{
