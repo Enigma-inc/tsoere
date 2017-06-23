@@ -62,16 +62,10 @@ class TrackController extends Controller
        $resizedArtwork=$this->resizeArtwork($artwork,$artworkPath);
 
         //Push Files To Storage
-         $this->disk->put($mp3Path, file_get_contents($mp3File), [
-               'visibility' => 'public',
-               'Content-Type' => 'application/octet-stream',
-                'Content-Description' => 'File Transfer',
-                'Content-Disposition' => "attachment; filename=".$mp3FileName,
-                'filename'=> $mp3FileName
-           ]);
+         $this->disk->put($mp3Path, file_get_contents($mp3File), 'public');
 
          //generate json file for the player
-        $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
+         $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
          //create track in database 
          $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId);
