@@ -22120,9 +22120,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         download: function download() {
             this.downloads++;
-            axios.get('../../../download/' + this.track.id).then(function (response) {
-                console.log("Here is your response...", response.data);
-            });
+            window.location.href = '../../../download/' + this.track.id;
             // window.location.href = `../../../download/${this.track.id}`;
         },
         recordTrackPlay: function recordTrackPlay() {
@@ -22185,9 +22183,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        console.log(this.track);
-        //this.downloads=this.track.downloads;
-        //this.played=this.track.played;
+        this.downloads = this.track.downloads;
+        this.played = this.track.played;
     },
 
     methods: {
@@ -22232,6 +22229,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             } else {
                 this.initialisePlayer();
+                this.recordTrackPlay();
             }
         },
         calculateAudioDuration: function calculateAudioDuration() {
@@ -22252,9 +22250,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.downloads++;
             window.location.href = '../../../download/' + this.track.id;
         },
-        played: function played() {
-            this.played++;
-            window.location.href = '../../../played/' + this.track.id;
+        recordTrackPlay: function recordTrackPlay() {
+            var _this2 = this;
+
+            axios.get('../../../played/' + this.track.id).then(function (response) {
+                _this2.played = response.data.played;
+            });
         }
     },
     filters: {

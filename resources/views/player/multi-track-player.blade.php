@@ -30,9 +30,9 @@
                                    <span v-if="elapsedTime" v-cloak>@{{elapsedTime|time}}</span>
                                    <span v-if="audioDuration" v-cloak>@{{audioDuration|time}}</span>
                                 </div>
-                                         <div class="footer">
+                                 <div class="footer">
 
-                                <div   class="action-btn" >
+                                <div class="action-btn" >
                                     <i class="fa fa-play text-primary"></i>
                                     <small class="play-value">(@{{played}})</small>
                                 </div>
