@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
             @if($track)
-            <single-track-player player-container="{{'#player-'.$track->id}}" audio="{{$track->audio}}"  inline-template>            
+            <single-track-player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
                 <div class="card card-bordered style-default-bright single-track-card">
                     <div class="card-body">
                        <div class="content">
@@ -66,48 +66,3 @@
 </div>
 
 
-<script>
-    var popupSize = {
-        width: 780,
-        height: 550
-    };
-
-    $(document).on('click', '.social-buttons > a', function(e){
-
-        var
-            verticalPos = Math.floor(($(window).width() - popupSize.width) / 2),
-            horisontalPos = Math.floor(($(window).height() - popupSize.height) / 2);
-
-        var popup = window.open($(this).prop('href'), 'social',
-            'width='+popupSize.width+',height='+popupSize.height+
-            ',left='+verticalPos+',top='+horisontalPos+
-            ',location=0,menubar=0,toolbar=0,status=0,scrollbars=1,resizable=1');
-
-        if (popup) {
-            popup.focus();
-            e.preventDefault();
-        }
-
-    });
-</script>
-
-    <script>
-       $(document).ready(function(){
-              $('.play-button').click(function(){
-               incrementPlayCount(this);
-           });
-
-
-            incrementPlayCount=function(_this){
-                var self=_this;
-              var trackId=$(self).attr('id').split('-')[2];
-               $.ajax({
-                   url:'./played/'+trackId,
-                   success:function(response){
-                $('#play-'+trackId).text('('+response.played+')');
-                       
-                   }
-               });
-           }
-       });     
-    </script>
