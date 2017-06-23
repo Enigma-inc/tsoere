@@ -1,12 +1,10 @@
-<div>
-    <div class="section-header margin-top-20">
-    </div>
+<div class="margin-top-20">
     <div class="section-body no-margin">
         <div class="row">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+            <div class="col-xs-12 col-sm-12  col-md-10 col-md-offset-1">
             @if($track)
             <single-track-player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
-                <div class="card card-bordered style-default-bright single-track-card">
+                <div class="card card-bordered style-default-dark single-track-card">
                     <div class="card-body">
                        <div class="content">
                         <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
@@ -14,7 +12,7 @@
                                 <a href="#"><i :class="[playerActionClass]"></i></a>
                             </div>
                         </div>
-                        <div class="details padding-left-20" >
+                        <div class="details" >
                             <div class="header">
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div>                            
                                     <div class="track-title">{{$track->title}}</div>
@@ -59,7 +57,9 @@
         </div>
     </div>
 </div>
+@if($relatedTracks->count()>0)
 <div>
+
     <div class="page-header margin-10 padding-bottom-10">
         <ol class="breadcrumb"><li class="active">Other Tracks By {{ $profile->name}}</li></ol>
     </div>
@@ -74,5 +74,6 @@
         </div>
     </div>
 </div>
+@endif
 
 

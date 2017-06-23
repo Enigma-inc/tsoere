@@ -33,7 +33,7 @@ export default{
         this.player = wavesurfer.create({
                     container: this.playerContainer,
                     waveColor: '#066265',
-                    progressColor: '#771e86',
+                    progressColor: '#ffffff',
                     barWidth:3,
                     height:70,
                     hideScrollbar:true

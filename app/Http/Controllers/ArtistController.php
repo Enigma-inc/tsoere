@@ -36,6 +36,7 @@ class ArtistController extends Controller
        $track=$artist->tracks->where('slug',$trackSlug)->first();
        //Get Related Tracks
        $relatedTracks=$artist->tracks->whereNotIn('slug',[$trackSlug]);
+      
        
         return view('artist.single-track')
                     ->with(['profile'=>$artist,
