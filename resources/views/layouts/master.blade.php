@@ -8,6 +8,13 @@
   		<meta property="og:title"  content="Sample Song" /> 
   		<meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /--> 
 
+		      <!-- Open Graph data -->
+    	<meta property="og:title" content="NULISTICE: 23 - 26 Jan 2018" />
+    	<meta property="og:type" content="music.song" />
+    	<meta property="og:url" content="http://" />
+    	<meta property="og:image" content="" />
+		<meta property="og:music:musician" content=""/>
+
 		<!-- BEGIN META -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
