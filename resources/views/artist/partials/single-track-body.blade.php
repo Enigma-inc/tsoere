@@ -10,7 +10,7 @@
                     <div class="card-body">
                        <div class="content">
                         <div class="artwork" style="background-image: url('{{url($track->artwork)}}');">
-                            <div class="play-button" @click="playAudio()">
+                            <div  class="play-button" @click="playAudio()">
                                 <a href="#"><i :class="[playerActionClass]"></i></a>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                                         @include('artist.partials.single-track-social-share')                                        
                                     </div>
                             </div>
-                            <track-actions :track="{{$track}}"></track-actions>
+                            <player :track="{{$track}}"></player>
                         </div>
                        </div>
                       <div class="wave-section">
@@ -90,3 +90,24 @@
 
     });
 </script>
+
+    <script>
+       $(document).ready(function(){
+              $('.play-button').click(function(){
+               incrementPlayCount(this);
+           });
+
+
+            incrementPlayCount=function(_this){
+                var self=_this;
+              var trackId=$(self).attr('id').split('-')[2];
+               $.ajax({
+                   url:'./played/'+trackId,
+                   success:function(response){
+                $('#play-'+trackId).text('('+response.played+')');
+                       
+                   }
+               });
+           }
+       });     
+    </script>

@@ -1,6 +1,26 @@
+<template>
+   <div class="footer">
+        <div @click="recordPlay()" class="action-btn" v-show="showElement">
+            <i class="fa fa-thumbs-o-up text-primary"></i>
+            <small>({{this.likes}})</small>
+        </div>
+
+        <div @click="recordTrackPlay()" class="action-btn" >
+            <i class="fa fa-play text-primary "></i>
+            <small class="play-value">({{this.played}})</small>
+        </div>
+        <div @click="download()" class="action-btn">
+            <i class="fa fa-download text-primary"></i>
+            <small class="play-value">({{this.downloads}})</small>
+        </div>
+    </div>
+</template>
+
 <script>
+import Slick from 'vue-slick';
 export default{
-    props:['playerContainer','audio'],
+    props:['playerContainer','audio','track'],
+    components:{Slick},
     data(){
         return{
             player:null,
@@ -10,8 +30,24 @@ export default{
             loading:false,
             loadingText:'Loading...',
             loadingPercentage:0,
-            playerActionClass:['fa', 'fa-play-circle-o']
+            playerActionClass:['fa', 'fa-play-circle-o'],
+
+            downloads:0,
+            played:0,
+            likes:0,
+            showElement: false,
+            slickOptions: {
+                slidesToShow: 3,
+                // Any other options that can be got from plugin documentation
+            },
+
+
         }
+    },
+    mounted(){
+            this.downloads=this.track.downloads;
+            this.played=this.track.played;
+
     },
     methods:{
         initialisePlayer(){
@@ -77,6 +113,15 @@ export default{
         stopTimer(){
             clearInterval(this.timer);
            this.playerActionClass=['fa', 'fa-play-circle-o'];
+        },
+         download(){
+                this.downloads++;              
+                window.location.href = `../../../download/${this.track.id}`;
+        },
+         recordTrackPlay(){
+                this.played++;
+                
+                //window.location.href = `../../../recordTrackPlay/${this.track.id}`;
         }
     },
     filters:{

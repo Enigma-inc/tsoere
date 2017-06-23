@@ -79,7 +79,6 @@ class TrackController extends Controller
     
     public function recordTrackPlay(Track $track){
             $track->increment('played');
-      return $track;
     }
     public function download(Track $track)
     {
@@ -100,7 +99,6 @@ class TrackController extends Controller
             }
         }
     }
-
     private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId)
     {
         Track::create([

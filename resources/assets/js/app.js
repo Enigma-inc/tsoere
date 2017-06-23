@@ -12,7 +12,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('track-actions', require('./components/track/track-actions.vue'));
 Vue.component('player', require('./components/player/player.vue'));
 Vue.component('single-track-player', require('./components/player/single-track-player.vue'));
 
