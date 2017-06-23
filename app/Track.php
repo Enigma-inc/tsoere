@@ -9,13 +9,15 @@ class Track extends Model
 {
     protected $guarded=['id'];
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
-    protected $appends=array('artwork','audio','json');
+    protected $appends=array('artwork','audio','json','path');
 
     public function artist()
     {
         return $this->belongsTo(Artist::class);
     }
-
+    public function getPathAttribute(){
+        return url("/artist/".$this->artist->slug."/single/".$this->slug);
+    }
     public function getArtworkAttribute(){
         return Storage::Url($this->artwork_path);
     }

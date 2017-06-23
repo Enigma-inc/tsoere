@@ -31,6 +31,7 @@ class ArtistController extends Controller
     public function singleTrack($artistSlug,$trackSlug){
         //Retrive artist
        $artist = Artist::where('slug',$artistSlug)->first();
+       
        //Get Track using artist relationship
        $track=$artist->tracks->where('slug',$trackSlug)->first();
        //Get Related Tracks
