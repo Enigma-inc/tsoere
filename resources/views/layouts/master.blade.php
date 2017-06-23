@@ -9,7 +9,7 @@
   		<meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" /--> 
 
 		      <!-- Open Graph data -->
-    	<meta property="og:title" content="NULISTICE: 23 - 26 Jan 2018" />
+    	<meta property="og:title" content="Musicbox" />
     	<meta property="og:type" content="music.song" />
     	<meta property="og:url" content="http://" />
     	<meta property="og:image" content="" />
