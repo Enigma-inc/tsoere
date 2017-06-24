@@ -72,13 +72,13 @@ class ArtistController extends Controller
         $avatar = $request -> file('avatar');
         $currentTime = time();
         $avatarPath=$profileDir."/avatars/".$currentTime.'.'.$avatar->getClientOriginalExtension();
-        $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
+          $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
         $resizedAvatar = $this->resizeAvatar($avatar,$avatarPath,$avatarThumnailPath);
-
+/*
         //Update Database
         $profile->avatar = $avatarPath;
         $profile->avatar_thumbnail = $avatarThumnailPath;
-        $profile -> save();
+        $profile -> save();*/
 
         return redirect('/profile') -> with('success','Image upload successful');
 
@@ -87,10 +87,12 @@ class ArtistController extends Controller
 
         private function resizeAvatar(UploadedFile $avatar,$avatarPath,$avatarThumnailPath){
        //Resize Image
+               // dd(sprintf("%/%s", $this->baseDir, $this->$avatar));
+       
         $avatarStream =Image::make($avatar)
                 ->fit(300,300)
                 ->stream()
-                ->detach();;
+                ->detach();
 
         //Create a thumbnail
         $avatarThumbnailStream= Image::make($avatar)
