@@ -34,7 +34,7 @@
                                  <div class="footer">
 
                                 <div class="action-btn" >
-                                    <i class="fa fa-play text-primary"></i>
+                                    <i class="md md-headset text-primary"></i>
                                     <small class="play-value" v-cloak>(@{{played}})</small>
                                 </div>
                                 <div @click="download()" class="action-btn">
