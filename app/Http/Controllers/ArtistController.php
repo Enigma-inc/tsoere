@@ -74,11 +74,11 @@ class ArtistController extends Controller
         $avatarPath=$profileDir."/avatars/".$currentTime.'.'.$avatar->getClientOriginalExtension();
           $avatarThumnailPath=$profileDir."/avatars/".$currentTime.'-thumbnail.'.$avatar->getClientOriginalExtension();
         $resizedAvatar = $this->resizeAvatar($avatar,$avatarPath,$avatarThumnailPath);
-/*
+
         //Update Database
         $profile->avatar = $avatarPath;
         $profile->avatar_thumbnail = $avatarThumnailPath;
-        $profile -> save();*/
+        $profile -> save();
 
         return redirect('/profile') -> with('success','Image upload successful');
 
