@@ -80,7 +80,7 @@
 	
 
 	@include('layouts.partials.common-scripts')
-	@yield('page-scripts')
+	@yield('page-script')
 </body>
 
 

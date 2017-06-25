@@ -1,33 +1,41 @@
 .footer-artists-container {
-    display: flex;
-    .artist-card {
+    a {
         display: flex;
-        margin-right: .5em;
+        text-decoration: none;
         width: 200px;
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        img {
-            height: 40px;
-            height: 40px;
-            border: 1px solid #fff;
-            background: #fff;
-        }
-        .contents {
-            flex: 1;
+        margin: 0 2px;
+        .artist-card {
             display: flex;
-        }
-        .name {
-            flex: 1;
-            margin-top: .1em;
-            font-weight: 600;
-            margin-left: .3em;
-            font-size: .9em;
-        }
-        .category {
-            background: $color-primary-dark;
-            padding: .25em;
-            align-self: flex-start;
-            font-size: .7em;
+            margin-right: .5em;
+            width: 100%;
+            border-radius: 25px;
+            img {
+                height: 40px;
+                height: 40px;
+                border: 1px solid #fff;
+                background: #fff;
+            }
+            .contents {
+                flex: 1;
+                display: flex;
+            }
+            .name {
+                flex: 1;
+                margin-top: .1em;
+                font-weight: 600;
+                margin-left: .3em;
+                font-size: .9em;
+            }
+            .category {
+                display: flex;
+                background: $color-primary-dark;
+                padding: .25em;
+                font-size: .7em;
+                border-top-right-radius: 25px;
+                border-bottom-right-radius: 25px;
+                align-items: center;
+                padding: 0 2px;
+            }
         }
     }
 }

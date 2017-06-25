@@ -10,17 +10,35 @@
    <div class="footer-artists-container ">
           @foreach($artists as $artist)
           <a href="{{route('artist.home',['slug'=>$artist->slug])}}">
-          <div class="style-primary artist-card card">
-              <img class="width-1 img-circle img-responsive" src="{{url($artist->thumbnail)}}" alt="">
-               <div class="contents">
+            <div class="style-primary artist-card card">
+                <img class="width-1 img-circle img-responsive" src="{{url($artist->thumbnail)}}" alt="">
+                <div class="contents">
 
-              <div class="name">{{$artist->name}}</div>
-              <div class="category ">{{$artist->category}}</div>               
-              
-               </div>
-            </div>
+                <div class="name">{{$artist->name}}</div>
+                <div class="category ">
+                <span>{{$artist->category}}</span>
+                </div>               
+                
+                </div>
+                </div>
             </a>
-          @endforeach
+          @endforeach 
     </div> 
+@endsection
+@section('page-script')
+<script>
+   $(document).ready(function () {
+                $('.footer-artists-container').slick(
+                    {
+                        dots: false,
+                        infinite: true,
+                        autoplay: true,
+                        autoplaySpeed: 5000,
+                        slidesToShow:6
+                    }
+                );
+            });
+</script>
+    
 @endsection
 
