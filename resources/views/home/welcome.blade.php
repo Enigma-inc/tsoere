@@ -14,7 +14,7 @@
                 <img class="width-1 img-circle img-responsive" src="{{url($artist->thumbnail)}}" alt="">
                 <div class="contents">
                         <div class="name">{{$artist->name}}</div>
-                        <div class="count">{{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}</div>
+                            <div class="count">{{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}</div>
                         <div class="category ">
                             <span>{{$artist->category}}</span>
                         </div>              

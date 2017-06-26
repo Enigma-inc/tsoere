@@ -55,7 +55,16 @@ Route::group(['middleware'=>'auth'],function(){
         'uses'=>'TrackController@store',
         'as'=>'track.store'
     ]);
+    //routes for updating track details
+    Route::post('/tracks/artwork/{trackId}',[
+        'uses' =>'TrackController@artworkUpdate',
+        'as' =>'artwork.update'
+    ]);
 
+    Route::post('/tracks/title/{trackId}',[
+         'uses' => 'TrackController@titleUpdate',
+         'as' => 'title.update'   
+    ]);
     
     Route::get('/update-avatar/artist',[
         'uses' => 'ArtistController@update',

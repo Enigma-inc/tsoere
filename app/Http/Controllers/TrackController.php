@@ -73,6 +73,27 @@ class TrackController extends Controller
          return redirect('/');
 
     }
+
+    //title update and artwork update routes
+    public function artworkUpdate(Request $request,$id){
+        $artistDir=Auth::user()->profile->slug;
+        $track = Track::find($id);
+        $trackTitle=$track->title;
+        $artwork=$request->file('artwork');
+        $currentTime=time();
+        $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
+        $resizedArtwork=$this->resizeArtwork($artwork,$artworkPath);
+        $track->artwork_path =$artworkPath;
+        $track ->save();
+        return back();
+    }
+
+    public function titleUpdate(Request $request,$id){
+        $track = Track::find($id);
+        $track->title = $request->title;
+        $track->save();
+        return back();
+    }
     
     public function recordTrackPlay(Track $track){
             $track->increment('played');
