@@ -15,6 +15,7 @@
                 <div class="contents">
 
                 <div class="name">{{$artist->name}}</div>
+                <div class="name">{{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}</div>
                 <div class="category ">
                 <span>{{$artist->category}}</span>
                 </div>               

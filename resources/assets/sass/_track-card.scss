@@ -1,6 +1,16 @@
 .track-card {
     .section-floating-action-row {
+        display: flex;
+        justify-content: space-between;
         right: 5px;
+        .genre{
+            position: relative;
+            top:-12px;
+            .badge-accent{
+                background: #771e86 ;
+            }
+        }
+
     }
     .card-body {
         padding: 0;
