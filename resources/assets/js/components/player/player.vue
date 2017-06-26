@@ -101,8 +101,7 @@ export default{
         },
         download(){
                 this.downloads++;   
-                window.location.href = `../../../download/${this.track.id}`;         
-               // window.location.href = `../../../download/${this.track.id}`;
+                window.location.href = `../../../download/${this.track.id}`; 
         },
          recordTrackPlay(){
                 axios.get(`../../../played/${this.track.id}`).then((response)=>{

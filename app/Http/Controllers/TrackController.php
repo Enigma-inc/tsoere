@@ -62,16 +62,10 @@ class TrackController extends Controller
        $resizedArtwork=$this->resizeArtwork($artwork,$artworkPath);
 
         //Push Files To Storage
-         $this->disk->put($mp3Path, file_get_contents($mp3File), [
-               'visibility' => 'public',
-               'Content-Type' => 'application/octet-stream',
-                'Content-Description' => 'File Transfer',
-                'Content-Disposition' => "attachment; filename=".$mp3FileName,
-                'filename'=> $mp3FileName
-           ]);
+         $this->disk->put($mp3Path, file_get_contents($mp3File), 'public');
 
          //generate json file for the player
-        $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
+         $this->generateJsonFile($trackTitle, $artworkPath, $mp3Path,$jsonPath);
          
          //create track in database 
          $this->createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId);
@@ -88,9 +82,10 @@ class TrackController extends Controller
     public function download(Track $track)
     {
      $fileName = $track->audio_path;
-        $path=$this->disk->getDriver()->getAdapter()->applyPathPrefix($fileName);
-        //$url = $this->disk->get($fileName);
-       $stream= $this->disk->readStream($fileName);
+      $stream= $this->disk->readStream($fileName);
+
+        //Increment Downloads
+     $track->increment('downloads');
 
     return \Response::stream(function() use($stream){
            fpassthru($stream);
@@ -100,25 +95,8 @@ class TrackController extends Controller
            "Content-Length"=>$this->disk->getSize($fileName),
            "Content-disposition"=> "attachment; filename=\"".str_slug($track->title).".mp3\""
        ]);
+         
 
-
-
-
-
-
-        /*   //Increment Downloads
-        $track->increment('downloads');
-
-        if (env('FILE_SYSTEM', 's3') == 'local') {
-            return response()->download($path);
-        } else { 
-            //We are now connected to s3
-            if (\Request::wantsJson()) {
-                return $url;
-            } else {
-                  return redirect($url);
-            }
-        }*/
     }
     private function createTrack($trackTitle, $currentTime, $mp3Path, $artworkPath, $jsonPath, $genre,$artistId)
     {
