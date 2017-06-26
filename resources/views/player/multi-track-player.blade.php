@@ -12,7 +12,8 @@
                             
                                 <div class="header">
                                     <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div> 
-                                    <div class="track-title">{{$track->title}}</div>
+                                    <div class="track-title ">{{$track->title}}</div>
+                                    <div class="track-genre text-sm">{{$track->genre->name}}</div>
                                     <div class="section-floating-action-row">
                                         <a href="{{route('track.single', ['artistSlug'=>$track->artist->slug,'trackSlug' =>$track->slug])}}" data-toggle="tooltip" title="share on facebook" type="button" class="btn btn-xs ink-reaction btn-floating-action btn-default-dark "><i class="text-info fa fa-facebook"></i></a>
                                         <a href="{{route('track.single', ['artistSlug'=>$track->artist->slug,'trackSlug' =>$track->slug])}}" data-toggle="tooltip" title="share on whatsapp" type="button" class="btn btn-xs ink-reaction btn-floating-action btn-default-dark "><i href="#" class="text-success text-ultra-bold fa fa-whatsapp"></i></a>                                        
