@@ -97,12 +97,16 @@ class TrackController extends Controller
     
     public function recordTrackPlay(Track $track){
             $track->increment('played');
-            return $track;
+            return $track; 
             
+    }
+    public function socialShared(Track $track){
+            $track->increment('shared');
+            return $track;
     }
     public function download(Track $track)
     {
-     $fileName = $track->audio_path;
+      $fileName = $track->audio_path;
       $stream= $this->disk->readStream($fileName);
 
         //Increment Downloads

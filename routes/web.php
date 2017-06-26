@@ -20,7 +20,11 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
     'uses'=>'ArtistController@singleTrack',
     'as'=>'track.single'
 ]);
- 
+ //Record social media sharing
+ Route ::get('shared/{track}',[
+     'uses' => 'TrackController@socialShared',
+     'as' => 'track.share'
+ ]);
 //Record Track Play
  Route::get('played/{track}', [
         'uses'=>'TrackController@recordTrackPlay',

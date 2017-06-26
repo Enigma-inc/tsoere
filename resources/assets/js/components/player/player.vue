@@ -18,6 +18,7 @@ export default{
 
             downloads:0,
             played:0,
+            shared:0,
             likes:0,
             showElement: false,
             slickOptions: {
@@ -69,8 +70,8 @@ export default{
             {
                 this.player.playPause();
                 if(this.player.isPlaying())
-                {
-                    //Restart the Timer
+                {  
+                     //Restart the Timer
                      this.playerActionClass=['fa', 'fa-pause-circle-o'];
                     this.calculateElapsedTime();
                 }
@@ -107,6 +108,12 @@ export default{
                 axios.get(`../../../played/${this.track.id}`).then((response)=>{
                     this.played=response.data.played;
                 });
+        },
+        socialShared(){
+            axios.get(`../../../shared/${this.track.id}`).then((response)=>{
+                
+                this.shared = response.data.shared;
+            });
         }
     },
     filters:{
