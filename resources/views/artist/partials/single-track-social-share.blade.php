@@ -1,4 +1,4 @@
-<div class="social-buttons">
+<div class="social">
     <a href="https://www.facebook.com/sharer/sharer.php?u={{$track->path}}" data-toggle="tooltip" title="share on facebook" target="_bl" type="button" class="btn btn-sm ink-reaction btn-floating-action btn-default-dark">
         <i class="text-lg text-info fa fa-facebook"></i>
     </a>

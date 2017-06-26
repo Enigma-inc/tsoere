@@ -18,6 +18,10 @@
             .contents {
                 flex: 1;
                 display: flex;
+                .count{
+                    position:relative;
+                    justify-content: center;
+                }
             }
             .name {
                 flex: 1;

@@ -28,7 +28,7 @@
                                                </a>
                                             </div>
                                         
-                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                                 <div class="player-container">
