@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Track;
 use App\Artist;
 use App\Genre;
+use App\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Cyvelnet\Laravel5Fractal\Facades\Fractal;
@@ -13,6 +14,7 @@ use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Response;
 use App\Http\Requests\TrackUploadRequest;
+use Carbon\Carbon;
 
 
 
@@ -96,21 +98,23 @@ class TrackController extends Controller
     }
     
     public function recordTrackPlay(Track $track){
+            $trackAction=Action::where('name','played');
+        
             $track->increment('played');
+                $track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
             return $track; 
             
     }
-    public function socialShared(Track $track){
-            $track->increment('shared');
-            return $track;
-    }
+
     public function download(Track $track)
     {
       $fileName = $track->audio_path;
       $stream= $this->disk->readStream($fileName);
-
+      $trackAction = Action::where('name','download')->first();
         //Increment Downloads
      $track->increment('downloads');
+     $track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
+     
 
     return \Response::stream(function() use($stream){
            fpassthru($stream);

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Track;
 use App\Artist;
+use App\Action;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
-
+use Carbon\Carbon;
 use Auth;
 
 class ArtistController extends Controller
@@ -36,8 +37,10 @@ class ArtistController extends Controller
        $track=$artist->tracks->where('slug',$trackSlug)->first();
        //Get Related Tracks
        $relatedTracks=$artist->tracks->whereNotIn('slug',[$trackSlug]);
-
+       $trackAction=Action::where('name','social media');
        $track->increment('shared');
+       //$track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
+
           
         return view('artist.single-track')
                     ->with(['profile'=>$artist,
