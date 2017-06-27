@@ -13,7 +13,7 @@ class CreateTrackActionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('track_action_types', function (Blueprint $table) {
+        Schema::create('actions', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateTrackActionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('track_action_types');
+        Schema::dropIfExists('actions');
     }
 }

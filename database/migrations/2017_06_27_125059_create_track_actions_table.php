@@ -13,7 +13,7 @@ class CreateTrackActionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('track_actions', function (Blueprint $table) {
+        Schema::create('action_track', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('track_id');
             $table->unsignedInteger('track_action_id');
@@ -28,6 +28,6 @@ class CreateTrackActionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('track_actions');
+        Schema::dropIfExists('action_track');
     }
 }

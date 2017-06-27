@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TrackActionType extends Model
+class Action extends Model
 {
     //
+    protected $fillable=['name'];
 }
