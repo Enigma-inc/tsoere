@@ -20,7 +20,7 @@ class TrackActionsSeeder extends Seeder
             'name' => 'played',
         ]);
         Action::create([
-            'name' => 'social media',
+            'name' => 'share',
         ]);
     }
 }

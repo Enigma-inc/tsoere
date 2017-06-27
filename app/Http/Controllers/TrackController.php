@@ -98,10 +98,12 @@ class TrackController extends Controller
     }
     
     public function recordTrackPlay(Track $track){
-            $trackAction=Action::where('name','played');
-        
+           
             $track->increment('played');
-                $track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
+                $track->actions()->attach(
+                    Action::where('name','played')->get(),
+                    ['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
+
             return $track; 
             
     }

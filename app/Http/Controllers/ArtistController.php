@@ -37,9 +37,11 @@ class ArtistController extends Controller
        $track=$artist->tracks->where('slug',$trackSlug)->first();
        //Get Related Tracks
        $relatedTracks=$artist->tracks->whereNotIn('slug',[$trackSlug]);
-       $trackAction=Action::where('name','social media');
        $track->increment('shared');
-       //$track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);
+       $track->actions()->attach(
+                    Action::where('name','share')->get(),
+                    ['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+       );
 
           
         return view('artist.single-track')
