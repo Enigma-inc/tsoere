@@ -9,7 +9,7 @@
 			<h3 class="modal-title" id="lineModalLabel">Edit Title</h3>
 		</div>
 		<div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('title.update',['trackId'=>$track->id]) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('track.title.update',['trackId'=>$track->id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="margin-bottom-40 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -46,7 +46,7 @@
 			<h3 class="modal-title" id="lineModalLabel">Edit Artwork</h3>
 		</div>
 		<div class="modal-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('artwork.update',['trackId'=>$track->id]) }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('track.artwork.update',['trackId'=>$track->id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         
                       <div class="margin-bottom-40 form-group{{ $errors->has('artwork') ? ' has-error' : '' }}">

@@ -35,7 +35,6 @@
                                             </div>   
                                     </div>
                                     </div>
-                                    @include('track.partials.track-modals')
                                 </div>
                                 <div class="player-container">
                                        <div  id="player-{{$track->id}}"></div>
@@ -65,6 +64,7 @@
                     </div>
                     
                 </player> 
+                @include('track.partials.track-edit-modals')
                 <div class="update-links text-center"> 
                   <a data-toggle="modal" data-target="#Title-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-pencil-square-o"></i> Edit Track Title</a>
                   <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Track Artwork </a>                  

@@ -62,12 +62,12 @@ Route::group(['middleware'=>'auth'],function(){
     //routes for updating track details
     Route::post('/tracks/artwork/{trackId}',[
         'uses' =>'TrackController@artworkUpdate',
-        'as' =>'artwork.update'
+        'as' =>'track.artwork.update'
     ]);
 
     Route::post('/tracks/title/{trackId}',[
          'uses' => 'TrackController@titleUpdate',
-         'as' => 'title.update'   
+         'as' => 'track.title.update'   
     ]);
     
     Route::get('/update-avatar/artist',[
