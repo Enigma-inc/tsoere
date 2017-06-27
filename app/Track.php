@@ -15,6 +15,10 @@ class Track extends Model
     {
         return $this->belongsTo(Artist::class);
     }
+
+    public function actions(){
+        return $this->belongsToMany(Action::class);
+    }
     public function getPathAttribute(){
         return url("/artist/".$this->artist->slug."/single/".$this->slug);
     }

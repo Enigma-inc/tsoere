@@ -16,7 +16,7 @@ class CreateTrackActionsTable extends Migration
         Schema::create('action_track', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('track_id');
-            $table->unsignedInteger('track_action_id');
+            $table->unsignedInteger('action_id');
             $table->timestamps();
         });
     }
