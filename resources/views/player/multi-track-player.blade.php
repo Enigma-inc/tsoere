@@ -11,7 +11,7 @@
                             <div class="details">
                             
                                 <div class="header">
-                                    <div class="artist-name text-primary text-bold">{{$track->artist->name}}</div> 
+                                    <div class="artist-name text-primary text-bold margin-bottom-5">{{$track->artist->name}}</div> 
                                     <div class="track-title ">{{$track->title}}</div>
                                    
                                     <div class="section-floating-action-row col-xs-12 padding-right-0 margin-right-0">

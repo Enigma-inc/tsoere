@@ -10,7 +10,13 @@ class HomeController extends Controller
 {
     public function index(){
          $tracks = Track::all()->shuffle();
-         $artists=Artist::all()->shuffle();
+         $artists=Artist::inRandomOrder()
+         ->has('tracks','>',0)
+         ->with('tracks')
+         ->withCount('tracks')
+         ->take(2)
+         ->get()
+         ->shuffle();
        return view('home.welcome')->with(['tracks'=>$tracks,'artists'=>$artists]);
     }
 

@@ -13,8 +13,15 @@
             <div class="style-primary artist-card card">
                 <img class="width-1 img-circle img-responsive" src="{{url($artist->thumbnail)}}" alt="">
                 <div class="contents">
-                        <div class="name">{{$artist->name}}</div>
-                            <div class="count">{{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}</div>
+                        <div class="body">
+                            <div class="artist-name">
+                                 {{$artist->name}}
+                            </div>
+                            <div class="footer">
+                                 {{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}
+                            </div>
+                        
+                        </div>
                         <div class="category ">
                             <span>{{$artist->category}}</span>
                         </div>              

@@ -18,17 +18,21 @@
             .contents {
                 flex: 1;
                 display: flex;
-                .count{
-                    position:relative;
-                    justify-content: center;
-                }
+               
             }
-            .name {
+            .body {
                 flex: 1;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
                 margin-top: .1em;
                 font-weight: 600;
                 margin-left: .3em;
                 font-size: .9em;
+                .footer{
+                    line-height: 5px;
+                    padding-bottom: 5px;
+                }
             }
             .category {
                 display: flex;
