@@ -23,6 +23,7 @@ class AddListenDownloadsLikesColumnToTrackTable extends Migration
             $table->integer('likes')
                    ->default(0)
                    ->after('genre_id');
+     
         });
     }
 

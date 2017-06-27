@@ -108,12 +108,6 @@ export default{
                 axios.get(`../../../played/${this.track.id}`).then((response)=>{
                     this.played=response.data.played;
                 });
-        },
-        socialShared(){
-            axios.get(`../../../shared/${this.track.id}`).then((response)=>{
-                
-                this.shared = response.data.shared;
-            });
         }
     },
     filters:{
