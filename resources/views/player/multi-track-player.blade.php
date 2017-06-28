@@ -1,6 +1,6 @@
     
                 <player player-container="{{'#player-'.$track->playerContainer}}" :track="{{$track}}"  inline-template>            
-                   <div class="card card-bordered style-default-dark track-card">
+                   <div class="card card-bordered style-default-dark track-card margin-bottom-5">
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
