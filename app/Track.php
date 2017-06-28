@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use DB;
 
 class Track extends Model
 {
@@ -34,4 +35,6 @@ class Track extends Model
     public function genre(){
         return $this->belongsTo(genre::class);
     }
+
+
 }
