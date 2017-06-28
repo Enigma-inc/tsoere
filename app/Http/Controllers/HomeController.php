@@ -19,8 +19,9 @@ class HomeController extends Controller
          ->take(2)
          ->get()
          ->shuffle();
-
+        
         $mostSharedTracks=$this->getTrendingTracks(3,2);
+        
 
         $mostPlayedTracks = $this->getTrendingTracks(2,3);
         

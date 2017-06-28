@@ -1,5 +1,5 @@
     
-                <player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
+                <player player-container="{{'#player-'.$track->playerContainer}}" :track="{{$track}}"  inline-template>            
                    <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body" >
                         
@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                 <div class="player-container">
-                                       <div  id="player-{{$track->id}}"></div>
+                                       <div  id="player-{{$track->playerContainer}}"></div>
                                        <div v-if="loading" class="loading">
                                               <span class="text-primary" v-cloak>@{{loadingText}}</span>
                                        </div>

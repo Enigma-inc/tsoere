@@ -21,11 +21,8 @@
 	</div>
 	<div class="section-body no-margin" id="top">
         <div class="row">
-            @foreach($mostSharedTracks as $mostSharedTrack)
-             <div class="col-xs-12 col-sm-6 col-md-4">
-              @include('player.most-social-shared') 
-            </div>
-            @endforeach
+        @include('player.most-social-shared') 
+           
         </div>
 	</div>
 	<div class="section-header">
@@ -35,11 +32,7 @@
 	</div>
 	<div class="section-body no-margin" id="top">
         <div class="row">
-            @foreach($mostDownloadedTracks as $mostDownloadedTrack)
-             <div class="col-xs-12 col-sm-6 col-md-4">
-              @include('player.most-social-shared') 
-            </div>
-            @endforeach
+             @include('player.most-downloaded') 
         </div>
 	</div>
 
@@ -50,11 +43,7 @@
 	</div>
 		<div class="section-body no-margin" id="top">
         <div class="row">
-            @foreach($mostPlayedTracks as $mostPlayedTrack)
-             <div class="col-xs-12 col-sm-6 col-md-4">
-              @include('player.most-social-shared') 
-            </div>
-            @endforeach
+              @include('player.most-played') 
         </div>
 	</div>
     
