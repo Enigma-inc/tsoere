@@ -35,4 +35,12 @@ class Track extends Model
     public function genre(){
         return $this->belongsTo(genre::class);
     }
+<<<<<<< HEAD
+=======
+
+    public function getPlayerContainerAttribute(){
+          //return (string)rand(1,1);
+    return (string)sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+    }
+>>>>>>> a04538797389f7dc8cbc463926dee9d6f8cd2512
 }
