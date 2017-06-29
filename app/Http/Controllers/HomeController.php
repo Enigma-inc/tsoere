@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\Track;
 use App\Artist;
 use DB;
+use Carbon\Carbon;
 use App\Action;
 
 class HomeController extends Controller
 {
     public function index(){
          $RecentlyAddedtracks = Track::all()->shuffle();
-         //return $RecentlyAddedtracks;
          $artists=Artist::inRandomOrder()
          ->has('tracks','>',0)
          ->with('tracks')
@@ -21,13 +21,9 @@ class HomeController extends Controller
          ->get()
          ->shuffle();
         
-        $mostSharedTracks=$this->getTrendingTracks(3,10);
-        //dd($mostSharedTracks->toArray());
-        
-
-        $mostPlayedTracks = $this->getTrendingTracks(2,10);
-        
         $mostDownloadedTracks = $this->getTrendingTracks(1,10);
+        $mostSharedTracks=$this->getTrendingTracks(3,10);     
+        $mostPlayedTracks = $this->getTrendingTracks(2,10);
 
 
        return view('home.welcome')->with(['tracks'=>$RecentlyAddedtracks,
@@ -56,11 +52,13 @@ class HomeController extends Controller
 */
     private  function getTrendingTracks($ActionId,$limit){
           $action =Action::find($ActionId);
-          //dd($action->toArray());
+          
             $topTracks = DB::table('action_track')
                      ->select(DB::raw('count(*) as action_count, 
                         track_id '))
                      ->where('action_id', '=', $ActionId)
+                     ->where('created_at','>=',Carbon::now()->subDays(30))
+                     ->where('created_at','<=',Carbon::now())
                      ->orderBy('action_count', 'desc')
                      ->groupBy('track_id')
                      ->limit($limit)
