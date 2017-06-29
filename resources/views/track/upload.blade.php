@@ -7,14 +7,14 @@
             <div class="card card-default">
                 
                 <div class="card-head">
-                    <header class="text-lg text-bold text-primary">Upload Your Track</header>
+                    <header class="text-lg text-bold text-primary">Upload Your Track / Poem</header>
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('track.store',['artistId'=>Auth::user()->profile->id]) }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="margin-bottom-40 form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                            <label for="title" class="col-md-3 control-label">Track Title</label>
+                            <label for="title" class="col-md-3 control-label">Track/Poem Title</label>
 
                             <div class="col-md-8">
                                 <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required>
