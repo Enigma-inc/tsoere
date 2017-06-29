@@ -16,7 +16,7 @@
                             <label for="title" class="col-md-3 control-label">Track Title</label>
 
                             <div class="col-md-8">
-                                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required>
+                            <input id="title" type="text" class="form-control" name="title" value="{{$track->title}}" required>
 
                                 @if ($errors->has('title'))
                                     <span class="help-block">

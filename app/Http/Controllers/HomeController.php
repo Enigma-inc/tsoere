@@ -21,27 +21,15 @@ class HomeController extends Controller
          ->get()
          ->shuffle();
         
-        $mostSharedTracks=$this->getTrendingTracks(3,2);
+        $mostSharedTracks=$this->getTrendingTracks(3,10);
         //dd($mostSharedTracks->toArray());
         
 
-        $mostPlayedTracks = $this->getTrendingTracks(2,3);
+        $mostPlayedTracks = $this->getTrendingTracks(2,10);
         
-        $mostDownloadedTracks = $this->getTrendingTracks(1,3);
+        $mostDownloadedTracks = $this->getTrendingTracks(1,10);
 
-        //  //return $RecentlyAddedtracks;
-        // $sharedtracks = Track::where('shared','>',0)->take(3)
-        //                                             ->get()
-        //                                             ->shuffle();
-      
-                //return Track::find($track->id)->actions()->wherePivot('action_id',2)->count();
-         /*
-         $track=Track::first();
-                $sharecount= $track->actions()->wherePivot('action_id',3)->count();
-                $playCount = $track->actions()->wherePivot('action_id',2)->count();
-                $downloadcount=$track->actions()->wherePivot('action_id',1)->count();
 
-         */
        return view('home.welcome')->with(['tracks'=>$RecentlyAddedtracks,
                                           'artists'=>$artists,
                                           'mostSharedTracks'=>$mostSharedTracks,
