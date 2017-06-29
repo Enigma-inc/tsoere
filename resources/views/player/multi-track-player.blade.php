@@ -1,6 +1,6 @@
     
-                <player player-container="{{'#player-'.$track->playerContainer}}" :track="{{$track}}"  inline-template>            
-                   <div class="card card-bordered style-default-dark track-card margin-bottom-5">
+                <player player-container="{{isset($section)?'#'.$section.'-'.$track->id:'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
+                   <div class="card card-bordered style-default-dark track-card">
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
@@ -23,16 +23,22 @@
                                             
                                     <div class="genre">
                                             <div class="track-genre text-sm ">
+                                             @if(isset($section))
+                                              
+                                               @endif
                                                <a class="badge badge-accent" href="{{route('track.category',['genre'=>str_slug($track->genre->name)])}}">
                                                {{$track->genre->name}}
                                                </a>
+                                               @if(isset($index))
+                                               <span class="badge badge-rank">{{$index+1}}</span>
+                                               @endif
                                             </div>
                                         
                                     </div>
                                     </div>
                                 </div>
                                 <div class="player-container">
-                                       <div  id="player-{{$track->playerContainer}}"></div>
+                                       <div class="player"  id="{{isset($section)? $section.'-'.$track->id:'player-'.$track->id}}" ></div>
                                        <div v-if="loading" class="loading">
                                               <span class="text-primary" v-cloak>@{{loadingText}}</span>
                                        </div>
