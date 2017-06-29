@@ -29,3 +29,17 @@ label {
 .slick-slider-wrapper {
     padding: 20px 0;
 }
+
+.slick-dots li button:before {
+    font-size: 12px !important;
+    color: $color-accent !important;
+    line-height: 20px;
+}
+
+.breadcrumb {
+    border-bottom: 1px solid darken(#fff, 20%);
+    margin-bottom: 20px;
+    .active {
+        color: $color-primary-dark !important;
+    }
+}

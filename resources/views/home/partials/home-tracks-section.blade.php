@@ -20,11 +20,11 @@
 @endif
 
 @if($mostSharedTracks->count()>0)
-	<div class="section-header">
-		<ol class="breadcrumb">
-			<li class="active">Trending on Social Media</li></li>
-		</ol>
-	</div>
+	<ol class="breadcrumb">
+	 	<li>Trending</li>
+		<li class="active text-primary">10 Most Shared On Social Media</li></li>
+		<li>Last 30 Days</li>
+	</ol>
 	<div class="section-body no-margin" id="top">
         <div class="row">
         @include('player.most-social-shared') 
@@ -35,11 +35,12 @@
  @endif
 
  @if($mostDownloadedTracks->count()>0)
-	<div class="section-header">
-		<ol class="breadcrumb">
-			<li class="active">Most Downloaded Tracks</li></li>
-		</ol>
-	</div>
+	
+	<ol class="breadcrumb">
+	 	<li>Trending</li>
+		<li class="active text-primary">10 Most Downloaded</li></li>
+		<li>Last 30 Days</li>
+	</ol>
 	<div class="section-body no-margin" id="top">
         <div class="row">
              @include('player.most-downloaded') 
@@ -48,11 +49,13 @@
 @endif
 
 @if($mostPlayedTracks->count()>0)
-	<div class="section-header">
-		<ol class="breadcrumb">
-			<li class="active">Most Played Tracks</li></li>
-		</ol>
-	</div>
+	<ol class="breadcrumb">
+			<li>Trending</li>
+			<li class="active text-primary">10 Most Played</li></li>
+			<li>Last 30 Days</li>
+	</ol>
+
+	
 	<div class="section-body no-margin" id="top">
         <div class="row">
               @include('player.most-played') 
