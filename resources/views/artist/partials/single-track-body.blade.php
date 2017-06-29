@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12  col-md-10 col-md-offset-1">
             @if($track)
-            <single-track-player player-container="{{'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
+            <single-track-player player-container="{{'#player-'.$track->playerContainer}}" :track="{{$track}}"  inline-template>            
                 <div class="card card-bordered style-default-dark single-track-card">
                     <div class="card-body">
                        <div class="content">
@@ -35,7 +35,7 @@
                        </div>
                       <div class="wave-section">
                           <div class="player-container">
-                                       <div  id="player-{{$track->id}}"></div>
+                                       <div  id="player-{{$track->playerContainer}}"></div>
                                        <div v-if="loading" class="loading">
                                               <span class="text-primary-dark" v-cloak>@{{loadingText}}</span>
                                        </div>
