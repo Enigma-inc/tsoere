@@ -1,11 +1,6 @@
     
-<<<<<<< HEAD
                 <player player-container="{{isset($section)?'#'.$section.'-'.$track->id:'#player-'.$track->id}}" :track="{{$track}}"  inline-template>            
                    <div class="card card-bordered style-default-dark track-card">
-=======
-                <player player-container="{{'#player-'.$track->playerContainer}}" :track="{{$track}}"  inline-template>            
-                   <div class="card card-bordered style-default-dark track-card margin-bottom-5">
->>>>>>> a04538797389f7dc8cbc463926dee9d6f8cd2512
                         <div class="card-body" >
                         
                             <div class="artwork" style="background-image: url('{{$track->artwork}}');">
