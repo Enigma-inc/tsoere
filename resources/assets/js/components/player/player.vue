@@ -32,6 +32,7 @@ export default{
     mounted(){
         this.downloads=this.track.downloads;
         this.played=this.track.played;
+        this.shared=this.track.shared;
 
     },
     methods:{

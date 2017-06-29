@@ -14,6 +14,8 @@ const { mix } = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .styles([
-        'resources/assets/lib/smooth-div-scroll/css/smoothDivScroll.css'
-    ], 'public/css/vendor.css')
+            'resources/assets/lib/smooth-div-scroll/css/smoothDivScroll.css'
+        ],
+        'public/css/vendor.css')
+    .js(['resources/assets/js/page-scripts/wall.js'], 'public/js')
     .version();

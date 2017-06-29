@@ -37,7 +37,7 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
     ]);
  //genre pages route
 Route::get('/category/{genre}',[
-    'uses'=>'TrackController@displayCategory',
+    'uses'=>'CategoryPageController@index',
     'as' =>'track.category'
 ]);
 

@@ -12,12 +12,15 @@ use App\Action;
 class HomeController extends Controller
 {
     public function index(){
-         $RecentlyAddedtracks = Track::all()->shuffle();
+         $RecentlyAddedtracks = Track::where('created_at','>=',Carbon::now()->subDays(14))
+         ->get()
+         ->shuffle();
+        // return $RecentlyAddedtracks;
          $artists=Artist::inRandomOrder()
          ->has('tracks','>',0)
          ->with('tracks')
          ->withCount('tracks')
-         ->take(2)
+         ->take(12)
          ->get()
          ->shuffle();
         
@@ -50,9 +53,9 @@ class HomeController extends Controller
    2==> Played
    3==> Shared
 */
-    private  function getTrendingTracks($ActionId,$limit){
+    private  function getTrendingTracks($ActionId,$limit=10){
           $action =Action::find($ActionId);
-          
+
             $topTracks = DB::table('action_track')
                      ->select(DB::raw('count(*) as action_count, 
                         track_id '))
