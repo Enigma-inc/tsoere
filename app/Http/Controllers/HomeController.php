@@ -12,18 +12,17 @@ use App\Action;
 class HomeController extends Controller
 {
     public function index(){
-         $RecentlyAddedtracks = Track::where('created_at','>=',Carbon::now()->subDays(14))
+         $RecentlyAddedtracks = Track::with('genre','artist')->where('created_at','>=',Carbon::now()->subDays(14))
          ->get()
          ->shuffle();
         // return $RecentlyAddedtracks;
-         $artists=Artist::inRandomOrder()
+         $artists=Artist::withCount('tracks','category')->inRandomOrder()
          ->has('tracks','>',0)
-         ->with('tracks')
          ->withCount('tracks')
          ->take(12)
          ->get()
          ->shuffle();
-        
+         
         $mostDownloadedTracks = $this->getTrendingTracks(1,10);
         $mostSharedTracks=$this->getTrendingTracks(3,10);     
         $mostPlayedTracks = $this->getTrendingTracks(2,10);
@@ -67,7 +66,7 @@ class HomeController extends Controller
                      ->limit($limit)
                      ->get();
 
-       return  Track::whereIn('id',$topTracks->pluck('track_id'))->orderBy($action->name,'DESC')->get();
+       return  Track::with('genre','artist')->whereIn('id',$topTracks->pluck('track_id'))->orderBy($action->name,'DESC')->get();
     }
 
 

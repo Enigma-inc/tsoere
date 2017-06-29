@@ -10,7 +10,7 @@ class Artist extends Model
      protected $fillable = [
          'about','name', 'avatar','slug','user_id','artist_category_id'
     ];
-    protected $appends=['category','thumbnail'];
+    protected $appends=['thumbnail'];
     protected $hidden=['avatar_thumbnail'];
 
    
@@ -27,9 +27,6 @@ class Artist extends Model
     }
     public function category(){
       return $this->belongsTo(ArtistCategory::class,'artist_category_id');
-    }
-    public function getCategoryAttribute(){
-      return $this->category()->first()->name;
     }
     public function getThumbnailAttribute(){      
             return Storage::Url($this->avatar_thumbnail);        

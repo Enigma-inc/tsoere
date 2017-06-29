@@ -18,12 +18,12 @@
                                  {{$artist->name}}
                             </div>
                             <div class="footer">
-                                 {{$artist->tracks->count()}} {{ str_plural('song',$artist->tracks->count())}}
+                                 {{$artist->tracks_count}} {{ str_plural('song',$artist->tracks_count)}}
                             </div>
                         
                         </div>
                         <div class="category ">
-                            <span>{{$artist->category}}</span>
+                            <span>TODO</span>
                         </div>              
                 </div>
 
