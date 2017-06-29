@@ -8,7 +8,7 @@
 	</div>
 	<div class="section-body no-margin" id="top">
 		<div   class="row">
-			<div id="section-recent" class="slick-slider-wrapper">
+		<div id="section-recent" class="slick-slider-wrapper">  
 			@foreach($tracks as $track)
 				<div class="col-xs-12 col-sm-6 col-md-4 margin-top-20">
 				@include('player.multi-track-player') 
@@ -27,8 +27,10 @@
 	</div>
 	<div class="section-body no-margin" id="top">
         <div class="row">
-        @include('player.most-social-shared') 
-           
+			<div id="section-shared" class="slick-slider-wrapper">  
+
+        		@include('player.most-social-shared') 
+        	</div>
         </div>
 	</div>
 
@@ -42,7 +44,9 @@
 	</div>
 	<div class="section-body no-margin" id="top">
         <div class="row">
-             @include('player.most-downloaded') 
+			<div id="section-downloaded" class="slick-slider-wrapper"> 
+             	@include('player.most-downloaded') 
+			</div>
         </div>
 	</div>
 @endif
@@ -55,7 +59,9 @@
 	</div>
 	<div class="section-body no-margin" id="top">
         <div class="row">
-              @include('player.most-played') 
+			<div id="section-played" class="slick-slider-wrapper"> 
+              	@include('player.most-played') 
+			</div>
         </div>
 	</div>
 @endif
