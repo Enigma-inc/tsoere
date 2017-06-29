@@ -36,6 +36,37 @@
 @section('page-script')
 <script>
    $(document).ready(function () {
+
+                $('#section-recent').slick({
+                     dots: true,
+                    infinite: true,
+                     slidesToShow:3,
+                     slidesToScroll:3,
+                     rows:2,
+                           responsive:[
+                            {
+                                breakpoint:1024,
+                                settings:{
+                                    slidesToShow:3,
+                                }
+                            },
+                            {
+                                breakpoint:600,
+                                settings:{
+                                    slidesToShow:2,
+                                    slidesToScroll:2,
+                                }
+                            },
+                            {
+                                breakpoint:480,
+                                settings:{
+                                       slidesToShow:1,
+                                    slidesToScroll:1,
+                                }
+                            }
+                        ]
+                     
+                });
                 $('.footer-artists-container').slick(
                     {
                         dots: false,
