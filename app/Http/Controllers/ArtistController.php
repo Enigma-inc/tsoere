@@ -39,7 +39,7 @@ class ArtistController extends Controller
        $relatedTracks=$artist->tracks->whereNotIn('slug',[$trackSlug]);
        $track->increment('shared');
        $track->actions()->attach(
-                    Action::where('name','share')->get(),
+                    Action::where('name','shared')->get(),
                     ['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
        );
 

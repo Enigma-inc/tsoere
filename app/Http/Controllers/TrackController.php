@@ -112,7 +112,7 @@ class TrackController extends Controller
     {
       $fileName = $track->audio_path;
       $stream= $this->disk->readStream($fileName);
-      $trackAction = Action::where('name','download')->first();
+      $trackAction = Action::where('name','downloads')->first();
         //Increment Downloads
      $track->increment('downloads');
      $track->actions()->attach($trackAction->id,['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]);

@@ -14,13 +14,13 @@ class TrackActionsSeeder extends Seeder
     {
         //
         Action::create([
-            'name' => 'download',
+            'name' => 'downloads',
         ]);
         Action::create([
             'name' => 'played',
         ]);
         Action::create([
-            'name' => 'share',
+            'name' => 'shared',
         ]);
     }
 }

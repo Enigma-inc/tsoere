@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Track;
 use App\Artist;
 use DB;
+use App\Action;
 
 class HomeController extends Controller
 {
     public function index(){
          $RecentlyAddedtracks = Track::all()->shuffle();
-        //return $RecentlyAddedtracks;
+         //return $RecentlyAddedtracks;
          $artists=Artist::inRandomOrder()
          ->has('tracks','>',0)
          ->with('tracks')
@@ -21,11 +22,12 @@ class HomeController extends Controller
          ->shuffle();
         
         $mostSharedTracks=$this->getTrendingTracks(3,2);
+        //dd($mostSharedTracks->toArray());
         
 
-        $mostPlayedTracks = $this->getMostPlayedTracks(2,3);
+        $mostPlayedTracks = $this->getTrendingTracks(2,3);
         
-        $mostDownloadedTracks = $this->getMostDownloadedTracks(1,3);
+        $mostDownloadedTracks = $this->getTrendingTracks(1,3);
 
         //  //return $RecentlyAddedtracks;
         // $sharedtracks = Track::where('shared','>',0)->take(3)
@@ -58,8 +60,15 @@ class HomeController extends Controller
 
     }
 
+/*
+   Track Actions Ids
+   1==> Downloaded
+   2==> Played
+   3==> Shared
+*/
     private  function getTrendingTracks($ActionId,$limit){
-          
+          $action =Action::find($ActionId);
+          //dd($action->toArray());
             $topTracks = DB::table('action_track')
                      ->select(DB::raw('count(*) as action_count, 
                         track_id '))
@@ -69,38 +78,7 @@ class HomeController extends Controller
                      ->limit($limit)
                      ->get();
 
-
-       return  Track::whereIn('id',$topTracks->pluck('track_id'))->orderBy('shared','DESC')->get();
-    }
-
-    private  function getMostPlayedTracks($ActionId,$limit){
-          
-            $topTracks = DB::table('action_track')
-                     ->select(DB::raw('count(*) as action_count, 
-                        track_id '))
-                     ->where('action_id', '=', $ActionId)
-                     ->orderBy('action_count', 'desc')
-                     ->groupBy('track_id')
-                     ->limit($limit)
-                     ->get();
-
-
-       return  Track::whereIn('id',$topTracks->pluck('track_id'))->orderBy('played','DESC')->get();
-    }
-
-    private  function getMostDownloadedTracks($ActionId,$limit){
-          
-            $topTracks = DB::table('action_track')
-                     ->select(DB::raw('count(*) as action_count, 
-                        track_id '))
-                     ->where('action_id', '=', $ActionId)
-                     ->orderBy('action_count', 'desc')
-                     ->groupBy('track_id')
-                     ->limit($limit)
-                     ->get();
-
-
-       return  Track::whereIn('id',$topTracks->pluck('track_id'))->orderBy('downloads','DESC')->get();
+       return  Track::whereIn('id',$topTracks->pluck('track_id'))->orderBy($action->name,'DESC')->get();
     }
 
 
