@@ -3,14 +3,21 @@
         display: flex;
         justify-content: space-between;
         right: 5px;
-        .genre{
+        .genre {
             position: relative;
-            top:-12px;
-            .badge-accent{
-                background: #771e86 ;
+            top: -12px;
+            .badge-accent {
+                background: #771e86;
+            }
+            .badge-rank {
+                background: $colr-primary;
+                height: 25px;
+                width: 25px;
+                padding: 2px;
+                border-radius: 50%;
+                line-height: 20px;
             }
         }
-
     }
     .card-body {
         padding: 0;
@@ -107,5 +114,4 @@
             }
         }
     }
-
 }

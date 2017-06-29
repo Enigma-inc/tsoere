@@ -10,7 +10,7 @@ class Track extends Model
 {
     protected $guarded=['id'];
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
-    protected $appends=array('artwork','audio','json','path','playerContainer');
+    protected $appends=array('artwork','audio','json','path');
 
     public function artist()
     {
@@ -34,10 +34,5 @@ class Track extends Model
     }
     public function genre(){
         return $this->belongsTo(genre::class);
-    }
-
-    public function getPlayerContainerAttribute(){
-          return (string)rand(1,1);
-    return (string)sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
     }
 }

@@ -32,13 +32,12 @@ export default{
     mounted(){
         this.downloads=this.track.downloads;
         this.played=this.track.played;
-        console.log(this.playerContainer);
 
     },
     methods:{
         initialisePlayer(){
         this.player = wavesurfer.create({
-                    container: this.playerContainer,
+                    container:this.playerContainer,
                     waveColor: '#066265',
                     progressColor: '#ffffff',
                     barWidth:2,

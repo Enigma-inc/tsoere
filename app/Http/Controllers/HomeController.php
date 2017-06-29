@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index(){
          $RecentlyAddedtracks = Track::all()->shuffle();
-        //return $RecentlyAddedtracks;
+       // return $RecentlyAddedtracks->fir;
          $artists=Artist::inRandomOrder()
          ->has('tracks','>',0)
          ->with('tracks')
