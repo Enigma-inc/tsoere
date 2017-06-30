@@ -22,7 +22,7 @@
 @if($mostSharedTracks->count()>0)
 	<ol class="breadcrumb">
 	 	<li>Trending</li>
-		<li class="active text-primary">10 Most Shared On Social Media</li></li>
+		<li class="active text-primary">On Social Media</li></li>
 		<li>Last 30 Days</li>
 	</ol>
 	<div class="section-body no-margin" id="top">

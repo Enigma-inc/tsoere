@@ -29,7 +29,7 @@ class HomeController extends Controller
         $mostDownloadedTracks = $this->getTrendingTracks(1,10);
         $mostSharedTracks=$this->getTrendingTracks(3,10);     
         $mostPlayedTracks = $this->getTrendingTracks(2,10);
-
+//return $mostPlayedTracks;
 
        return view('home.welcome')->with(['tracks'=>$RecentlyAddedtracks,
                                           'artists'=>$artists,
@@ -61,7 +61,7 @@ class HomeController extends Controller
             $topTracks = DB::table('action_track')
                      ->select(DB::raw('count(*) as action_count, 
                         action_track.track_id '))
-                     ->where('action_id', '=', 1)
+                     ->where('action_id', '=', $ActionId)
                      ->where('action_track.created_at','>=',Carbon::now()->subDays(30))
                      ->where('action_track.created_at','<=',Carbon::now())
                      ->orderBy('action_count', 'desc')

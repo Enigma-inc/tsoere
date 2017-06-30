@@ -52,15 +52,15 @@
                                
                                 <div class="action-btn" >
                                     <i class="md md-headset text-primary"></i>
-                                    <small class="play-value" v-cloak>(@{{played}})</small>
+                                    <small class="play-value" v-cloak> @{{played}}</small>
                                 </div>
                                 <div class="action-btn" >
                                     <i class="md md-share text-primary"></i>
-                                    <small class="play-value" v-cloak>(@{{shared}})</small>
+                                    <small class="play-value" v-cloak> @{{shared}}</small>
                                 </div>
                                 <div @click="download()" class="action-btn">
                                     <i class="fa fa-download text-primary"></i>
-                                    <small class="play-value" v-cloak>(@{{downloads}})</small>
+                                    <small class="play-value" v-cloak> @{{downloads}}</small>
                                 </div>
                             </div>
                             </div>
