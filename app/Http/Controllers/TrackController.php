@@ -157,4 +157,12 @@ class TrackController extends Controller
                 //Push Files to Storage
        $this->disk->put($artworkPath,$avatarStream,'public');
     }
+
+    public function trash($id)
+    {
+        $deletedTrack=Track::find($id);
+        $deletedTrack->delete();
+
+        return redirect();
+    }
 }

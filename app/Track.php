@@ -11,6 +11,7 @@ class Track extends Model
     protected $guarded=['id'];
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
     protected $appends=array('artwork','audio','json','path');
+    protected $dates = ['deleted_at'];
 
     public function artist()
     {

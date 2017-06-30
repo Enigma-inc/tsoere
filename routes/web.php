@@ -79,3 +79,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     });
 
+    Route::post('/tracks/{id}/trash', [
+        'uses' => 'TrackController@trash',
+        'as' => 'track.trash'
+    ]);
+
