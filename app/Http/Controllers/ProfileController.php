@@ -19,7 +19,14 @@ class ProfileController extends Controller
       //  return Auth::User()->profile()->get();
         $artist=Artist::find(Auth::User()->id);
         $tracks=$artist->tracks()->orderBy('created_at','DESC')->get();
-        return view('profile.home')->with(['tracks'=>$tracks]);
+        $trashed=$artist->tracks()
+                ->onlyTrashed()
+                ->orderBy('created_at','DESC')
+                ->get();
+        return view('profile.home')->with([
+            'tracks'=>$tracks,
+            'trashed'=>$trashed
+            ]);
     }
 
     /**

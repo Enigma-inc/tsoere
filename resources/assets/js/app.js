@@ -14,7 +14,7 @@ require('./bootstrap');
 
 Vue.component('player', require('./components/player/player.vue'));
 Vue.component('single-track-player', require('./components/player/single-track-player.vue'));
-
+Vue.component('track-trash', require('./components/track-trash.vue'));
 const app = new Vue({
     el: '#base'
 });

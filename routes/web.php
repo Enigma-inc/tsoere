@@ -74,8 +74,29 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'ArtistController@update',
         'as' => 'artist.avatar-update'
     ]);
+    
+     Route::post('/tracks/{id}/trash', [
+        'uses' => 'TrackController@trash',
+        'as' => 'track.trash'
+    ]);
+
+    Route::post('/tracks/{id}/untrash',[
+        'uses' => 'TrackController@untrash',
+        'as' => 'track.untrash'
+    ]);
+
+    Route::post('tracks/{id}/disableDownloads',[
+        'uses' => 'TrackController@downloadsDisable',
+        'as'=>'downloads.disable'
+    ]);
+    Route::post('tracks/{id}/enableDownloads',[
+        'uses' => 'TrackController@downloadsEnable',
+        'as'=>'downloads.Enable'
+    ]);
 
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
     });
+
+
 

@@ -1,4 +1,4 @@
-				<div class="profile">
+				<div >
 					<div class="style-primary-dark header-container ">
 						<div class="avatar-container">
 								<img class="img-circle border-white border-xl img-responsive avatar" src="{{Storage::url(Auth::user()->profile->avatar)}}" alt="Profile Image">
