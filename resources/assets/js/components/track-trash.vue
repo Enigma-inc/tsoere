@@ -1,9 +1,20 @@
 
 <template>
-        <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Artwork </a>
+      <button @click="trashTrack()" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-trash-o"></i> Trash </button> 
+                                                      
 </template>
 
 <script>
 export default{    
+        props:['trackId'],
+        methods:{
+                trashTrack(){
+                        axios.post(`tracks/${this.trackId}/trash`).then(()=>{
+                                ///alert the that job is done
+                             console.log("DELETED....");
+                             window.location='../profile';
+                        });
+                }
+        }
 }
 </script>

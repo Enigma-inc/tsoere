@@ -18,4 +18,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
         ],
         'public/css/vendor.css')
     .js(['resources/assets/js/page-scripts/wall.js'], 'public/js')
-    .version();
+    //.version();

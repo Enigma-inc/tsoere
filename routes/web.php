@@ -74,13 +74,20 @@ Route::group(['middleware'=>'auth'],function(){
         'uses' => 'ArtistController@update',
         'as' => 'artist.avatar-update'
     ]);
+    
+     Route::post('/tracks/{id}/trash', [
+        'uses' => 'TrackController@trash',
+        'as' => 'track.trash'
+    ]);
+
+    Route::post('/tracks/{id}/untrash',[
+        'uses' => 'TrackController@untrash',
+        'as' => 'track.untrash'
+    ]);
 
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
     });
 
-    Route::post('/tracks/{id}/trash', [
-        'uses' => 'TrackController@trash',
-        'as' => 'track.trash'
-    ]);
+
 

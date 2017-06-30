@@ -158,11 +158,18 @@ class TrackController extends Controller
        $this->disk->put($artworkPath,$avatarStream,'public');
     }
 
-    public function trash($id)
+    public function trash(Track $track)
     {
-        $deletedTrack=Track::find($id);
-        $deletedTrack->delete();
+        
+        $deletedTrack=Track::find($id)
+                            ->delete();
+        //return redirect('/profile');
+    }
+    //untrash track
+    public function untrash(Track $track){
+        $untrashedTrack=Track::withTrashed()->find($id)->restore();
 
-        return redirect();
+        dd($untrashedTrack);
+
     }
 }

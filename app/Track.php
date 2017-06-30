@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use DB;
 
 class Track extends Model
 {
+    use SoftDeletes;
+
     protected $guarded=['id'];
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
     protected $appends=array('artwork','audio','json','path');
