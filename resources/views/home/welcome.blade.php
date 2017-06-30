@@ -23,7 +23,7 @@
                         
                         </div>
                         <div class="category ">
-                            <span>TODO</span>
+                            <span>{{$artist->category->name}}</span>
                         </div>              
                 </div>
 

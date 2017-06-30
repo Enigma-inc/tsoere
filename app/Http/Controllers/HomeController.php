@@ -13,7 +13,7 @@ use App\Genre;
 class HomeController extends Controller
 {
     public function index(){
-        
+
         $this->asignArtistCategories();
          $RecentlyAddedtracks = Track::with('genre','artist')->where('created_at','>=',Carbon::now()->subDays(14))
          ->get()
@@ -60,12 +60,12 @@ class HomeController extends Controller
 
             $topTracks = DB::table('action_track')
                      ->select(DB::raw('count(*) as action_count, 
-                        track_id '))
-                     ->where('action_id', '=', $ActionId)
-                     ->where('created_at','>=',Carbon::now()->subDays(30))
-                     ->where('created_at','<=',Carbon::now())
+                        action_track.track_id '))
+                     ->where('action_id', '=', 1)
+                     ->where('action_track.created_at','>=',Carbon::now()->subDays(30))
+                     ->where('action_track.created_at','<=',Carbon::now())
                      ->orderBy('action_count', 'desc')
-                     ->groupBy('track_id')
+                     ->groupBy('action_track.track_id')
                      ->limit($limit)
                      ->get();
 
