@@ -13,6 +13,7 @@ use App\Genre;
 class HomeController extends Controller
 {
     public function index(){
+        
         $this->asignArtistCategories();
          $RecentlyAddedtracks = Track::with('genre','artist')->where('created_at','>=',Carbon::now()->subDays(14))
          ->get()
