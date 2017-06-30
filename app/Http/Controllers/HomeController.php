@@ -8,10 +8,12 @@ use App\Artist;
 use DB;
 use Carbon\Carbon;
 use App\Action;
+use App\Genre;
 
 class HomeController extends Controller
 {
     public function index(){
+        $this->asignArtistCategories();
          $RecentlyAddedtracks = Track::with('genre','artist')->where('created_at','>=',Carbon::now()->subDays(14))
          ->get()
          ->shuffle();
@@ -67,6 +69,18 @@ class HomeController extends Controller
                      ->get();
 
        return  Track::with('genre','artist')->whereIn('id',$topTracks->pluck('track_id'))->orderBy($action->name,'DESC')->get();
+    }
+
+    private function asignArtistCategories(){
+        $artists= Artist::all();
+        $categories=Genre::all();
+        foreach ($artists as $index => $artist) {
+            if ($artist->genre_id==0) {
+                $artist->genre_id=$categories->random()->id;
+                $artist->save();
+            }
+            
+        }
     }
 
 

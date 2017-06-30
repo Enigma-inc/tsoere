@@ -13,4 +13,7 @@ class Genre extends Model
     public function tracks(){
         return $this->hasMany(Track::class);
     }
+     public function artists(){
+         return $this->hasMany(Artist::class);
+     }
 }
