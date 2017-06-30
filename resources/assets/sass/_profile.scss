@@ -39,4 +39,11 @@
             border-radius: 10px;
         }
     }
+    .update-links{
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn-xs.btn-flat {
+    padding: 0;
+    }
 }

@@ -85,6 +85,15 @@ Route::group(['middleware'=>'auth'],function(){
         'as' => 'track.untrash'
     ]);
 
+    Route::post('tracks/{id}/disableDownloads',[
+        'uses' => 'TrackController@downloadsDisable',
+        'as'=>'downloads.disable'
+    ]);
+    Route::post('tracks/{id}/enableDownloads',[
+        'uses' => 'TrackController@downloadsEnable',
+        'as'=>'downloads.Enable'
+    ]);
+
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
     });

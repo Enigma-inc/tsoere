@@ -16,7 +16,8 @@
 									</div><!--end .card-head -->
 									<div class="card-body tab-content padding-0">
 										<div class="tab-pane active" id="list">
-                     @foreach($tracks as $track)
+                      @if($tracks->count()> 0)
+                          @foreach($tracks as $track)
                           <div class="col-xs-12 col-sm-6 col-md-4 margin-top-40">
                           @include('player.multi-track-player') 
                                     
@@ -24,10 +25,17 @@
                           <div class="update-links text-center"> 
                             <a data-toggle="modal" data-target="#Title-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-pencil-square-o"></i> Edit Title</a>
                             <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Artwork </a>
-                          <track-trash :track-id="{{$track->id}}"></track-trash>                   
+                          <track-trash :track="{{$track}}"></track-trash>                   
                           </div>
                           </div> 
                         @endforeach
+                      @else
+                         <div class="text-center margin-top-50">
+                         <p class="lead">It looks like you have no song/poem here.</p>
+                         <p class="lead">Why don't you <a href="{{route('track.create')}}" class="text-accent ">upload</a> one</p>
+                         </div>
+                      @endif
+
 										</div>
 										<div class="tab-pane" id="trashed">
                         @foreach($trashed as $track)
@@ -38,7 +46,7 @@
                           <div class="update-links text-center"> 
                             <a data-toggle="modal" data-target="#Title-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-pencil-square-o"></i> Edit Title</a>
                             <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Artwork </a>
-                          <track-untrash :track-id="{{$track->id}}"></track-untrash>                   
+                            <track-trash :track="{{$track}}"></track-trash>
                           </div>
                           </div> 
                         @endforeach

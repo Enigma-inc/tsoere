@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 48);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -20979,7 +20979,7 @@ module.exports = g;
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(38);
+__webpack_require__(37);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20987,10 +20987,9 @@ __webpack_require__(38);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('player', __webpack_require__(42));
-Vue.component('single-track-player', __webpack_require__(43));
-Vue.component('track-trash', __webpack_require__(44));
-Vue.component('track-untrash', __webpack_require__(45));
+Vue.component('player', __webpack_require__(41));
+Vue.component('single-track-player', __webpack_require__(42));
+Vue.component('track-trash', __webpack_require__(43));
 var app = new Vue({
   el: '#base'
 });
@@ -21865,7 +21864,7 @@ module.exports = function spread(callback) {
 // Check if request comes from browser and is not server rendered
 // BROWSER_BUILD is for Nuxt.js compatibility
 if (process.BROWSER_BUILD || process.BROWSER_BUILD == null) {
-  var slick = __webpack_require__(40);
+  var slick = __webpack_require__(39);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -21992,7 +21991,7 @@ if (process.BROWSER_BUILD || process.BROWSER_BUILD == null) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_slick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_slick__);
 //
 //
@@ -22260,14 +22259,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-        props: ['trackId'],
+        props: ['track'],
+        data: function data() {
+                return {
+                        deleted: false,
+                        downloadable: 1
+                };
+        },
+        mounted: function mounted() {
+                this.deleted = this.track.deleted_at != null;
+                this.downloadable = this.track.downloadable == 1;
+                console.log(this.downloadable);
+        },
+
         methods: {
                 trashTrack: function trashTrack() {
-                        axios.post('tracks/' + this.trackId + '/trash').then(function () {
+                        axios.post('tracks/' + this.track.id + '/trash').then(function () {
                                 ///alert the that job is done
-                                console.log("DELETED....");
+                                window.location = '../profile';
+                        });
+                },
+                unTrashTrack: function unTrashTrack() {
+                        axios.post('tracks/' + this.track.id + '/untrash').then(function () {
+                                ///alert the that job is done
+                                window.location = '../profile';
+                        });
+                },
+                disableDownloads: function disableDownloads() {
+                        axios.post('tracks/' + this.track.id + '/disableDownloads').then(function () {
+                                ///alert the that job is done
+                                window.location = '../profile';
+                        });
+                },
+                enableDownloads: function enableDownloads() {
+                        axios.post('tracks/' + this.track.id + '/enableDownloads').then(function () {
+                                ///alert the that job is done
                                 window.location = '../profile';
                         });
                 }
@@ -22276,35 +22310,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-        props: ['trackId'],
-        methods: {
-                untrashTrack: function untrashTrack() {
-                        axios.post('tracks/' + this.trackId + '/untrash').then(function () {
-                                ///alert the that job is done
-                                console.log("Recycled...");
-                                window.location = '../profile';
-                        });
-                }
-        }
-});
-
-/***/ }),
-/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
-window._ = __webpack_require__(39);
-window.wavesurfer = __webpack_require__(49);
+window._ = __webpack_require__(38);
+window.wavesurfer = __webpack_require__(46);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -22351,7 +22360,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 // });
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39440,10 +39449,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(50)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(47)(module)))
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
@@ -42344,14 +42353,14 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(33),
   /* template */
-  __webpack_require__(47),
+  __webpack_require__(44),
   /* scopeId */
   null,
   /* cssModules */
@@ -42378,7 +42387,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
@@ -42411,7 +42420,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
@@ -42444,14 +42453,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(36),
   /* template */
-  __webpack_require__(48),
+  __webpack_require__(45),
   /* scopeId */
   null,
   /* cssModules */
@@ -42478,65 +42487,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(1)(
-  /* script */
-  __webpack_require__(37),
-  /* template */
-  __webpack_require__(46),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "C:\\Users\\Saleem\\Documents\\ENIGMA\\Projects\\Musicbox\\resources\\assets\\js\\components\\track-untrash.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] track-untrash.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3f5864d3", Component.options)
-  } else {
-    hotAPI.reload("data-v-3f5864d3", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-xs btn-accent btn-flat",
-    on: {
-      "click": function($event) {
-        _vm.untrashTrack()
-      }
-    }
-  }, [_c('i', {
-    staticClass: "fa fa-trash-o"
-  }), _vm._v(" UnTrash ")])
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-3f5864d3", module.exports)
-  }
-}
-
-/***/ }),
-/* 47 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -42551,12 +42502,12 @@ if (false) {
 }
 
 /***/ }),
-/* 48 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('button', {
-    staticClass: "btn btn-xs btn-accent btn-flat",
+  return _c('div', [(!_vm.deleted) ? _c('a', {
+    staticClass: "btn btn-xs btn-accent btn-flat margin-bottom-5",
     on: {
       "click": function($event) {
         _vm.trashTrack()
@@ -42564,7 +42515,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('i', {
     staticClass: "fa fa-trash-o"
-  }), _vm._v(" Trash ")])
+  }), _vm._v(" Trash ")]) : _vm._e(), _vm._v(" "), (_vm.deleted) ? _c('a', {
+    staticClass: "btn btn-xs btn-accent btn-flat margin-bottom-5",
+    on: {
+      "click": function($event) {
+        _vm.trashTrack()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-recycle"
+  }), _vm._v(" Restore ")]) : _vm._e(), _vm._v(" "), (_vm.downloadable && !_vm.deleted) ? _c('a', {
+    staticClass: "btn btn-xs btn-accent btn-flat margin-bottom-5",
+    on: {
+      "click": function($event) {
+        _vm.disableDownloads()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-recycle"
+  }), _vm._v(" Disable Downloads ")]) : _vm._e(), _vm._v(" "), (!_vm.downloadable && !_vm.deleted) ? _c('a', {
+    staticClass: "btn btn-xs btn-accent btn-flat margin-bottom-5",
+    on: {
+      "click": function($event) {
+        _vm.enableDownloads()
+      }
+    }
+  }, [_c('i', {
+    staticClass: "fa fa-recycle"
+  }), _vm._v(" Enable Downloads ")]) : _vm._e()])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -42575,7 +42553,7 @@ if (false) {
 }
 
 /***/ }),
-/* 49 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -42587,7 +42565,7 @@ if (false) {
 //# sourceMappingURL=wavesurfer.min.js.map
 
 /***/ }),
-/* 50 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -42615,7 +42593,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 51 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);

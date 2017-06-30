@@ -158,18 +158,40 @@ class TrackController extends Controller
        $this->disk->put($artworkPath,$avatarStream,'public');
     }
 
-    public function trash(Track $track)
+    public function trash($id)
     {
-        
         $deletedTrack=Track::find($id)
                             ->delete();
-        //return redirect('/profile');
+        
+            if ( $untrashedTrack) {
+            return(response('track trashed',200));
+        } else {
+            return (response('forbidden',403));
+        }  
     }
     //untrash track
-    public function untrash(Track $track){
+    public function untrash($id){
         $untrashedTrack=Track::withTrashed()->find($id)->restore();
+        
+        if ( $untrashedTrack) {
+            return(response('track restored',200));
+        } else {
+            return (response('forbidden',403));
+        }   
+    }
+    //enable and disable downloads
+    public function downloadsDisable($id){
+        $downloadableTrack=Track::find($id);
+        $downloadableTrack->downloadable = 0;
+        $downloadableTrack->save();
+    }
 
-        dd($untrashedTrack);
+    public function downloadsEnable($id){
+        $downloadDisabledTrack = Track::find($id);
+
+            $downloadDisabledTrack->downloadable=true;        
+        $downloadDisabledTrack->save(); 
+
 
     }
 }
