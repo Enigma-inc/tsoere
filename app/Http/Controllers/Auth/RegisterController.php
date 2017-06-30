@@ -8,7 +8,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\ArtistCategory;
+use App\Genre;
 
 class RegisterController extends Controller
 {
@@ -44,7 +44,7 @@ class RegisterController extends Controller
 
    public function showRegistrationForm()
     {
-        $categories=ArtistCategory::orderBy('name','ASC')->get();
+        $categories=Genre::orderBy('name','ASC')->get();
 
         return view('auth.register')->with(['categories'=>$categories]);
     }
@@ -85,7 +85,7 @@ class RegisterController extends Controller
                 'user_id'=>$user->id,
                 'name' => $data['name'],
                 'slug'=>str_slug($data['name']),
-                'artist_category_id'=>(int)$data['category']
+                'genre_id'=>(int)$data['category']
             ]);
 
         }
