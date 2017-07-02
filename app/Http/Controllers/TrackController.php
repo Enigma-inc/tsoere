@@ -160,10 +160,10 @@ class TrackController extends Controller
 
     public function trash($id)
     {
-        $deletedTrack=Track::find($id)
+        $trackDeleted=Track::find($id)
                             ->delete();
         
-            if ( $untrashedTrack) {
+            if ( $trackDeleted) {
             return(response('track trashed',200));
         } else {
             return (response('forbidden',403));
@@ -171,9 +171,9 @@ class TrackController extends Controller
     }
     //untrash track
     public function untrash($id){
-        $untrashedTrack=Track::withTrashed()->find($id)->restore();
+        $trackUntrashed=Track::withTrashed()->find($id)->restore();
         
-        if ( $untrashedTrack) {
+        if ( $trackUntrashed) {
             return(response('track restored',200));
         } else {
             return (response('forbidden',403));

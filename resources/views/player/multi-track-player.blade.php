@@ -58,10 +58,14 @@
                                     <i class="md md-share text-primary"></i>
                                     <small class="play-value" v-cloak> @{{shared}}</small>
                                 </div>
-                                <div @click="download()" class="action-btn">
+                                <div>
+                               @if($track->downloadable)
+                                  <div @click="download()" class="action-btn">
                                     <i class="fa fa-download text-primary"></i>
                                     <small class="play-value" v-cloak> @{{downloads}}</small>
                                 </div>
+                               @endif
+                               </div>
                             </div>
                             </div>
                          </div>

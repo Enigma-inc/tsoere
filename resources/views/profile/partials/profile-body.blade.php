@@ -22,11 +22,7 @@
                           @include('player.multi-track-player') 
                                     
                           @include('track.partials.track-edit-modals')
-                          <div class="update-links text-center"> 
-                            <a data-toggle="modal" data-target="#Title-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-pencil-square-o"></i> Edit Title</a>
-                            <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Artwork </a>
-                          <track-trash :track="{{$track}}"></track-trash>                   
-                          </div>
+                          <track-admin-actions :track="{{$track}}"></track-admin-actions>                   
                           </div> 
                         @endforeach
                       @else
@@ -38,18 +34,23 @@
 
 										</div>
 										<div class="tab-pane" id="trashed">
-                        @foreach($trashed as $track)
+                     @if($trashed->count() >0)
+                         @foreach($trashed as $track)
                           <div class="col-xs-12 col-sm-6 col-md-4 margin-top-40">
                           @include('player.multi-track-player') 
                                     
-                          @include('track.partials.track-edit-modals')
-                          <div class="update-links text-center"> 
-                            <a data-toggle="modal" data-target="#Title-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-pencil-square-o"></i> Edit Title</a>
-                            <a data-toggle="modal" data-target="#Artwork-edit-{{$track->id}}" class="btn btn-xs btn-accent btn-flat"><i class="fa fa-camera"></i> Change Artwork </a>
-                            <track-trash :track="{{$track}}"></track-trash>
-                          </div>
+                            <track-admin-actions :track="{{$track}}"></track-admin-actions>
+                          @include('track.partials.track-edit-modals')                            
+                            
+                        
                           </div> 
                         @endforeach
+
+                       @else
+                         <div class="text-center margin-top-50">
+                         <p class="lead"> <i class="fa fa-trash-o fa-2x"></i> Trash Empty</p>
+                         </div>
+                      @endif
 										</div>
 									</div><!--end .card-body -->
 								</div>  
