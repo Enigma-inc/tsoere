@@ -43,9 +43,12 @@ export default{
                     progressColor: '#ffffff',
                     barWidth:2,
                     height:20,
-                    hideScrollbar:true
+                    hideScrollbar:true,
+                    backend: 'MediaElement'
                 });
+                console.log("Set...");
         this.player.load(this.track.audio);
+        this.player.playPause();
         this.loading=true;
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
@@ -60,7 +63,7 @@ export default{
             //Set Pause button
             this.playerActionClass=['fa', 'fa-pause-circle-o'];
             
-            this.player.playPause();
+           // this.player.playPause();
             this.calculateAudioDuration();
             this.calculateElapsedTime();
             

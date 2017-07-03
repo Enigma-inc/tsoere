@@ -21663,9 +21663,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 progressColor: '#ffffff',
                 barWidth: 2,
                 height: 20,
-                hideScrollbar: true
+                hideScrollbar: true,
+                backend: 'MediaElement'
             });
+            console.log("Set...");
             this.player.load(this.track.audio);
+            this.player.playPause();
             this.loading = true;
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
@@ -21679,7 +21682,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //Set Pause button
             this.playerActionClass = ['fa', 'fa-pause-circle-o'];
 
-            this.player.playPause();
+            // this.player.playPause();
             this.calculateAudioDuration();
             this.calculateElapsedTime();
         },
