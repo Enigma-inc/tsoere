@@ -15,6 +15,7 @@ export default{
 
             downloads:0,
             played:0,
+            shared:0,
             likes:0,
             showElement: false,
             slickOptions: {
@@ -25,7 +26,8 @@ export default{
     },
     mounted(){
            this.downloads=this.track.downloads;
-        this.played=this.track.played;
+           this.played=this.track.played;
+           this.shared=this.track.shared;
 
     },
     methods:{
