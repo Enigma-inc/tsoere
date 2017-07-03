@@ -21912,7 +21912,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 this.editArtworkModalId = '#Artwork-edit-' + this.track.id;
                 this.deleted = this.track.deleted_at != null;
                 this.downloadable = this.track.downloadable == 1;
-                console.log(this.downloadable);
+                //console.log(this.downloadable)
         },
 
         methods: {

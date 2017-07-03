@@ -14,7 +14,7 @@ class AddDownloadableOptionToTracksTable extends Migration
     public function up()
     {
         Schema::table('tracks',function(Blueprint $table){
-                   $table->integer('downloadable')
+                   $table->boolean('downloadable')
                    ->default(1)
                    ->after('downloads');
         });
