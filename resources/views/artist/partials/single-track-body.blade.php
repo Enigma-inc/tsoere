@@ -28,7 +28,7 @@
                                 </div>
                                  <div class="action-btn" >
                                     <i class="md md-share text-primary"></i>
-                                    <small class="play-value" v-cloak> @{{shared}}</small>
+                                    <small class="play-value" v-cloak>@{{shared}}</small>
                                 </div>
                                 <div>
                                     @if($track->downloadable)
