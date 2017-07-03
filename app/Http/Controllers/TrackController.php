@@ -163,7 +163,7 @@ class TrackController extends Controller
         $deletedTrack=Track::find($id)
                             ->delete();
         
-        if ( $untrashedTrack) {
+        if ( $deletedTrack) {
             return(response('track trashed',200));
         } else {
             return (response('forbidden',403));

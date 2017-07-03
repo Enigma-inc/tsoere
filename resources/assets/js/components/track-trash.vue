@@ -22,7 +22,7 @@ export default{
         mounted(){
                 this.deleted= this.track.deleted_at !=null;
                 this.downloadable=this.track.downloadable==1;
-                console.log(this.downloadable)
+                //console.log(this.downloadable)
         },
         methods:{
                 trashTrack(){
