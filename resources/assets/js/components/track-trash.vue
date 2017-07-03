@@ -2,7 +2,7 @@
 <template>
       <div>
         <a v-if="!deleted" @click="trashTrack()" class="btn btn-xs btn-accent btn-flat margin-bottom-5"><i class="fa fa-trash-o"></i> Trash </a> 
-        <a v-if="deleted" @click="trashTrack()" class="btn btn-xs btn-accent btn-flat margin-bottom-5"><i class="fa fa-recycle"></i> Restore </a> 
+        <a v-if="deleted" @click="unTrashTrack()" class="btn btn-xs btn-accent btn-flat margin-bottom-5"><i class="fa fa-recycle"></i> Restore </a> 
         <a v-if="downloadable && !deleted" @click="disableDownloads()" class="btn btn-xs btn-accent btn-flat margin-bottom-5"><i class="fa fa-recycle"></i> Disable Downloads </a> 
         <a v-if="!downloadable && !deleted" @click="enableDownloads()" class="btn btn-xs btn-accent btn-flat margin-bottom-5"><i class="fa fa-recycle"></i> Enable Downloads </a> 
 
