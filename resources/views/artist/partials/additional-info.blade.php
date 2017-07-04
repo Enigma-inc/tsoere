@@ -1,9 +1,9 @@
 	<div class="card style-default-light margin-top-30">
 							<div class="card-head">
 								<ul class="nav nav-tabs tabs-center" data-toggle="tabs">
-									<li class="active"><a href="#booking_contacts">Booking Contacts</a></li>
 									<li><a href="#social_links">Social Media Links</a></li>
 									<li><a href="#Biography_and_affiliation">Biography and Affiliation</a></li>
+									<li class="active"><a href="#booking_contacts">Booking Contacts</a></li>
 								</ul>
 							</div><!--end .card-head -->
 							<div class="card-body tab-content">
