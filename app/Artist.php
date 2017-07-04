@@ -18,7 +18,7 @@ class Artist extends Model
      return "/artist/".$this->slug;
    }
     public function account(){
-      return  $this->belongsTo(User::class);
+      return  $this->belongsTo(User::class,'user_id');
     }
     
     public function tracks(){

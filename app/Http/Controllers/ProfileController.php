@@ -29,6 +29,19 @@ class ProfileController extends Controller
             ]);
     }
 
+    public function additionalInfo(Request $request, $id){
+        $artist=Artist::find($id);
+        $artist->booking_phone = $request->booking_phone;
+        $artist->booking_email = $request->booking_email;
+        $artist->about = $request->about;
+        $artist->facebook = $request->facebook;
+        $artist->instagram = $request->instagram;
+        $artist->twitter = $request->twitter;
+        $artist->affiliations = $request->affiliations;
+        $artist->save();
+        return back();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
