@@ -8,8 +8,14 @@
 		<!-- BEGIN META -->
         <meta charset="utf-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<title>{{ MetaTag::get('title') }}</title>
+        {!! MetaTag::tag('description','Listen,Share,Download and Follow your favourite artists on Musicbox.') !!}
+        {!! MetaTag::tag('image',asset('images/seo/og.jpg')) !!}
+
 		@yield('meta')
-		
+
     	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 

@@ -182,6 +182,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
         Riazxrazor\LaravelSweetAlert\LaravelSweetAlertServiceProvider::class,
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
 
     ],
 
@@ -233,7 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Fractal' => Cyvelnet\Laravel5Fractal\Facades\Fractal::class,
-        'LaravelSweetAlert' => Riazxrazor\LaravelSweetAlert\LaravelSweetAlert::class
+        'LaravelSweetAlert' => Riazxrazor\LaravelSweetAlert\LaravelSweetAlert::class,
+         'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
 
 
     ],

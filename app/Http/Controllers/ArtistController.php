@@ -13,6 +13,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 use Auth;
+use MetaTag;
 
 class ArtistController extends Controller
 {
@@ -30,6 +31,10 @@ class ArtistController extends Controller
     }
 
     public function singleTrack($artistSlug,$trackSlug){
+
+      
+
+
         //Retrive artist
        $artist = Artist::where('slug',$artistSlug)->first();
        
@@ -42,6 +47,14 @@ class ArtistController extends Controller
                     Action::where('name','shared')->get(),
                     ['created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
        );
+
+
+
+  //Meta Tags
+        
+        MetaTag::set('title', $artist->name.' | '.$track->title);
+        MetaTag::set('description', 'All about this detail page');
+        MetaTag::set('image', $track->artwork);
 
           
         return view('artist.single-track')
