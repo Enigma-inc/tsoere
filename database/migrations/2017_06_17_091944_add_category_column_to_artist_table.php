@@ -27,9 +27,12 @@ class AddCategoryColumnToArtistTable extends Migration
     public function down()
     {
         
-        Schema::table('artists', function (Blueprint $table) {
+        //Remove Artist Categroy foreign key from Artist table
+        if (Schema::hasColumn('artists', 'artist_category_id')) {
+                 Schema::table('artists', function (Blueprint $table) {
            $table->dropColumn('artist_category_id');
             
         });
+        }
     }
 }

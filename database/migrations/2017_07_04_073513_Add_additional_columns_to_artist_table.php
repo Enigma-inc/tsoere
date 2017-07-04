@@ -29,7 +29,7 @@ class AddAdditionalColumnsToArtistTable extends Migration
             $table->string('twitter')
                   ->after('about')
                   ->nullable();
-            $table->text('affiliations')
+            $table->text('affiliation')
                   ->after('about')
                   ->nullable();
         });
@@ -49,7 +49,7 @@ class AddAdditionalColumnsToArtistTable extends Migration
             $table->dropColumn('facebook');
             $table->dropColumn('instagram');
             $table->dropColumn('twitter');
-            $table->dropColumn('affiliations');            
+            $table->dropColumn('affiliation');            
         });
     }
 }

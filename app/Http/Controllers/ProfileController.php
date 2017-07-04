@@ -38,7 +38,7 @@ class ProfileController extends Controller
         $artist->facebook = $request->facebook;
         $artist->instagram = $request->instagram;
         $artist->twitter = $request->twitter;
-        $artist->affiliations = $request->affiliations;
+        $artist->affiliation = $request->affiliation;
         $artist->save();
         return back();
     }

@@ -8,7 +8,6 @@ class DatabaseSeeder extends Seeder
 {
     private $tables = [
         'genres',
-        'artist_categories',
         'action_track',
         'actions'
 
@@ -21,7 +20,6 @@ class DatabaseSeeder extends Seeder
 
         //Seed Database
          $this->call(GenreTableSeeder::class);
-         $this->call(ArtistCategoriesTableSeeder::class);
          $this->call(TrackActionsSeeder::class);
 
           Model::reguard();
