@@ -46,7 +46,6 @@ export default{
                     hideScrollbar:true,
                     backend: 'MediaElement'
                 });
-                console.log("Set...");
         this.player.load(this.track.audio);
         this.player.playPause();
         this.loading=true;

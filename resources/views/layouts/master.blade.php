@@ -13,6 +13,7 @@
 		<title>{{ MetaTag::get('title') }}</title>
         {!! MetaTag::tag('description','Listen,Share,Download and Follow your favourite artists on Musicbox.') !!}
         {!! MetaTag::tag('image',asset('images/seo/og.jpg')) !!}
+        {!! MetaTag::tag('url','http://www.musicbox.co.ls') !!}
 
 		@yield('meta')
 
