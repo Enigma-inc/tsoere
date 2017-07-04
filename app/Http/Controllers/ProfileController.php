@@ -25,7 +25,8 @@ class ProfileController extends Controller
                 ->get();
         return view('profile.home')->with([
             'tracks'=>$tracks,
-            'trashed'=>$trashed
+            'trashed'=>$trashed,
+            'artist'=>$artist
             ]);
     }
 
