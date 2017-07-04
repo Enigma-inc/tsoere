@@ -36,6 +36,11 @@ label {
     line-height: 20px;
 }
 
+.slick-list,
+.slick-active {
+    outline: none !important;
+}
+
 .breadcrumb {
     border-bottom: 1px solid darken(#fff, 20%);
     margin-bottom: 20px;
