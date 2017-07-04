@@ -25,8 +25,22 @@ class ProfileController extends Controller
                 ->get();
         return view('profile.home')->with([
             'tracks'=>$tracks,
-            'trashed'=>$trashed
+            'trashed'=>$trashed,
+            'artist'=>$artist
             ]);
+    }
+
+    public function additionalInfo(Request $request, $id){
+        $artist=Artist::find($id);
+        $artist->booking_phone = $request->booking_phone;
+        $artist->booking_email = $request->booking_email;
+        $artist->about = $request->about;
+        $artist->facebook = $request->facebook;
+        $artist->instagram = $request->instagram;
+        $artist->twitter = $request->twitter;
+        $artist->affiliation = $request->affiliation;
+        $artist->save();
+        return back();
     }
 
     /**

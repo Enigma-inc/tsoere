@@ -15,10 +15,11 @@
 					</div>
 					<div class="actions">
 				                 <a href = "{{route('artist.avatar-update')}}" class="btn btn-accent btn-xs btn-flat " role="button" aria-pressed="true">
-								  <i class="fa fa-camera"></i> update profile picture
+								  	<i class="fa fa-camera"></i> update profile picture
 								 </a>
-							</div>  
-
+								 <button class="btn btn-accent btn-xs btn-flat padding-left-20" role="button" aria-pressed="true" data-toggle="modal" data-target="#Additional_Info"><i class="fa fa-edit"></i>Add/Edit Additional Information</button>
+					 </div>  
+						@include('profile.modals.additional-info-modal')
 				</div>
 
 
