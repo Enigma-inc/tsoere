@@ -22002,6 +22002,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: { Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a },
     data: function data() {
         return {
+    
             player: null,
             timer: '',
             audioDuration: '',
@@ -22023,6 +22024,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
+        this.listenToPauseEvent();
         this.downloads = this.track.downloads;
         this.played = this.track.played;
         this.shared = this.track.shared;
@@ -22039,7 +22041,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 hideScrollbar: true,
                 backend: 'MediaElement'
             });
-            this.player.load(this.track.audio);
+            this.player.backend.peaks = [0.15, 0.2542, 0.2538, 0.2358, 0.1195, 0.1591, 0.2599, 0.2742, 0.1447, 0.2328, 0.1878, 0.1988, 0.1645, 0.1218, 0.2005, 0.2828, 0.2051, 0.1664, 0.1181, 0.1621, 0.2966, 0.189, 0.246, 0.2445, 0.1621, 0.1618, 0.189, 0.2354, 0.1561, 0.1638, 0.2799, 0.0923, 0.1659, 0.1675, 0.1268, 0.0984, 0.0997, 0.1248, 0.1495, 0.1431, 0.1236, 0.1755, 0.1183, 0.1349, 0.1018, 0.1109, 0.1833, 0.1813, 0.1422, 0.0961, 0.1191, 0.0791, 0.0631, 0.0315, 0.0157, 0.0166, 0.0108];
+            this.player.drawBuffer();
+            this.player.load(this.track.audio, this.player.backend.peaks);
+            this.dispatchPauseEvent();
             this.player.playPause();
             this.loading = true;
             this.player.on('ready', this.playerReady);
@@ -22052,7 +22057,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //The audio has been load, hence stop showing percentage
             this.loading = false;
             //Set Pause button
-            this.playerActionClass = ['fa', 'fa-pause-circle-o'];
+            this.showPauseIcon();
 
             // this.player.playPause();
             this.calculateAudioDuration();
@@ -22063,8 +22068,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (this.player) {
                 this.player.playPause();
                 if (this.player.isPlaying()) {
+                    this.dispatchPauseEvent();
                     //Restart the Timer
-                    this.playerActionClass = ['fa', 'fa-pause-circle-o'];
+                    this.showPauseIcon();
                     this.calculateElapsedTime();
                 } else {
                     //the player has been paused so stop timer
@@ -22087,7 +22093,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         stopTimer: function stopTimer() {
             clearInterval(this.timer);
-            this.playerActionClass = ['fa', 'fa-play-circle-o'];
+            this.showPlayIcon();
         },
         download: function download() {
             this.downloads++;
@@ -22099,6 +22105,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('../../../played/' + this.track.id).then(function (response) {
                 _this2.played = response.data.played;
             });
+        },
+        listenToPauseEvent: function listenToPauseEvent() {
+            var self = this;
+            EventBus.$on('pause-audio', function (track) {
+                if (self.player && track.container != self.playerContainer) {
+                    if (self.player.isPlaying()) {
+                        self.player.pause();
+                        self.showPlayIcon();
+                    }
+                }
+            });
+        },
+        dispatchPauseEvent: function dispatchPauseEvent() {
+            //Inform Other Player that you are playing a song and they should pause theirs
+            EventBus.$emit('pause-audio', { 'container': this.playerContainer });
+        },
+        showPlayIcon: function showPlayIcon() {
+            this.playerActionClass = ['fa', 'fa-play-circle-o'];
+        },
+        showPauseIcon: function showPauseIcon() {
+            this.playerActionClass = ['fa', 'fa-pause-circle-o'];
         }
     },
     filters: {
@@ -22352,6 +22379,7 @@ window.wavesurfer = __webpack_require__(51);
  */
 
 window.Vue = __webpack_require__(10);
+window.EventBus = new Vue();
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
