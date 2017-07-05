@@ -30,14 +30,14 @@
 							<div class="tab-pane " id="Biography_and_affiliation">
 								@if($profile->about != null)		
 									<div class="col-lg-6 ">
-										<p class="text-md text-accent  margin-0 "> Biography:</p>
+										<h4 class="text-md text-accent  margin-0 "> Biography:</h4>
 										<p class="text-justify text-md text-default-dark">{{$profile->about}}</p>
 									</div>
 								@endif
 								@if($profile->affiliation != null)
 
 									<div class="col-lg-6 ">
-										<p class="text-md text-accent  margin-0 "> Affiliation:</p>
+										<h4 class="text-md text-accent  margin-0 "> Affiliation:</h4>
 										<p class="text-justify text-md text-default-dark">{{$profile->affiliation}}</p>
 									</div>
 								@endif
