@@ -18,7 +18,8 @@
 								  	<i class="fa fa-camera"></i> update profile picture
 								 </a>
 								 <button class="btn btn-accent btn-xs btn-flat padding-left-20" role="button" aria-pressed="true" data-toggle="modal" data-target="#Additional_Info"><i class="fa fa-edit"></i>Add/Edit Additional Information</button>
-					 </div>  
+					 </div> 		
+						@include('artist.partials.additional-info') 
 						@include('profile.modals.additional-info-modal')
 				</div>
 
