@@ -22002,7 +22002,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: { Slick: __WEBPACK_IMPORTED_MODULE_0_vue_slick___default.a },
     data: function data() {
         return {
-    
+            audio: '',
             player: null,
             timer: '',
             audioDuration: '',
@@ -22032,6 +22032,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         initialisePlayer: function initialisePlayer() {
+            var _this = this;
+
             this.player = wavesurfer.create({
                 container: this.playerContainer,
                 waveColor: '#066265',
@@ -22047,6 +22049,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dispatchPauseEvent();
             this.player.playPause();
             this.loading = true;
+            this.player.on('loading', function (percent) {
+                _this.loadingPercentage = percent + '%';
+                console.log(_this.loadingPercentage);
+            });
             this.player.on('ready', this.playerReady);
             this.player.on('finish', this.stopTimer);
 
@@ -22085,10 +22091,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.audioDuration = this.player.getDuration();
         },
         calculateElapsedTime: function calculateElapsedTime() {
-            var _this = this;
+            var _this2 = this;
 
             this.timer = setInterval(function () {
-                _this.elapsedTime = _this.player.getCurrentTime();
+                _this2.elapsedTime = _this2.player.getCurrentTime();
             }, 1000);
         },
         stopTimer: function stopTimer() {
@@ -22100,10 +22106,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             window.location.href = '../../../download/' + this.track.id;
         },
         recordTrackPlay: function recordTrackPlay() {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.get('../../../played/' + this.track.id).then(function (response) {
-                _this2.played = response.data.played;
+                _this3.played = response.data.played;
             });
         },
         listenToPauseEvent: function listenToPauseEvent() {

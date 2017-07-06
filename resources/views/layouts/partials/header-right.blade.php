@@ -1,12 +1,12 @@
 <ul class="header-nav header-nav-options margin-top-5">
 						<li>
 							<!-- Search form -->
-							<!--form-- class="navbar-search" role="search">
+							<form class="navbar-search" role="search">
 								<div class="form-group">
 									<input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
 								</div>
 								<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search text-primary"></i></button>
-							</form-->
+							</form>
 						</li>
 					</ul><!--end .header-nav-options -->
                       @if (Auth::guest())

@@ -27,7 +27,6 @@ export default{
                 // Any other options that can be got from plugin documentation
             },
 
-
         }
     },
     mounted(){
@@ -35,7 +34,6 @@ export default{
         this.downloads=this.track.downloads;
         this.played=this.track.played;
         this.shared=this.track.shared;
-
     },
     methods:{
         initialisePlayer(){
@@ -54,6 +52,10 @@ export default{
         this.dispatchPauseEvent();
         this.player.playPause();
         this.loading=true;
+        this.player.on('loading',(percent)=>{
+            this.loadingPercentage=percent +'%';
+            console.log(this.loadingPercentage);
+        });
         this.player.on('ready', this.playerReady);
         this.player.on('finish',this.stopTimer);
 
