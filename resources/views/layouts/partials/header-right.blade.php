@@ -1,12 +1,13 @@
 <ul class="header-nav header-nav-options margin-top-5">
 						<li>
-							<!-- Search form -->
-							<!--form-- class="navbar-search" role="search">
+							 <form class="navbar-search expanded" role="search" method="GET" action="{{ route('search') }}">
 								<div class="form-group">
-									<input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
+									<input type="text" class="form-control" name="q" value="{{$searchWord}}" placeholder="Enter your keyword">
 								</div>
-								<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search text-primary"></i></button>
-							</form-->
+								<button type="submit" class="btn btn-icon-toggle ink-reaction">
+									<i class="fa fa-search text-primary"></i>
+								</button>
+							  </form>
 						</li>
 					</ul><!--end .header-nav-options -->
                       @if (Auth::guest())

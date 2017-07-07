@@ -15,6 +15,7 @@ require('./bootstrap');
 Vue.component('player', require('./components/player/player.vue'));
 Vue.component('single-track-player', require('./components/player/single-track-player.vue'));
 Vue.component('track-admin-actions', require('./components/track/track-admin-actions.vue'));
+Vue.component('search', require('./components/track/search.vue'));
 const app = new Vue({
     el: '#base'
 });

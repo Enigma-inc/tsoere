@@ -5,7 +5,6 @@
   <script type="text/javascript" src="{{asset('libs/slick/slick.min.js')}}"></script>	
 	<script src="{{url('theme/js/core/source/App.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppNavigation.js')}}"></script>
-	<script src="{{url('theme/js/core/source/AppNavSearch.js')}}"></script>
 	<script src="{{url('theme/js/core/source/AppVendor.js')}}"></script>
 
   <script type="text/javascript" src="{{mix('js/wall.js')}}"></script>

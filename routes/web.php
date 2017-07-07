@@ -21,7 +21,7 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
     'as'=>'track.single'
 ]);
  //Record social media sharing
- Route ::get('shared/{track}',[
+ Route::get('shared/{track}',[
      'uses' => 'TrackController@socialShared',
      'as' => 'track.share'
  ]);
@@ -34,6 +34,11 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
  Route::get('download/{track}', [
         'uses'=>'TrackController@download',
         'as'=>'track.download'
+    ]);
+//Search Page
+Route::get('/search', [
+        'uses'=>'SearchController@index',
+        'as'=>'search'
     ]);
  //genre pages route
 Route::get('/category/{genre}',[
@@ -102,6 +107,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
     });
+    
 
 
 
