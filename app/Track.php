@@ -5,11 +5,13 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 use DB;
 
 class Track extends Model
 {
     use SoftDeletes;
+    use Searchable;
 
     protected $guarded=['id'];
     protected $hidden = [ 'artwork_path','audio_path','json_path'];    
