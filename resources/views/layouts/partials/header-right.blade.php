@@ -1,3 +1,5 @@
+@php(!isset($searchWord)?$searchWord='':'') 
+
 <ul class="header-nav header-nav-options margin-top-5">
 						<li>
 							 <form class="navbar-search expanded" role="search" method="GET" action="{{ route('search') }}">
