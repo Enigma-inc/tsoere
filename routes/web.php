@@ -35,8 +35,9 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
         'uses'=>'TrackController@download',
         'as'=>'track.download'
     ]);
+//Search Page
 Route::get('/search', [
-        'uses'=>'SearchController@search',
+        'uses'=>'SearchController@index',
         'as'=>'search'
     ]);
  //genre pages route
