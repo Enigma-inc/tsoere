@@ -21,9 +21,7 @@ class CategoryPageController extends Controller
 
         $artists=Artist::withCount('tracks','category')->inRandomOrder()
          ->has('tracks','>',0)
-         ->with('tracks')
-         //->where('artist_category_id','=',$genre->id)
-         ->withCount('tracks')
+         ->where('genre_id','=',$genre->id)
          ->take(12)
          ->get()
          ->shuffle();

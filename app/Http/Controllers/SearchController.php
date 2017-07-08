@@ -21,13 +21,9 @@ class SearchController extends Controller
             $tracks->load('genre');
             $tracks->load('artist');
 
-            $artists=Artist::withCount('tracks', 'category')->inRandomOrder()
-             ->has('tracks', '>', 0)
-             ->withCount('tracks')
-             ->take(12)
-             ->get()
-             ->shuffle();
-
+            $artists=Artist::search($query)
+             ->take(3)
+             ->get();
        
         }
 

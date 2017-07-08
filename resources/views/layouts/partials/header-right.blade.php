@@ -4,7 +4,7 @@
 						<li>
 							 <form class="navbar-search expanded" role="search" method="GET" action="{{ route('search') }}">
 								<div class="form-group">
-									<input type="text" class="form-control" name="q" value="{{$searchWord}}" placeholder="Enter your keyword">
+									<input type="text" class="form-control search-input" name="q" value="{{$searchWord}}" placeholder="Enter your keyword">
 								</div>
 								<button type="submit" class="btn btn-icon-toggle ink-reaction">
 									<i class="fa fa-search text-primary"></i>
