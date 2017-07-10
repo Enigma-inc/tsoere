@@ -21,7 +21,6 @@ class HomeController extends Controller
         // return $RecentlyAddedtracks;
          $artists=Artist::withCount('tracks','category')->inRandomOrder()
          ->has('tracks','>',0)
-         ->withCount('tracks')
          ->take(12)
          ->get()
          ->shuffle();

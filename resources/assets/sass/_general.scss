@@ -48,3 +48,9 @@ label {
         color: $color-primary-dark !important;
     }
 }
+
+.search-input,
+input::placeholder {
+    font-size: 14px;
+    font-style: italic;
+}

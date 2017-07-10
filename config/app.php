@@ -183,6 +183,8 @@ return [
         Cyvelnet\Laravel5Fractal\Laravel5FractalServiceProvider::class,
         Riazxrazor\LaravelSweetAlert\LaravelSweetAlertServiceProvider::class,
         Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
+        ScoutEngines\Elasticsearch\ElasticsearchProvider::class,
 
     ],
 

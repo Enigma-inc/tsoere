@@ -4,13 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Scout\Searchable;
 
 class Artist extends Model
 {
+    use Searchable;
+
      protected $fillable = [
          'about','name', 'avatar','slug','user_id','genre_id'
     ];
-    protected $appends=['thumbnail'];
+    protected $appends=['thumbnail','track_count'];
     protected $hidden=['avatar_thumbnail'];
 
    
@@ -30,5 +33,8 @@ class Artist extends Model
     }
     public function getThumbnailAttribute(){      
             return Storage::Url($this->avatar_thumbnail);        
+    }
+    public function getTrackCountAttribute(){      
+            return $this->tracks()->count();       
     }
 }

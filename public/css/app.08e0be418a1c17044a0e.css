@@ -1620,8 +1620,10 @@ label {
 }
 
 .track-card .card-body .artwork .play-button i {
+  -webkit-transition: all .5s ease-in;
   transition: all .5s ease-in;
   font-size: 3em;
+  -webkit-transition: all .3s ease-in;
   transition: all .3s ease-in;
   color: rgba(229, 230, 230, 0.9) !important;
 }
@@ -1796,8 +1798,10 @@ label {
   }
 
   .single-track-card .card-body .content .artwork .play-button a {
+    -webkit-transition: all .5s ease-in;
     transition: all .5s ease-in;
     font-size: 5em;
+    -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
     color: rgba(229, 230, 230, 0.9) !important;
   }
@@ -1944,8 +1948,10 @@ label {
   }
 
   .single-track-card .card-body .content .artwork .play-button a {
+    -webkit-transition: all .5s ease-in;
     transition: all .5s ease-in;
     font-size: 3em;
+    -webkit-transition: all .3s ease-in;
     transition: all .3s ease-in;
     color: rgba(229, 230, 230, 0.9) !important;
   }
