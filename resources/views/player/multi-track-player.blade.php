@@ -40,7 +40,7 @@
                                 <div class="player-container">
                                        <div class="player"  id="{{isset($section)? $section.'-'.$track->id:'player-'.$track->id}}" ></div>
                                        <div v-if="loading" class="loading">
-                                              <span class="text-primary" v-cloak>@{{loadingPercentage}}</span>
+                                              <span class="text-primary" v-cloak>@{{loadingPercentage}}%</span>
                                        </div>
                                 </div>
                                 <div class="info-container">
