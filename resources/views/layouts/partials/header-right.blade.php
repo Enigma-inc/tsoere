@@ -2,24 +2,14 @@
 
 <ul class="header-nav header-nav-options margin-top-5">
 						<li>
-<<<<<<< HEAD
-							<!-- Search form -->
-							<form class="navbar-search" role="search">
-=======
 							 <form class="navbar-search expanded" role="search" method="GET" action="{{ route('search') }}">
->>>>>>> origin/master
 								<div class="form-group">
 									<input type="text" class="form-control search-input" name="q" value="{{$searchWord}}" placeholder="Enter your keyword">
 								</div>
-<<<<<<< HEAD
-								<button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search text-primary"></i></button>
-							</form>
-=======
 								<button type="submit" class="btn btn-icon-toggle ink-reaction">
 									<i class="fa fa-search text-primary"></i>
 								</button>
 							  </form>
->>>>>>> origin/master
 						</li>
 					</ul><!--end .header-nav-options -->
                       @if (Auth::guest())
