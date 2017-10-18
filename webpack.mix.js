@@ -30,4 +30,9 @@ mix.js('resources/assets/js/app.js', 'public/js')
         ],
         'public/libs/vendor-scripts.js')
     .js(['resources/assets/js/page-scripts/wall.js'], 'public/js')
+    .stylus('resources/assets/stylus/theme.styl', 'public/theme/css/front-theme.css', {
+          use: [
+              require('rupture')()
+          ]
+      })
     .version();

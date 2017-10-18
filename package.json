@@ -21,10 +21,16 @@
     "jquery": "^3.1.1",
     "laravel-mix": "0.*",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10"
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vue": "^2.0.8"
   },
   "dependencies": {
+    "global": "^4.3.2",
+    "rupture": "^0.6.2",
     "vue-slick": "^1.1.5",
+    "vue-template-compiler": "^2.1.8",
+    "vuetify": "^0.16.4",
     "wavesurfer.js": "^2.0.0-beta01"
   }
 }

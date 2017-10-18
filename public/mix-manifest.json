@@ -1,8 +1,10 @@
 {
-  "/js/app.js": "/js/app.d35882ee84d803c233a0.js",
-  "/css/app.css": "/css/app.29bd6b9cc0b1a785f88a.css",
-  "/js/wall.js": "/js/wall.9e42d980b313871f8dc2.js",
+  "/js/app.js": "/js/app.895eb8971ea9a5540b43.js",
+  "/css/app.css": "/css/app.4b4c1da621f99681f9a55436d039f53e.css",
+  "/js/wall.js": "/js/wall.942baf399f18d0169ee5.js",
   "/theme/css/theme-styles.css": "/theme/css/theme-styles.df2a8f4b209ed3507b02e7c841650665.css",
   "/libs/vendor-styles.css": "/libs/vendor-styles.ee84f60987af5e3591a752fe628ac031.css",
-  "/libs/vendor-scripts.js": "/libs/vendor-scripts.99cf8430b8d81c268269760118ec31a4.js"
+  "/libs/vendor-scripts.js": "/libs/vendor-scripts.99cf8430b8d81c268269760118ec31a4.js",
+  "/css/front-theme.css": "/css/front-theme.5a232f3dcb2b11977a6500cc64b47055.css",
+  "/theme/css/front-theme.css": "/theme/css/front-theme.5a232f3dcb2b11977a6500cc64b47055.css"
 }
