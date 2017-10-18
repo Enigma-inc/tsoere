@@ -13,8 +13,14 @@ class CreateUMAArtistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('u_m_a_artists', function (Blueprint $table) {
+        Schema::create('uma_artists', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('song')->nullable();
+            $table->string('avatar')->default('images/uma-logo.png');
+            $table->string('sms_code');
+            $table->string('video_code')->nullable();
+            $table->unsignedInteger('category_id');
             $table->timestamps();
         });
     }
