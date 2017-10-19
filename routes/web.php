@@ -30,7 +30,7 @@ Route::get('/artist/{artistSlug}/single/{trackSlug}', [
         'uses'=>'TrackController@recordTrackPlay',
         'as'=>'track.play'
     ]);
-//Downlaod Track Route 
+//Downlaod Track Route
  Route::get('download/{track}', [
         'uses'=>'TrackController@download',
         'as'=>'track.download'
@@ -77,14 +77,14 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::post('/tracks/title/{trackId}',[
          'uses' => 'TrackController@titleUpdate',
-         'as' => 'track.title.update'   
+         'as' => 'track.title.update'
     ]);
-    
+
     Route::get('/update-avatar/artist',[
         'uses' => 'ArtistController@update',
         'as' => 'artist.avatar-update'
     ]);
-    
+
      Route::post('/tracks/{id}/trash', [
         'uses' => 'TrackController@trash',
         'as' => 'track.trash'
@@ -106,8 +106,13 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::post('/update-avatar/{profile}','ArtistController@upload_avatar');
 
-    });
-    
+  });
+
+  Route::prefix('admin')->middleware(['auth'])->group(function () {
+        Route::prefix('umas')->group(function (){
+            Route::get('/artists/create','UmaArtistController@create')->name('umas.artists.create');
+            Route::post('/artists','UmaArtistController@store')->name('umas.artists.store');
+          });
 
 
-
+      });

@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UMACategory extends Model
+class UmaCategory extends Model
 {
-    //
+    protected $table="uma_categories";
+    protected $guarded=['id'];
 }

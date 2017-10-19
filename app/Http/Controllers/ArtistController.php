@@ -32,12 +32,12 @@ class ArtistController extends Controller
 
     public function singleTrack($artistSlug,$trackSlug){
 
-      
+
 
 
         //Retrive artist
        $artist = Artist::where('slug',$artistSlug)->first();
-       
+
        //Get Track using artist relationship
        $track=$artist->tracks->where('slug',$trackSlug)->first();
        //Get Related Tracks
@@ -51,30 +51,30 @@ class ArtistController extends Controller
 
 
   //Meta Tags
-        
+
         MetaTag::set('title', $artist->name.' | '.$track->title);
         MetaTag::set('description', 'All about this detail page');
         MetaTag::set('image', $track->artwork);
 
-          
+
         return view('artist.single-track')
                     ->with(['profile'=>$artist,
                             'track'=>$track,
                             'relatedTracks'=>$relatedTracks]);
 
-       
+
     }
 
 
-    //artist profile creation form 
+    //artist profile creation form
     public function edit()
     {
         return view('artist.edit-profile');
     }
 
-    //avartar update form 
+    //avartar update form
     public function update()
-    { 
+    {
         $profile = Artist::find(auth()->id());
         return view('artist.update-avatar', compact('profile'));
 
@@ -84,7 +84,7 @@ class ArtistController extends Controller
 
     public function upload_avatar(Request $request, Artist $profile)
     {
-        $profileDir = Auth::user()->profile->slug; 
+        $profileDir = Auth::user()->profile->slug;
         $this->validate($request, [
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
@@ -107,7 +107,7 @@ class ArtistController extends Controller
         private function resizeAvatar(UploadedFile $avatar,$avatarPath,$avatarThumnailPath){
        //Resize Image
                // dd(sprintf("%/%s", $this->baseDir, $this->$avatar));
-       
+
         $avatarStream =Image::make($avatar)
                 ->fit(300,300)
                 ->stream()

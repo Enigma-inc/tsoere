@@ -13,7 +13,7 @@ class CreateUMACategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('u_m_a_categories', function (Blueprint $table) {
+        Schema::create('uma_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
