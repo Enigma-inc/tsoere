@@ -12,7 +12,9 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('categories-menu', require('./components/menu-categories-menu.vue'));
 Vue.component('player', require('./components/player/player.vue'));
+Vue.component('umas-player', require('./components/player/player-umas.vue'));
 Vue.component('single-track-player', require('./components/player/single-track-player.vue'));
 Vue.component('track-admin-actions', require('./components/track/track-admin-actions.vue'));
 const app = new Vue({

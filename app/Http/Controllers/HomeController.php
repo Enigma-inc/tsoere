@@ -28,7 +28,7 @@ class HomeController extends Controller
         $mostDownloadedTracks = $this->getTrendingTracks(1,10);
         $mostSharedTracks=$this->getTrendingTracks(3,10);     
         $mostPlayedTracks = $this->getTrendingTracks(2,10);
-//return $mostPlayedTracks;
+
 
        return view('home.welcome')->with(['tracks'=>$RecentlyAddedtracks,
                                           'artists'=>$artists,

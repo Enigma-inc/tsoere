@@ -19,6 +19,7 @@
         "predis/predis": "^1.1",
         "riazxrazor/laravel-sweet-alert": "^1.1",
         "tamayo/laravel-scout-elastic": "^3.0",
+        "themsaid/laravel-model-transformers": "^1.1",
         "torann/laravel-meta-tags": "^3.0"
     },
     "require-dev": {

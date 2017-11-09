@@ -11,7 +11,7 @@
 						<li class="header-nav-brand" >
 							<div class="brand-holder">
 								<a href="{{route('home')}}">
-									<img class="logo" src="{{url('images/logo.png')}}" alt="Musicbox">
+									<img class="logo" src="{{url('images/logo.svg')}}" alt="Musicbox">
 								</a>
 							</div>
 						</li>

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUMACategoriesTable extends Migration
+class AddSlugColumnOnUmasArtistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateUMACategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('uma_categories', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('slug');
-            $table->string('code');
-            $table->timestamps();
+        Schema::table('uma_artists',function (Blueprint $table)
+        {
+            $table->string('slug')->unique()
+                  ->after('category_id');
         });
     }
 
@@ -29,6 +27,9 @@ class CreateUMACategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uma_categories');
+        Schema::table('uma_artists',function (Blueprint $table)
+        {
+            $table->dropColumn('slug');
+        });
     }
 }

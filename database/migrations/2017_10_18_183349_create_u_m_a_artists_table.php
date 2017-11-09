@@ -33,6 +33,6 @@ class CreateUMAArtistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('u_m_a_artists');
+        Schema::dropIfExists('uma_artists');
     }
 }

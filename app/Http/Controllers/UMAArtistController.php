@@ -43,7 +43,7 @@ class UmaArtistController extends Controller
 
        }
        if ( $artwork) {
-         $artworkPath="/uma/artworks/".str_slug($artistName).'-'.str_slug($trackTitle).$artwork->getClientOriginalExtension();
+         $artworkPath="uma/artworks/".str_slug($artistName).'-'.str_slug($trackTitle).$artwork->getClientOriginalExtension();
          //Create artwork
          $this->resizeArtwork($artwork,$artworkPath);
        }
@@ -58,7 +58,8 @@ class UmaArtistController extends Controller
         'artwork'=>$artworkPath,
         'sms_code'=>request('code'),
         'video_code'=>request('youtube-id'),
-        'category_id'=>request('category')
+        'category_id'=>request('category'),
+        'slug'=>str_slug($artistName.'-'.$trackTitle)
       ]);
 
 
