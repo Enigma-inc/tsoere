@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?h25qgz');
+  src:  url('../fonts/icomoon.eot?h25qgz#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?h25qgz') format('truetype'),
+    url('../fonts/icomoon.woff?h25qgz') format('woff'),
+    url('../fonts/icomoon.svg?h25qgz#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-famo:before {
+  content: "\e909";
+  color: #00ac9f;
+}
+.icon-afro-pop:before {
+  content: "\e903";
+  color: #00aea1;
+}
+.icon-gospel:before {
+  content: "\e904";
+  color: #00ada0;
+}
+.icon-kwaito:before {
+  content: "\e905";
+  color: #00ada0;
+}
+.icon-poetry:before {
+  content: "\e906";
+  color: #00ada0;
+}
+.icon-reggae:before {
+  content: "\e907";
+  color: #00ada0;
+}
+.icon-urban-contemporary:before {
+  content: "\e908";
+  color: #00aea1;
+}
+.icon-dance:before {
+  content: "\e901";
+  color: #00afa2;
+}
+.icon-hip-hop:before {
+  content: "\e902";
+  color: #00afa2;
+}
+.icon-afro-jazz:before {
+  content: "\e900";
+  color: #00b0a2;
+}

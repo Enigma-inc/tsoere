@@ -17,7 +17,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
             'resources/assets/theme/css/bootstrap.css',
             'resources/assets/theme/css/materialadmin.css',
             'resources/assets/theme/css/font-awesome.min.css',
-            'resources/assets/theme/css/material-design-iconic-font.min.css'
+            'resources/assets/theme/css/material-design-iconic-font.min.css',
+            'resources/assets/theme/css/menu-icons.css'
         ],
         'public/theme/css/theme-styles.css')
     .styles([
@@ -30,9 +31,9 @@ mix.js('resources/assets/js/app.js', 'public/js')
         ],
         'public/libs/vendor-scripts.js')
     .js(['resources/assets/js/page-scripts/wall.js'], 'public/js')
-    .stylus('resources/assets/stylus/theme.styl', 'public/theme/css/front-theme.css', {
-          use: [
-              require('rupture')()
-          ]
-      })
+    // .stylus('resources/assets/stylus/theme.styl', 'public/theme/css/front-theme.css', {
+    //       use: [
+    //           require('rupture')()
+    //       ]
+    //   })
     .version();

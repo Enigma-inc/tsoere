@@ -10,6 +10,7 @@ var myLibsJsFiles = [
     'public/theme/js/libs/autosize/jquery.autosize.min.js',
     'public/theme/js/libs/jquery/jquery-migrate-1.2.1.min.js',
     'public/theme/js/libs/bootstrap/bootstrap.min.js',
+    'public/theme/js/libs/nanoscroller/jquery.nanoscroller.min.js',
     'resources/assets/libs/slick/slick.min.js',
     'public/theme/js/core/source/App.js',  
     'public/theme/js/core/source/AppNavigation.js',  

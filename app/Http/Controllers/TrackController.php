@@ -51,7 +51,7 @@ class TrackController extends Controller
         $mp3FileName=str_slug($trackTitle).'-'.$currentTime.'.'.$mp3File->getClientOriginalExtension();        
         $mp3Path=$artistDir."/tracks/".$mp3FileName;
         $artworkPath=$artistDir."/artworks/".str_slug($trackTitle).'-'.$currentTime.'.'.$artwork->getClientOriginalExtension();
-        $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".$currentTime.".json";
+        $jsonPath =$artistDir. "/json/".str_slug($trackTitle)."-".time().".json";
         $jsonFile = str_slug($trackTitle)."-".$currentTime.".json";
     
        $resizedArtwork=$this->resizeArtwork($artwork,$artworkPath);
@@ -147,6 +147,8 @@ class TrackController extends Controller
     }
 
     private function resizeArtwork(UploadedFile $artwork,$artworkPath){
+
+     //   dd($artwork);
      
        //Resize Image
        $avatarStream= Image::make($artwork)

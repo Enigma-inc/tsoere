@@ -1,4 +1,4 @@
-	<div id="menubar" class=" ">
+	<div id="menubar" class=" menubar-inverse ">
 			<div class="menubar-fixed-panel">
 				<div>
 					<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
@@ -21,53 +21,22 @@
 							<span class="title">Home</span>
 						</a>
 					</li>
-					<!--li>
-						<a href="../../html/dashboards/dashboard.html" >
-							<div class="gui-icon"><i class="fa fa-line-chart text-primary"></i></div>
-							<span class="title">Trending</span>
+					@foreach($genres as $menuItem)
+						<li>
+						<a href="{{route('track.category', $menuItem->slug)}}" >
+							<div class="gui-icon">
+							  <i class="{{'md icon-'.$menuItem->slug}}"></i>
+							</div>
+							<span class="title margin-left-60">{{$menuItem->name}}</span>
 						</a>
 					</li>
-					<li-->
-						<!--a href="../../html/dashboards/dashboard.html" >
-							<div class="gui-icon"><i class="fa fa-plus-square-o text-primary"></i></div>
-							<span class="title">Recently Added</span>
-						</a>
-					</li-->
-					
-					<li>
-						<a href="{{route('track.category', ['slug' => 'hip-hop'])}}" >
-							<div class="gui-icon"><i class="fa fa-headphones text-primary"></i></div>
-							<span class="title">Hip Hop</span>
-						</a>
-					</li>
-					
-					<li>
-						<a href="{{route('track.category', ['slug' => 'poetry'])}}" >
-							<div class="gui-icon"><i class="fa fa-microphone text-primary"></i></div>
-							<span class="title">Poetry</span>
-						</a>
-					</li>
-					
-					<li>
-						<a href="{{route('track.category', ['slug' => 'afro-jazz'])}}" >
-							<div class="gui-icon"><i class="md md-queue-music text-primary"></i></div>
-							<span class="title">Afro Jazz</span>
-						</a>
-					</li>
-
-					<li>
-						<a href="{{route('track.category', ['slug' => 'reggae'])}}" >
-							<div class="gui-icon"><i class="glyphicon glyphicon-music text-primary"></i></div>
-							<span class="title">Reggae</span>
-						</a>
-					</li>
-
-					
+					@endforeach
+				
 
 
 				</ul>
 
-				<div class="menubar-foot-panel">
+				<div class="menubar-foot-panel stick-bottom-left-right">
 					<small class="no-linebreak hidden-folded">
 						<span class="opacity-75">Copyright &copy; 2017</span> <strong>Musicbox</strong>
 					</small>
